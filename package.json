@@ -1,45 +1,45 @@
 {
-    "name": "react-native-tachyons",
-    "description": "styling for react-native based on tachyons.css",
-    "license": "MIT",
-    "version": "0.0.0",
-    "keywords": [
-        "react",
-        "react-native",
-        "styling",
-        "babel",
-        "babel-plugin"
-    ],
-    "author": {
-        "name": "Fabian Zeindl",
-        "email": "fabian.zeindl@gmail.com",
-        "url": "http://github.com/fab1an"
-    },
-    "homepage": "https://github.com/fab1an/react-native-tachyons",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/fab1an/react-native-tachyons.git"
-    },
-    "bugs": {
-        "url": "https://github.com/fab1an/react-native-tachyons/issues"
-    },
-    "main": "lib/index.js",
-    "dependencies": {
-        "lodash": "^4.12.0",
-        "react-native-extended-stylesheet": "^0.2.0"
-    },
-    "devDependencies": {
-        "babel-cli": "^6.9.0",
-        "babel-preset-es2015": "^6.9.0",
-        "publish-please": "^2.0.0",
-        "faucet": "0.0.1",
-        "tape": "^4.5.1"
-    },
-    "scripts": {
-        "test_raw": "tape -r babel-register 'test/**/*_spec.js'",
-        "test": "npm run test_raw | faucet",
-        "build": "babel src -d lib",
-        "publish-please": "publish-please",
-        "prepublish": "publish-please guard"
-    }
+  "name": "react-native-tachyons",
+  "description": "styling for react-native based on tachyons.css",
+  "license": "MIT",
+  "version": "0.0.1",
+  "keywords": [
+    "react",
+    "react-native",
+    "styling",
+    "babel",
+    "babel-plugin"
+  ],
+  "author": {
+    "name": "Fabian Zeindl",
+    "email": "fabian.zeindl@gmail.com",
+    "url": "http://github.com/fab1an"
+  },
+  "homepage": "https://github.com/fab1an/react-native-tachyons",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fab1an/react-native-tachyons.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fab1an/react-native-tachyons/issues"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "lodash": "^4.12.0",
+    "react-native-extended-stylesheet": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "publish-please": "^2.0.0",
+    "faucet": "0.0.1",
+    "tape": "^4.5.1"
+  },
+  "scripts": {
+    "test_raw": "tape -r babel-register 'test/**/*_spec.js'",
+    "test": "npm run test_raw | faucet",
+    "build": "babel src -d lib",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard"
+  }
 }
