@@ -2,7 +2,7 @@
   "name": "react-native-tachyons",
   "description": "styling for react-native based on tachyons.css",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "react",
     "react-native",
