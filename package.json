@@ -26,7 +26,6 @@
   "main": "lib/index.js",
   "dependencies": {
     "color": "^0.11.1",
-    "colors": "^1.1.2",
     "lodash": "^4.12.0"
   },
   "devDependencies": {

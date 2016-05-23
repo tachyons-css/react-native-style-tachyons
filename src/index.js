@@ -1,19 +1,19 @@
 import _ from "lodash";
 import Color from "color";
-import { wrap } from "./reactWrapper";
+import * as reactWrapper from "./reactWrapper";
 
 const NativeTachyons = {
-    wrap,
+    wrap: reactWrapper.wrap,
 
     /* placeholder */
     styles: Object.create(null),
 
-    build: function build(StyleSheet, options = {}) {
+    build: function build(options = {}, StyleSheet) {
         _.defaultsDeep(options, {
             rem: 16,
             colors: {
                 lighten: 0.2,
-                darken: 0.5,
+                darken: 0.2,
                 palette: {
                     white: "#ffffff",
                     black: "#000000",
@@ -68,3 +68,7 @@ const NativeTachyons = {
 }
 
 export default NativeTachyons;
+export const styles = NativeTachyons.styles;
+export const wrap = reactWrapper.wrap;
+export const build = NativeTachyons.build;
+

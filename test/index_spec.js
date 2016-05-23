@@ -1,21 +1,19 @@
 import { test } from "tape";
-import NativeTachyons from "../lib/";
+import NativeTachyons, { styles } from "../lib/";
 import _ from "lodash";
 import React from "react";
-
-const styles = NativeTachyons.styles;
 
 test('build', t => {
     const fakeStyleSheet = {
         create: sheet => sheet
     }
-    NativeTachyons.build(fakeStyleSheet, {
+    NativeTachyons.build({
         colors: {
             palette: {
                 green: "#00FF00"
             }
         }
-    });
+    }, fakeStyleSheet);
 
     t.pass("build");
     t.end();
@@ -47,7 +45,7 @@ test('colors', t => {
     t.ok(_.has(styles, "dark-green"), "dark color");
 
     t.deepEqual(_.get(styles, "bg-green"), {backgroundColor: "#00FF00"})
-    t.deepEqual(_.get(styles, "b--dark-green"), {borderColor: "#008000"})
+    t.deepEqual(_.get(styles, "b--dark-green"), {borderColor: "#00CC00"})
 
     t.end();
 });
