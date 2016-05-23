@@ -1,12 +1,11 @@
 import _ from "lodash";
 
-const REM_SCALE = [1, 2, 4, 8, 16]
+const widths = {
+    w1: 1,
+    w2: 2,
+    w3: 4,
+    w4: 8,
+    w5: 16
+}
 
-const style = {}
-_.forEach(REM_SCALE, (val, idx) => {
-    style[`w${idx + 1}`] = {
-        width: `${val}rem`
-    }
-})
-
-export default style;
+export default _.mapValues(widths, val => ({width: val}))

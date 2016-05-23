@@ -1,44 +1,70 @@
 import _ from "lodash";
+import Color from "color";
 import { wrap } from "./reactWrapper";
 
-/* assign all the styles */
-const styleSheet = {}
-_.assign(styleSheet, require("./styles/borders").default)
-_.assign(styleSheet, require("./styles/flexbox").default)
-_.assign(styleSheet, require("./styles/fontWeights").default)
-_.assign(styleSheet, require("./styles/heights").default)
-_.assign(styleSheet, require("./styles/images").default)
-_.assign(styleSheet, require("./styles/spacing").default)
-_.assign(styleSheet, require("./styles/text").default)
-_.assign(styleSheet, require("./styles/typeScale").default)
-_.assign(styleSheet, require("./styles/widths").default)
-
-/* placeholder */
 const NativeTachyons = {
+    wrap,
+
+    /* placeholder */
     styles: Object.create(null),
 
     build: function build(StyleSheet, options = {}) {
-        _.defaults(options, {
+        _.defaultsDeep(options, {
             rem: 16,
             colors: {
-                white: "#ffffff",
-                black: "#000000",
+                lighten: 0.2,
+                darken: 0.5,
+                palette: {
+                    white: "#ffffff",
+                    black: "#000000",
+                }
             }
         })
 
-        const calculated = _.mapValues(styleSheet, style => _.mapValues(style, val => {
-            if (_.isString(val) && val.endsWith("rem")) {
-                return val.slice(0, -3) * options.rem;
-            }
+        /* assign all the styles */
+        const styleSheet = {}
+        _.assign(styleSheet, require("./styles/borders").default)
+        _.assign(styleSheet, require("./styles/flexbox").default)
+        _.assign(styleSheet, require("./styles/fontWeights").default)
+        _.assign(styleSheet, require("./styles/images").default)
+        _.assign(styleSheet, require("./styles/text").default)
 
-            return val;
+        /* calculate rem scales */
+        const REM_SCALED = [
+            require("./styles/heights").default,
+            require("./styles/spacing").default,
+            require("./styles/typeScale").default,
+            require("./styles/widths").default
+        ]
+        _.forEach(REM_SCALED, subSheet => {
+            _.assign(styleSheet,
+                _.mapValues(subSheet, style =>
+                    _.mapValues(style, val => val * options.rem)))
         })
-        )
 
-        _.assign(NativeTachyons.styles, StyleSheet.create(calculated));
-    },
+        /* add colors */
+        const allColors = _.transform(options.colors.palette, (result, val, key) => {
+            result[key] = val;
 
-    wrap
+            /* light and dark alternatives */
+            result[`light-${key}`] = Color(val).lighten(options.colors.lighten).hexString();
+            result[`dark-${key}`] = Color(val).darken(options.colors.darken).hexString();
+        }, {});
+
+        _.forEach(allColors, (val, key) => {
+            styleSheet[`bg-${key}`] = {
+                backgroundColor: val
+            }
+            styleSheet[`${key}`] = {
+                color: val
+            }
+            styleSheet[`b--${key}`] = {
+                borderColor: val
+            }
+        }, {});
+
+        _.assign(NativeTachyons.styles, StyleSheet.create(styleSheet));
+    }
 }
 
 export default NativeTachyons;

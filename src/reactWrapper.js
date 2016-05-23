@@ -15,13 +15,13 @@ export function wrap(WrappedComponent) {
             const props = _.assign({}, elementsTree.props);
 
             /* parse cls string */
-            if (_.isString(props.className)) {
+            if (_.isString(props.cls)) {
                 if (_.isObject(props.style)) {
                     props.style = [props.style]
                 } else if (!_.has(props, "style")) {
                     props.style = []
                 }
-                _.split(props.className, " ").forEach(cls => {
+                _.split(props.cls, " ").forEach(cls => {
                     if (cls !== "") {
                         checkState(_.has(NativeTachyons.styles, cls), `style '${cls}' not found`);
                         props.style.push(NativeTachyons.styles[cls]);

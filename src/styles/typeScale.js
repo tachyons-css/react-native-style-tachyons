@@ -11,4 +11,4 @@ const scale = {
     f6: 0.875
 }
 
-export default _.mapValues(scale, val => ({fontSize: `${val}rem`}))
+export default _.mapValues(scale, val => ({fontSize: val}))

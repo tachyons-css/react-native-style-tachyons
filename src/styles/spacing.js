@@ -21,7 +21,7 @@ _.forEach(what, ([whatShort, whatLong]) => {
     _.forEach(where, ([whereShort, whereLong]) => {
         _.forEach(REM_SCALE, (scale, idx) => {
             style[`${whatShort}${whereShort}${idx}`] = {
-                [`${whatLong}${whereLong}`]: `${scale}rem`
+                [`${whatLong}${whereLong}`]: scale
             }
         })
     })

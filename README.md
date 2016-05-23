@@ -46,12 +46,12 @@ const s = StyleSheet.create({
 
 
 
-##### 3. Further improvement by a className string
-We can further reduce the boilerplate by specifiying the properties in a `className`-string:
+##### 3. Further improvement by a string
+We can further reduce the boilerplate by specifiying the properties as a string-property:
 
 ```javascript
-<View className="ba jcfs pa2"}
-   <Text className="white tc">
+<View cls="ba jcfs pa2"}
+   <Text cls="white tc">
        Something
    </Text>
 </View>
@@ -75,7 +75,7 @@ We can further reduce the boilerplate by specifiying the properties in a `classN
    import {styles} from "react-native-tachyons";
    ```
 
-3. To use the `className=''` wrapping
+3. To use the `cls=''` wrapping
    ```javascript
    import {wrap} from "react-native-tachyons";
 
