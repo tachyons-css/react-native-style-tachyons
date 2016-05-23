@@ -1,4 +1,4 @@
-# React Native Tachyons  !! WIP, doesn't work yet  !!
+# React Native Tachyons
 [![Build Status](https://travis-ci.org/fab1an/react-native-tachyons.svg?branch=master)](https://travis-ci.org/fab1an/react-native-tachyons) [![npm version](https://badge.fury.io/js/react-native-tachyons.svg)](https://badge.fury.io/js/react-native-tachyons)
 
 React Native Tachyons brings atomic styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention.
@@ -46,25 +46,25 @@ const s = StyleSheet.create({
 
 
 
-##### 3. Further improvement by a classString
-We can further reduce the boilerplate by specifiying the properties in a `class`-string:
+##### 3. Further improvement by a className string
+We can further reduce the boilerplate by specifiying the properties in a `className`-string:
 
 ```javascript
-<View class="ba jcfs pa2"}
-   <Text class="white tc">
+<View className="ba jcfs pa2"}
+   <Text className="white tc">
        Something
    </Text>
 </View>
 ```
 
 ### Usage
-`react-native-tachyons` builds on [react-native-extended-stylesheet](https://github.com/vitalets/react-native-extended-stylesheet) to calculate `rem` and percentages.
+`react-native-tachyons` needs to calculate `rem` upon start.
 
 1. In the entry point of your app include:
    ```javascript
-   import EStyleSheet from 'react-native-extended-stylesheet';
+   import NativeTachyons from 'react-native-tachyons';
 
-   EStyleSheet.build({
+   NativeTachyons.build({
        /* REM parameter it optional, default is 16 */
        rem: width > 340 ? 18 : 16
    });
@@ -75,17 +75,24 @@ We can further reduce the boilerplate by specifiying the properties in a `class`
    import {styles} from "react-native-tachyons";
    ```
 
-3. To use the `class=''` wrapping
+3. To use the `className=''` wrapping
    ```javascript
-   import {wrapStyle} from "react-native-tachyons";
+   import {wrap} from "react-native-tachyons";
 
-   wrapStyle(class MyComponent extends React.Component {
+   wrap(class MyComponent extends React.Component {
    ...
    })
 
    ````
 
+
 ### Reference
+*
+### TODO
+* support all react-native styles
+* write the transpiler as babel-plugin
+
+
 
 *TODO*
 

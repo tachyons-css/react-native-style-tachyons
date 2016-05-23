@@ -1,0 +1,74 @@
+{
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "standard"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "quotes": 0,
+        "no-underscore-dangle": 0,
+        "comma-dangle": 0,
+        "semi": 0,
+        "no-use-before-define": 0,
+        "jsx-quotes": 0,
+        "camelcase": 0,
+        "spaced-comment": 0,
+        "padded-blocks": 0,
+        "react/prop-types": 0,
+        "space-before-function-paren": 0,
+        "standard/array-bracket-even-spacing": 0,
+        "no-trailing-spaces": 0,
+        "one-var": 0,
+        "prefer-const": 2,
+        "no-param-reassign": 2,
+        "no-unused-expressions": 2,
+        "dot-notation": 2,
+        "no-var": 2,
+        "newline-per-chained-call": 0,
+        "no-else-return": 2,
+        "indent": [
+            2,
+            4,
+            {
+                "VariableDeclarator": {
+                    "var": 1,
+                    "let": 1,
+                    "const": 1
+                },
+                "SwitchCase": 1
+            }
+        ],
+        "react/jsx-indent-props": 2,
+        "react/jsx-closing-bracket-location": 2,
+        "react/jsx-uses-vars": 2,
+        "arrow-parens": [
+            2,
+            "as-needed"
+        ],
+        "no-labels": 2,
+        "no-multi-spaces": 2,
+        "standard/object-curly-even-spacing": 2,
+        "no-catch-shadow": 2,
+        "no-undefined": 2,
+        "no-unused-vars": [
+            2,
+            {
+                "varsIgnorePattern": "(^L$|^checkState$|^_$)"
+            }
+        ]
+    }
+}
