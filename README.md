@@ -144,7 +144,7 @@ jcsb                justifyContent: "space-between"
 jcsa                justifyContent: "space-around"
 ```
 
-##### Margins & Paddings
+##### Margins & Paddings [(scale)](http://tachyons.io/docs/layout/spacing/)
 ```
 ma0 ... ma7           margin: 0 | 0.25 | 0.5 | 1 | 2 | 4 | 8 | 16rem
 m[l,r,b,t][0-7]       marginLeft, marginRight, marginBottom, marginTop
@@ -166,7 +166,7 @@ ba                     borderWidth: 1
 b[l,r,t,b]             borderLeftWidth: 1, borderRightWidth: 1...
 ```
 
-##### Text & Fonts
+##### Text & Fonts [(type scale)](http://tachyons.io/docs/typography/scale/)
 ```
 f1 ... f6              fontSize: 3|2.25|1.5|1.25|1|0.875rem
 f-headline             fontSize: 6rem
