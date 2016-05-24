@@ -14,6 +14,12 @@ export default {
     "flx-row": {
         flexDirection: "row"
     },
+    "flx-wrap": {
+        flexWrap: "wrap"
+    },
+    "flx-nowrap": {
+        flexWrap: "nowrap"
+    },
     aifs: {
         alignItems: "flex-start"
     },
@@ -25,6 +31,18 @@ export default {
     },
     ais: {
         alignItems: "stretch"
+    },
+    asfs: {
+        alignSelf: "flex-start"
+    },
+    asc: {
+        alignSelf: "center"
+    },
+    asfe: {
+        alignSelf: "flex-end"
+    },
+    ass: {
+        alignSelf: "stretch"
     },
     jcfs: {
         justifyContent: "flex-start"
