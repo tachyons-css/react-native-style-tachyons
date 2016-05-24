@@ -146,12 +146,12 @@ jcsa                justifyContent: "space-around"
 
 ##### Margins & Paddings [(scale)](http://tachyons.io/docs/layout/spacing/)
 ```
-ma0 ... ma7           margin: 0 | 0.25 | 0.5 | 1 | 2 | 4 | 8 | 16rem
-m[l,r,b,t][0-7]       marginLeft, marginRight, marginBottom, marginTop
-mh                    marginHorizontal
-mv                    marginVertical
+ma0 ... ma7           margin: 0|0.25|0.5|1|2|4|8|16rem
+ml|mr|mb|mt [0-7]     marginLeft, marginRight, marginBottom, marginTop
+mh [0-7]              marginHorizontal
+mv [0-7]              marginVertical
 
-same with p for padding
+Same with p for padding
 ```
 
 ##### Heights & Widths
@@ -163,7 +163,7 @@ w1 ... w5             width: 1|2|4|8|16rem
 ##### Borders
 ```
 ba                     borderWidth: 1
-b[l,r,t,b]             borderLeftWidth: 1, borderRightWidth: 1...
+bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
 ```
 
 ##### Text & Fonts [(type scale)](http://tachyons.io/docs/typography/scale/)
@@ -178,7 +178,7 @@ fw1 ... fw900          fontWeight: 100 ... fontWeight: 900
 
 i                      fontStyle: italic
 
-tl / tc / tr / tj      textAlign: left|right|center|justify
+tl|tc|tr|tj            textAlign: left|right|center|justify
 ```
 
 ##### Images
