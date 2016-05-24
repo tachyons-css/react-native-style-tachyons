@@ -144,11 +144,9 @@ jcsb                justifyContent: "space-between"
 jcsa                justifyContent: "space-around"
 ```
 
-##### [Margins & Paddings](http://tachyons.io/docs/layout/spacing/)
+##### Margins & Paddings
 ```
-// Based on 8-step scale: 0, 0.25, 0.5, 1, 2, 4, 8, 16rem
-
-ma0 ... ma7           margin: 0rem ... margin: 16rem
+ma0 ... ma7           margin: 0 | 0.25 | 0.5 | 1 | 2 | 4 | 8 | 16rem
 m[l,r,b,t][0-7]       marginLeft, marginRight, marginBottom, marginTop
 mh                    marginHorizontal
 mv                    marginVertical
@@ -158,39 +156,29 @@ same with p for padding
 
 ##### Heights & Widths
 ```
-Based on 5-step scale: 1, 2, 4, 8, 16rem
-
-h1 ... h5             height: 1rem ... height: 16rem
-w1 ... w5             width: 1rem ... width: 16rem
-
-Percentages weren't implemented.
+h1 ... h5             height: 1|2|4|8|16rem
+w1 ... w5             width: 1|2|4|8|16rem
 ```
 
 ##### Borders
-
 ```
 ba                     borderWidth: 1
-b[l,r,t,b]             borderLeftWidth, borderRightWidth...
+b[l,r,t,b]             borderLeftWidth: 1, borderRightWidth: 1...
 ```
 
 ##### Text & Fonts
-Based on the [typographic scale](http://tachyons.io/docs/typography/scale/)
-
 ```
-tl / tc / tr / tj      textAlign: left / right / center / justify
-i                      fontStyle: italic
-
-/* Sizes: 0.875, 1, 1.25, 1.5, 2.25, 3rem */
-
-f1 ... f6              fontSize: 3rem ... fontSize: 0.875rem
+f1 ... f6              fontSize: 3|2.25|1.5|1.25|1|0.875rem
 f-headline             fontSize: 6rem
 f-subheadline          fontSize: 5rem
-
 
 normal                 fontWeight: normal
 b                      fontWeight: bold
 fw1 ... fw900          fontWeight: 100 ... fontWeight: 900
 
+i                      fontStyle: italic
+
+tl / tc / tr / tj      textAlign: left|right|center|justify
 ```
 
 ##### Images
@@ -199,7 +187,6 @@ rm-contain              resizeMode: "contain"
 rm-cover                resizeMode: "cover"
 rm-stretch              resizeMode: "stretch"
 ```
-
 
 ### Changes
 * `v1.1.0` added more properties and references
