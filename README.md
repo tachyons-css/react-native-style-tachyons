@@ -86,8 +86,13 @@ We can further reduce the boilerplate by specifiying the properties as a propert
    })
    ````
 
-### Colors
-You can specifiy a color palette in the options like this:
+
+
+
+### Reference / Supported Properties
+
+##### Colors
+You can specify a color palette in the options and Tachyons will generate styles for you:
 ```javascript
 NativeTachyons.build({
    colors: {
@@ -101,7 +106,6 @@ NativeTachyons.build({
 }, StyleSheet);
 ```
 
-Tachyons will generate styles for you:
 ```
 bg-green            green background
 bg-light-green      lighter green background
@@ -116,13 +120,89 @@ light-green         light-green text
 dark-green          dark-green text
 ```
 
-### Reference
-*TODO*
+##### [FlexBox](https://facebook.github.io/react-native/docs/flexbox.html#content)
+```
+absolute            position: "absolute"
+relative            position: "relative"
+flx-i               flex: 1
+flx-col             flexDirection: "column"
+flx-row             flexDirection: "row"
+flx-wrap            flexWrap: "wrap"
+flx-nowrap          flexWrap: "nowrap"
+aifs                alignItems: "flex-start"
+aife                alignItems: "flex-end"
+aic                 alignItems: "center"
+ais                 alignItems: "stretch"
+asfs                alignSelf: "flex-start"
+asfe                alignSelf: "flex-end"
+asc                 alignSelf: "center"
+ass                 alignSelf: "stretch"
+jcfs                justifyContent: "flex-start"
+jcfe                justifyContent: "flex-end"
+jcc                 justifyContent: "center"
+jcsb                justifyContent: "space-between"
+jcsa                justifyContent: "space-around"
+```
+
+##### Margins & Paddings
+```
+Based on 8-step scale: 0, 0.25, 0.5, 1, 2, 4, 8, 16rem
+
+ma0 ... ma7           margin: 0rem ... margin: 16rem
+m[l,r,b,t][0-7]       marginLeft, marginRight, marginBottom, marginTop
+mh                    marginHorizontal
+mv                    marginVertical
+
+same with p for padding
+```
+
+##### Heights & Widths
+```
+Based on 5-step scale: 1, 2, 4, 8, 16rem
+
+h1 ... h5             height: 1rem ... height: 16rem
+w1 ... w5             width: 1rem ... width: 16rem
+
+Percentages weren't implemented.
+```
+
+##### Borders
+
+```
+ba                     borderWidth: 1
+b[l,r,t,b]             borderLeftWidth, borderRightWidth...
+```
+
+##### Text & Fonts
+Based on the [typographic scale](http://tachyons.io/docs/typography/scale/)
+
+```
+tl / tc / tr / tj      textAlign: left / right / center / justify
+i                      fontStyle: italic
+
+/* Sizes: 0.875, 1, 1.25, 1.5, 2.25, 3rem */
+
+f1 ... f6              fontSize: 3rem ... fontSize: 0.875rem
+f-headline             fontSize: 6rem
+f-subheadline          fontSize: 5rem
+
+
+normal                 fontWeight: normal
+b                      fontWeight: bold
+fw1 ... fw900          fontWeight: 100 ... fontWeight: 900
+
+```
+
+##### Images
+```
+rm-contain              resizeMode: "contain"
+rm-cover                resizeMode: "cover"
+rm-stretch              resizeMode: "stretch"
+```
+
 
 ### Changes
+* `v1.1.0` added more properties and references
+* `v1.0.1` fixed badge
 * `v1.0.0` first version
 
-### TODO
-* write the reference above
-* support all react-native styles
-* maybe write the transpiler as babel-plugin
