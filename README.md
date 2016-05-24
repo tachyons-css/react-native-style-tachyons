@@ -33,19 +33,19 @@ const s = StyleSheet.create({
    </Text>
 </View>
 ```
-**Advantages**:
+###### Advantages
 * Less code
 * No need to maintain a separate stylesheet
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
-* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app. [More about spacing](http://tachyons.io/docs/layout/spacing/) / [More about typographic scale](http://tachyons.io/docs/typography/scale/)
+* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app. [More about spacing](http://tachyons.io/docs/layout/spacing/)
 
 
 
 
 
 ##### 3. Further improvement by using `cls=""`:
-We can further reduce the boilerplate by specifiying the properties as a property called `cls`:
+We can further reduce the boilerplate by specifying the properties as a property called `cls`:
 
 ```javascript
 <View cls="ba jcfs pa2"}
@@ -144,9 +144,9 @@ jcsb                justifyContent: "space-between"
 jcsa                justifyContent: "space-around"
 ```
 
-##### Margins & Paddings
+##### [Margins & Paddings](http://tachyons.io/docs/layout/spacing/)
 ```
-Based on 8-step scale: 0, 0.25, 0.5, 1, 2, 4, 8, 16rem
+// Based on 8-step scale: 0, 0.25, 0.5, 1, 2, 4, 8, 16rem
 
 ma0 ... ma7           margin: 0rem ... margin: 16rem
 m[l,r,b,t][0-7]       marginLeft, marginRight, marginBottom, marginTop
