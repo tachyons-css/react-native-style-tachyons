@@ -16,11 +16,14 @@ export function wrap(WrappedComponent) {
 
             /* parse cls string */
             if (_.isString(props.cls)) {
-                if (_.isObject(props.style)) {
+                if (_.isArray(props.style)) {
+                    props.style = props.style
+                } else if (_.isObject(props.style)) {
                     props.style = [props.style]
-                } else if (!_.has(props, "style")) {
+                } else if (!_.has(props, "style") || _.isUndefined(props.style)) {
                     props.style = []
                 }
+
                 _.split(props.cls, " ").forEach(cls => {
                     if (cls !== "") {
                         checkState(_.has(NativeTachyons.styles, cls), `style '${cls}' not found`);

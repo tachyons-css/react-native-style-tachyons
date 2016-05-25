@@ -4,9 +4,7 @@ import _ from "lodash";
 import React from "react";
 
 test('build', t => {
-    const fakeStyleSheet = {
-        create: sheet => sheet
-    }
+    const fakeStyleSheet = {create: sheet => sheet}
     NativeTachyons.build({
         colors: {
             palette: {
@@ -26,7 +24,7 @@ test('styles', t => {
     t.ok(_.has(styles, "pb7"), "example: has pb7");
     t.ok(_.has(styles, "f1"), "example: has f1");
 
-    t.deepEqual(styles.pa3, {padding: 16})
+    t.deepEqual(styles.pa3, {padding: 16}, "pa3 is 16")
 
     t.end();
 });
@@ -52,33 +50,42 @@ test('colors', t => {
 
 test('wrapping', t => {
 
-    const Orig = React.createClass({
-        displayName: 'Orig',
-        render: function render() {
-            return (
-                <div cls="w5" />
-            )
-        }
-    });
+    function createComponent(clsStr, style) {
+        return React.createClass({
+            displayName: 'Orig',
+            render: function render() {
+                return (
+                    <div
+                        cls={clsStr}
+                        style={style}
+                    />
+                )
+            }
+        })
+    }
 
+    function renderComponent(clsStr, style) {
+        const Comp = NativeTachyons.wrap(createComponent(clsStr, style))
+        return new Comp().render()
+    }
+
+    const Orig = createComponent("w5")
     const Wrapped = NativeTachyons.wrap(Orig);
-    t.equal(
-        Orig.displayName,
-        Wrapped.displayName,
-        "displayName is preserved"
-    );
+    t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved");
 
-    const instance = new Wrapped().render()
-    t.ok(
-        _.has(instance, ["props", "style"]),
-        "style array is created"
-    )
+    let instance = renderComponent("w5")
+    t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
 
-    t.deepEqual(
-        {width: 256},
-        instance.props.style[0],
-        "style is correctly translated"
-    );
+    instance = renderComponent("w5", {width: 5})
+    t.deepEqual(instance.props.style, [{width: 5}, {width: 256}], "existing style object is converted to array and appended");
+
+    instance = renderComponent("w5", [{width: 5}])
+    t.deepEqual(instance.props.style, [{width: 5}, {width: 256}], "existing style array is appended");
+
+    instance = renderComponent("")
+    t.deepEqual(instance.props.style, [], "if style is undefined, an array will be created");
+
+    t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
 
     t.end();
 });
