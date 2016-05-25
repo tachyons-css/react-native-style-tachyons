@@ -32,20 +32,26 @@ const s = StyleSheet.create({
        Something
    </Text>
 </View>
+
+/* Note: You can still use your old styles a long tachyons classes */
 ```
 ###### Advantages
 * Less code
 * No need to maintain a separate stylesheet
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
-* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app. [More about spacing](http://tachyons.io/docs/layout/spacing/)
+* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app.
+
+  [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
+
+  [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
 
 
 
 
 
 ##### 3. Further improvement by using `cls=""`:
-We can further reduce the boilerplate by specifying the properties as a property called `cls`:
+We can further reduce the boilerplate by specifying the properties as a property called `cls`. It will show an error if a non-existing property is used.
 
 ```javascript
 <View cls="ba jcfs pa2"}
@@ -54,6 +60,8 @@ We can further reduce the boilerplate by specifying the properties as a property
    </Text>
 </View>
 ```
+Of course use can use both the `cls` and the `style` property.
+
 
 ### Usage
 `react-native-tachyons` needs to calculate `rem` upon start.
@@ -92,7 +100,7 @@ We can further reduce the boilerplate by specifying the properties as a property
 ### Reference / Supported Properties
 
 ##### Colors
-You can specify a color palette in the options and Tachyons will generate styles for you:
+Specify a color palette in the options and Tachyons will generate styles for you, complete with a light and a dark version:
 ```javascript
 NativeTachyons.build({
    colors: {
@@ -120,7 +128,7 @@ light-green         light-green text
 dark-green          dark-green text
 ```
 
-##### [FlexBox](https://facebook.github.io/react-native/docs/flexbox.html#content)
+##### FlexBox
 ```
 absolute            position: "absolute"
 relative            position: "relative"
@@ -144,7 +152,7 @@ jcsb                justifyContent: "space-between"
 jcsa                justifyContent: "space-around"
 ```
 
-##### Margins & Paddings [(scale)](http://tachyons.io/docs/layout/spacing/)
+##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
 ```
 ma0 ... ma7           margin: 0|0.25|0.5|1|2|4|8|16rem
 ml|mr|mb|mt [0-7]     marginLeft, marginRight, marginBottom, marginTop
@@ -166,7 +174,7 @@ ba                     borderWidth: 1
 bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
 ```
 
-##### Text & Fonts [(type scale)](http://tachyons.io/docs/typography/scale/)
+##### Text & Fonts [(Scale)](http://tachyons.io/docs/typography/scale/)
 ```
 f1 ... f6              fontSize: 3|2.25|1.5|1.25|1|0.875rem
 f-headline             fontSize: 6rem
@@ -189,6 +197,7 @@ rm-stretch              resizeMode: "stretch"
 ```
 
 ### Changes
+* `v1.1.1` added more tests and a bugfix when merging existing styles
 * `v1.1.0` added more properties and references
 * `v1.0.1` fixed badge
 * `v1.0.0` first version
