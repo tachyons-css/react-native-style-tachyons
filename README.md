@@ -172,6 +172,10 @@ w1 ... w5             width: 1|2|4|8|16rem
 ```
 ba                     borderWidth: 1
 bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
+
+br0 ... br4            borderRadius: 0|0.125|0.25|0.5|1rem
+br--bottom             bottom radius only = borderTopLeftRadius: 0, borderTopRightRadius: 0,
+br--top                top radius only = borderBottomLeftRadius: 0, borderBottomRightRadius: 0,
 ```
 
 ##### Text & Fonts [(Scale)](http://tachyons.io/docs/typography/scale/)
@@ -197,6 +201,7 @@ rm-stretch              resizeMode: "stretch"
 ```
 
 ### Changes
+* `v1.2.0` support border-radii properties
 * `v1.1.1` added more tests and a bugfix when merging existing styles
 * `v1.1.0` added more properties and references
 * `v1.0.1` fixed badge

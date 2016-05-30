@@ -23,7 +23,7 @@ const NativeTachyons = {
 
         /* assign all the styles */
         const styleSheet = {}
-        _.assign(styleSheet, require("./styles/borders").default)
+        _.assign(styleSheet, require("./styles/borders").styles)
         _.assign(styleSheet, require("./styles/flexbox").default)
         _.assign(styleSheet, require("./styles/fontWeights").default)
         _.assign(styleSheet, require("./styles/images").default)
@@ -34,7 +34,8 @@ const NativeTachyons = {
             require("./styles/heights").default,
             require("./styles/spacing").default,
             require("./styles/typeScale").default,
-            require("./styles/widths").default
+            require("./styles/widths").default,
+            require("./styles/borders").radii
         ]
         _.forEach(REM_SCALED, subSheet => {
             _.assign(styleSheet,

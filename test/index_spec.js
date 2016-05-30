@@ -26,6 +26,14 @@ test('styles', t => {
 
     t.deepEqual(styles.pa3, {padding: 16}, "pa3 is 16")
 
+    /* borders */
+    t.deepEqual(styles.br3, {borderRadius: 8}, "br3 is 8")
+    t.deepEqual(styles.bl, {borderLeftWidth: 1}, "bl works")
+    t.deepEqual(styles["br--top"], {
+        borderBottomLeftRadius: 0,
+        borderBottomRightRadius: 0
+    }, "br--top works")
+
     t.end();
 });
 
