@@ -201,6 +201,7 @@ rm-stretch              resizeMode: "stretch"
 ```
 
 ### Changes
+* `v1.3.0` set react-native peer-dependency to 0.x
 * `v1.2.0` support border-radii properties
 * `v1.1.1` added more tests and a bugfix when merging existing styles
 * `v1.1.0` added more properties and references
