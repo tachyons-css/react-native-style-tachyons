@@ -44,7 +44,7 @@
     "tape": "^4.5.1"
   },
   "peerDependencies": {
-    "react-native": "^0.27.0"
+    "react-native": "0.x"
   },
   "scripts": {
     "eslint": "eslint src",
