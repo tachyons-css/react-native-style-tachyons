@@ -28,6 +28,7 @@ const NativeTachyons = {
         _.assign(styleSheet, require("./styles/fontWeights").default)
         _.assign(styleSheet, require("./styles/images").default)
         _.assign(styleSheet, require("./styles/text").default)
+        _.assign(styleSheet, require("./styles/opacity").default)
 
         /* calculate rem scales */
         const REM_SCALED = [
@@ -72,4 +73,3 @@ export default NativeTachyons;
 export const styles = NativeTachyons.styles;
 export const wrap = reactWrapper.wrap;
 export const build = NativeTachyons.build;
-

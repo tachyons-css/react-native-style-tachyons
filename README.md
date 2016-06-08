@@ -200,7 +200,15 @@ rm-cover                resizeMode: "cover"
 rm-stretch              resizeMode: "stretch"
 ```
 
+##### Opacity
+```
+o-10|20|...|100         opacity: 0.1|0.2|...|1
+o-05                    opacity: 0.5
+o-025                   opacity: 0.25
+```
+
 ### Changes
+* `v1.4.0` support opacities
 * `v1.3.0` set react-native peer-dependency to 0.x
 * `v1.2.0` support border-radii properties
 * `v1.1.1` added more tests and a bugfix when merging existing styles

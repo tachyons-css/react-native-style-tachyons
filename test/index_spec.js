@@ -34,6 +34,8 @@ test('styles', t => {
         borderBottomRightRadius: 0
     }, "br--top works")
 
+    t.deepEqual(styles["o-025"], {opacity: 0.025}, "o-025 is opacity 0.025")
+
     t.end();
 });
 
