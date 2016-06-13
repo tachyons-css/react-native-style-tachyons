@@ -33,14 +33,14 @@ const s = StyleSheet.create({
    </Text>
 </View>
 
-/* Note: You can still use your old styles a long tachyons classes */
+/* Note: You can still use your old styles along tachyons' classes */
 ```
 ###### Advantages
 * Less code
 * No need to maintain a separate stylesheet
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
-* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app.
+* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding, you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app.
 
   [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
 
@@ -64,19 +64,19 @@ Of course use can use both the `cls` and the `style` property.
 
 
 ### Usage
-`react-native-tachyons` needs to calculate `rem` upon start.
+`react-native-tachyons` needs to know your `rem` upon start.
 
 1. In the entry point of your app include:
    ```javascript
    import NativeTachyons from 'react-native-tachyons';
-   import { StyleSheet } from 'react-native';
+   import { StyleSheet, Dimensions } from 'react-native';
 
    NativeTachyons.build({
        /* REM parameter it optional, default is 16 */
        rem: width > 340 ? 18 : 16
-   }, StyleSheet);
+   }, StyleSheet, Dimensions);
 
-   /* the need to pass "StyleSheet" from react-native will be removed */
+   /* the need to pass "StyleSheet" and "Dimensions" from react-native will be removed */
    ```
 
 3. To use the styles
@@ -166,6 +166,9 @@ Same with p for padding
 ```
 h1 ... h5             height: 1|2|4|8|16rem
 w1 ... w5             width: 1|2|4|8|16rem
+
+h-100                 height: 100% of screen (needs Dimensions to be passed to NativeTachyons.build())
+w-100                 width: 100% of screen (needs Dimensions to be passed to NativeTachyons.build())
 ```
 
 ##### Borders
@@ -208,6 +211,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.5.0` added `h-100` and `w-100` for 100% height/width of window, needs `Dimensions` to be passed into `NativeTachyons.build()`
 * `v1.4.0` support opacities
 * `v1.3.0` set react-native peer-dependency to 0.x
 * `v1.2.0` support border-radii properties

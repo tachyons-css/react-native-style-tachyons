@@ -4,16 +4,33 @@ import _ from "lodash";
 import React from "react";
 
 test('build', t => {
-    const fakeStyleSheet = {create: sheet => sheet}
-    NativeTachyons.build({
+    const options = {
         colors: {
             palette: {
                 green: "#00FF00"
             }
         }
-    }, fakeStyleSheet);
-
+    }
+    const fakeStyleSheet = {create: sheet => sheet}
+    NativeTachyons.build(options, fakeStyleSheet);
     t.pass("build");
+
+    t.ok(!_.has(styles, 'w-100'), "w-100 not available");
+    t.ok(!_.has(styles, 'h-100'), "h-100 not available");
+
+    const fakeDimensions = {
+        get() {
+            return {
+                width: 360,
+                height: 640
+            }
+        }
+    }
+    NativeTachyons.build(options, fakeStyleSheet, fakeDimensions);
+    t.pass("build");
+    t.deepEqual(styles['w-100'], {width: 360}, "w-100 is 360");
+    t.deepEqual(styles['h-100'], {height: 640}, "h-100 is 640");
+
     t.end();
 })
 

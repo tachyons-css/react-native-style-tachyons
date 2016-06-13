@@ -8,7 +8,7 @@ const NativeTachyons = {
     /* placeholder */
     styles: Object.create(null),
 
-    build: function build(options = {}, StyleSheet) {
+    build: function build(options = {}, StyleSheet, Dimensions) {
         _.defaultsDeep(options, {
             rem: 16,
             colors: {
@@ -44,7 +44,7 @@ const NativeTachyons = {
                     _.mapValues(style, val => val * options.rem)))
         })
 
-        /* add colors */
+        /* colors: dark and light variant */
         const allColors = _.transform(options.colors.palette, (result, val, key) => {
             result[key] = val;
 
@@ -53,6 +53,7 @@ const NativeTachyons = {
             result[`dark-${key}`] = Color(val).darken(options.colors.darken).hexString();
         }, {});
 
+        /* colors: background, foreground and border */
         _.forEach(allColors, (val, key) => {
             styleSheet[`bg-${key}`] = {
                 backgroundColor: val
@@ -64,6 +65,12 @@ const NativeTachyons = {
                 borderColor: val
             }
         }, {});
+
+        if (!_.isUndefined(Dimensions)) {
+            const {height, width} = Dimensions.get('window');
+            NativeTachyons.styles["h-100"] = {height};
+            NativeTachyons.styles["w-100"] = {width};
+        }
 
         _.assign(NativeTachyons.styles, StyleSheet.create(styleSheet));
     }
