@@ -69,14 +69,14 @@ Of course use can use both the `cls` and the `style` property.
 1. In the entry point of your app include:
    ```javascript
    import NativeTachyons from 'react-native-tachyons';
-   import { StyleSheet, Dimensions } from 'react-native';
+   import { StyleSheet } from 'react-native';
 
    NativeTachyons.build({
        /* REM parameter it optional, default is 16 */
        rem: width > 340 ? 18 : 16
-   }, StyleSheet, Dimensions);
+   }, StyleSheet);
 
-   /* the need to pass "StyleSheet" and "Dimensions" from react-native will be removed */
+   /* the need to pass "StyleSheet" from react-native will be removed */
    ```
 
 3. To use the styles
@@ -167,9 +167,6 @@ Same with p for padding
 h1 ... h5             height: 1|2|4|8|16rem
 w1 ... w5             width: 1|2|4|8|16rem
 
-h-100                 height: 100% of screen (needs Dimensions to be passed to NativeTachyons.build())
-w-100                 width: 100% of screen (needs Dimensions to be passed to NativeTachyons.build())
-
 absolute--fill        position: absolute, top/left/right/bottom: 0
 ```
 
@@ -213,6 +210,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.6.1` removed `h-100` and `w-100`. I consider this a bugfix under semver, since using `Dimensions` is buggy on Android [#3219](https://github.com/facebook/react-native/issues/3219). You can get the same behaviour with `flx-i` and `absolute--fill`.
 * `v1.6.0` added `absolute--fill` for easy full-screen views
 * `v1.5.0` added `h-100` and `w-100` for 100% height/width of window, needs `Dimensions` to be passed into `NativeTachyons.build()`
 * `v1.4.0` support opacities

@@ -8,7 +8,7 @@ const NativeTachyons = {
     /* placeholder */
     styles: Object.create(null),
 
-    build: function build(options = {}, StyleSheet, Dimensions) {
+    build: function build(options = {}, StyleSheet) {
         _.defaultsDeep(options, {
             rem: 16,
             colors: {
@@ -66,13 +66,6 @@ const NativeTachyons = {
                 borderColor: val
             }
         }, {});
-
-        /* w-100 and h-100 as reported by dimensions */
-        if (!_.isUndefined(Dimensions)) {
-            const {height, width} = Dimensions.get('window');
-            NativeTachyons.styles["h-100"] = {height};
-            NativeTachyons.styles["w-100"] = {width};
-        }
 
         _.assign(NativeTachyons.styles, StyleSheet.create(styleSheet));
     }
