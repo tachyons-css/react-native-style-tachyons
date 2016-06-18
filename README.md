@@ -169,6 +169,8 @@ w1 ... w5             width: 1|2|4|8|16rem
 
 h-100                 height: 100% of screen (needs Dimensions to be passed to NativeTachyons.build())
 w-100                 width: 100% of screen (needs Dimensions to be passed to NativeTachyons.build())
+
+absolute--fill        position: absolute, top/left/right/bottom: 0
 ```
 
 ##### Borders
@@ -211,6 +213,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.6.0` added `absolute--fill` for easy full-screen views
 * `v1.5.0` added `h-100` and `w-100` for 100% height/width of window, needs `Dimensions` to be passed into `NativeTachyons.build()`
 * `v1.4.0` support opacities
 * `v1.3.0` set react-native peer-dependency to 0.x

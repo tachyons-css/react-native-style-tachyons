@@ -29,6 +29,7 @@ const NativeTachyons = {
         _.assign(styleSheet, require("./styles/images").default)
         _.assign(styleSheet, require("./styles/text").default)
         _.assign(styleSheet, require("./styles/opacity").default)
+        _.assign(styleSheet, require("./styles/utilities").default)
 
         /* calculate rem scales */
         const REM_SCALED = [
@@ -66,6 +67,7 @@ const NativeTachyons = {
             }
         }, {});
 
+        /* w-100 and h-100 as reported by dimensions */
         if (!_.isUndefined(Dimensions)) {
             const {height, width} = Dimensions.get('window');
             NativeTachyons.styles["h-100"] = {height};

@@ -41,6 +41,7 @@ test('styles', t => {
     t.ok(_.has(styles, "pb7"), "example: has pb7");
     t.ok(_.has(styles, "f1"), "example: has f1");
 
+    t.ok(_.has(styles, "absolute--fill"), "example: has absolute--fill");
     t.deepEqual(styles.pa3, {padding: 16}, "pa3 is 16")
 
     /* borders */
