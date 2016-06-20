@@ -69,6 +69,9 @@ export function wrap(WrappedComponent) {
                     translated = true;
                     newChildren = converted;
                 }
+
+            } else {
+                newChildren = props.children;
             }
 
             if (translated) {

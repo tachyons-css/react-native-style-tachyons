@@ -210,6 +210,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.6.4` yet another bugfix
 * `v1.6.3` bugfix
 * `v1.6.2` translation performance improved by a factor of 2
 * `v1.6.1` removed `h-100` and `w-100`. I consider this a bugfix under semver, since using `Dimensions` is buggy on Android [#3219](https://github.com/facebook/react-native/issues/3219). You can get the same behaviour with `flx-i` and `absolute--fill`.

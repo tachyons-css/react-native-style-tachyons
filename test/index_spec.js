@@ -79,8 +79,8 @@ test('wrapping', t => {
                         >
                             <div cls="w4"/>
                         </div>
-                        <div key="child2">
-                            Test <span>Test</span>
+                        <div key="child2" cls="w1">
+                            Test
                         </div>
                     </div>
                 )
@@ -100,10 +100,14 @@ test('wrapping', t => {
     let instance = renderComponent("w5")
     t.deepEqual(instance.key, "1", "key is preserved");
     t.deepEqual(instance.props.other, "2", "other properties are preserved");
+
+    /* children */
     t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
     t.deepEqual(instance.props.children[0].props.style, [{width: 32}], "child cls is converted");
     t.deepEqual(instance.props.children.length, 2, "children are converted");
-    t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "single children are converted");
+    t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "nested single children are converted");
+    t.deepEqual(instance.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
+
     t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
 
     instance = renderComponent("w5", {width: 5})
