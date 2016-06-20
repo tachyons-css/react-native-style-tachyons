@@ -17,7 +17,7 @@ export function wrap(WrappedComponent) {
             if (_.isString(props.cls)) {
                 newProps = {}
                 if (_.isArray(props.style)) {
-                    newProps.style = props.style.slice(0)
+                    newProps.style = props.style.slice()
 
                 } else if (_.isObject(props.style)) {
                     newProps.style = [props.style]
@@ -40,13 +40,13 @@ export function wrap(WrappedComponent) {
                 }
             }
 
-            let newChildren;
-            if (_.isArray(props.children)) {
+            let newChildren = props.children;
+            if (_.isArray(newChildren)) {
 
                 /* convert child array */
-                newChildren = props.children.slice(0);
-                for (let i = 0; i < props.children.length; i++) {
-                    const c = props.children[i];
+                newChildren = newChildren.slice();
+                for (let i = 0; i < newChildren.length; i++) {
+                    const c = newChildren[i];
                     if (React.isValidElement(c)) {
                         const converted = this._recursiveStyle(c);
                         if (converted !== c) {
@@ -56,18 +56,14 @@ export function wrap(WrappedComponent) {
                     }
                 }
 
-            } else if (React.isValidElement(props.children)) {
+            } else if (React.isValidElement(newChildren)) {
 
                 /* convert single child */
-                const c = props.children;
-                const converted = this._recursiveStyle(c);
-                if (converted !== c) {
+                const converted = this._recursiveStyle(newChildren);
+                if (converted !== newChildren) {
                     translated = true;
                     newChildren = converted;
                 }
-
-            } else {
-                newChildren = props.children;
             }
 
             if (translated) {

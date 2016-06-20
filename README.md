@@ -210,7 +210,8 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
-* `v1.6.5` yet another small improvment
+* `v1.6.6` bugfix
+* `v1.6.5` yet another small improvement
 * `v1.6.4` yet another bugfix
 * `v1.6.3` bugfix
 * `v1.6.2` translation performance improved by a factor of 2

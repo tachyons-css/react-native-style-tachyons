@@ -2,7 +2,7 @@ import { test } from "tape";
 import NativeTachyons, { styles } from "../lib/";
 import _ from "lodash";
 import React from "react";
-// import Benchmark from "benchmark";
+import Benchmark from "benchmark";
 
 test('build', t => {
     const options = {
@@ -80,9 +80,8 @@ test('wrapping', t => {
                         <div key="child2" cls="w1">
                             Test
                         </div>
-                        <div key="child3">
-                            <div cls="w5">
-                            </div>
+                        <div key="child3" cls="w2">
+                            <div/>
                         </div>
                     </div>
                 )
@@ -109,6 +108,7 @@ test('wrapping', t => {
     t.deepEqual(instance.props.children.length, 3, "children are converted");
     t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "nested single children are converted");
     t.deepEqual(instance.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
+    t.ok(React.isValidElement(instance.props.children[2].props.children), "unaltered single children are preserved");
 
     t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
 
@@ -124,15 +124,16 @@ test('wrapping', t => {
     t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
 
     /* benchmarking */
-    // const suite = new Benchmark.Suite();
-    // const TestWrapped = NativeTachyons.wrap(createComponent("w2", []))
-    // const inst = new TestWrapped();
-    // suite
-    //     .add('wrap', () => inst.render())
-    //     .on('cycle', event => {
-    //         console.log(String(event.target));
-    //     })
-    //     .run()
+    const suite = new Benchmark.Suite();
+    const TestWrapped = NativeTachyons.wrap(createComponent("w2", []))
+    const inst = new TestWrapped();
+    suite
+        .add('wrap', () => inst.render())
+        .on('cycle', event => {
+            /* eslint no-console: 0 */
+            console.log(String(event.target));
+        })
+        // .run()
 
     t.end();
 });
