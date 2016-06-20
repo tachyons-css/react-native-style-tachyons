@@ -9,10 +9,6 @@ export function wrap(WrappedComponent) {
         }
 
         _recursiveStyle(elementsTree) {
-            if (!React.isValidElement(elementsTree)) {
-                throw new Error("not an element tree: " + elementsTree);
-            }
-
             const props = elementsTree.props;
             let newProps;
             let translated = false;

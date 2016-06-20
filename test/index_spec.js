@@ -2,6 +2,7 @@ import { test } from "tape";
 import NativeTachyons, { styles } from "../lib/";
 import _ from "lodash";
 import React from "react";
+// import Benchmark from "benchmark";
 
 test('build', t => {
     const options = {
@@ -73,14 +74,15 @@ test('wrapping', t => {
                         cls={clsStr}
                         style={style}
                     >
-                        <div
-                            key="child"
-                            cls="w2"
-                        >
-                            <div cls="w4"/>
+                        <div key="child1" cls="w2">
+                            <div cls="w4" />
                         </div>
                         <div key="child2" cls="w1">
                             Test
+                        </div>
+                        <div key="child3">
+                            <div cls="w5">
+                            </div>
                         </div>
                     </div>
                 )
@@ -104,7 +106,7 @@ test('wrapping', t => {
     /* children */
     t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
     t.deepEqual(instance.props.children[0].props.style, [{width: 32}], "child cls is converted");
-    t.deepEqual(instance.props.children.length, 2, "children are converted");
+    t.deepEqual(instance.props.children.length, 3, "children are converted");
     t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "nested single children are converted");
     t.deepEqual(instance.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
 
@@ -120,6 +122,17 @@ test('wrapping', t => {
     t.deepEqual(instance.props.style, [], "if style is undefined, an array will be created");
 
     t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
+
+    /* benchmarking */
+    // const suite = new Benchmark.Suite();
+    // const TestWrapped = NativeTachyons.wrap(createComponent("w2", []))
+    // const inst = new TestWrapped();
+    // suite
+    //     .add('wrap', () => inst.render())
+    //     .on('cycle', event => {
+    //         console.log(String(event.target));
+    //     })
+    //     .run()
 
     t.end();
 });
