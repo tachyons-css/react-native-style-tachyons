@@ -44,7 +44,7 @@ export function wrap(WrappedComponent) {
             if (_.isArray(newChildren)) {
 
                 /* convert child array */
-                newChildren = newChildren.slice();
+                newChildren = React.Children.toArray(newChildren);
                 for (let i = 0; i < newChildren.length; i++) {
                     const c = newChildren[i];
                     if (React.isValidElement(c)) {
