@@ -77,7 +77,7 @@ test('wrapping', t => {
                             key="child"
                             cls="w2"
                         >
-                            <div/>
+                            <div cls="w4"/>
                         </div>
                         <div key="child2">
                             Test <span>Test</span>
@@ -102,6 +102,8 @@ test('wrapping', t => {
     t.deepEqual(instance.props.other, "2", "other properties are preserved");
     t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
     t.deepEqual(instance.props.children[0].props.style, [{width: 32}], "child cls is converted");
+    t.deepEqual(instance.props.children.length, 2, "children are converted");
+    t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "single children are converted");
     t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
 
     instance = renderComponent("w5", {width: 5})
