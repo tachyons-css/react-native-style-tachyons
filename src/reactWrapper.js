@@ -12,38 +12,65 @@ export function wrap(WrappedComponent) {
         _recursiveStyle(elementsTree) {
             checkState(React.isValidElement(elementsTree), "not a element tree: ", elementsTree);
 
-            const props = _.assign({}, elementsTree.props);
+            const props = elementsTree.props;
+            const newProps = {}
+
+            let translated = false;
 
             /* parse cls string */
             if (_.isString(props.cls)) {
                 if (_.isArray(props.style)) {
-                    props.style = props.style
+                    newProps.style = props.style
                 } else if (_.isObject(props.style)) {
-                    props.style = [props.style]
-                } else if (!_.has(props, "style") || _.isUndefined(props.style)) {
-                    props.style = []
+                    newProps.style = [props.style]
+                } else {
+                    newProps.style = []
                 }
 
-                _.split(props.cls, " ").forEach(cls => {
-                    if (cls !== "") {
-                        checkState(_.has(NativeTachyons.styles, cls), `style '${cls}' not found`);
-                        props.style.push(NativeTachyons.styles[cls]);
+                const splitted = props.cls.split(" ");
+                for (let i = 0; i < splitted.length; i++) {
+                    const cls = splitted[i];
+                    if (cls.length > 0) {
+                        const style = NativeTachyons.styles[cls];
+                        checkState(!_.isUndefined(style), `style '${cls}' not found`);
+                        newProps.style.push(style);
+                        translated = true;
                     }
-                });
-            }
-
-            let children = React.Children.map(props.children, c => {
-                if (React.isValidElement(c)) {
-                    return this._recursiveStyle(c)
                 }
-                return c
-            })
-
-            if (_.isArray(children) && children.length === 1) {
-                children = children[0];
             }
 
-            return React.cloneElement(elementsTree, props, children)
+            let newChildren;
+            if (_.isArray(props.children)) {
+
+                /* convert child array */
+                newChildren = []
+                for (let i = 0; i < props.children.length; i++) {
+                    const c = props.children[i];
+                    if (React.isValidElement(c)) {
+                        const converted = this._recursiveStyle(c);
+                        if (converted !== c) {
+                            translated = true;
+                            newChildren[i] = converted;
+                        }
+                    }
+                }
+
+            } else if (React.isValidElement(props.children)) {
+
+                /* convert single child */
+                const c = props.children;
+                const converted = this._recursiveStyle(c);
+                if (converted !== c) {
+                    translated = true;
+                    newChildren = converted;
+                }
+            }
+
+            if (translated) {
+                return React.cloneElement(elementsTree, newProps, newChildren)
+            }
+
+            return elementsTree;
         }
     }
 
@@ -52,3 +79,4 @@ export function wrap(WrappedComponent) {
 
     return newClass;
 }
+

@@ -68,9 +68,21 @@ test('wrapping', t => {
             render: function render() {
                 return (
                     <div
+                        key="1"
+                        other="2"
                         cls={clsStr}
                         style={style}
-                    />
+                    >
+                        <div
+                            key="child"
+                            cls="w2"
+                        >
+                            <div/>
+                        </div>
+                        <div key="child2">
+                            Test <span>Test</span>
+                        </div>
+                    </div>
                 )
             }
         })
@@ -86,6 +98,10 @@ test('wrapping', t => {
     t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved");
 
     let instance = renderComponent("w5")
+    t.deepEqual(instance.key, "1", "key is preserved");
+    t.deepEqual(instance.props.other, "2", "other properties are preserved");
+    t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
+    t.deepEqual(instance.props.children[0].props.style, [{width: 32}], "child cls is converted");
     t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
 
     instance = renderComponent("w5", {width: 5})
