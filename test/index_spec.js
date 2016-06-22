@@ -124,14 +124,11 @@ test('wrapping', t => {
     t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
 
     /* benchmarking */
-    const suite = new Benchmark.Suite();
-    const TestWrapped = NativeTachyons.wrap(createComponent("w2", []))
-    const inst = new TestWrapped();
-    suite
+    const inst = new (NativeTachyons.wrap(createComponent("w2", [])))();
+    new Benchmark.Suite()
         .add('wrap', () => inst.render())
         .on('cycle', event => {
-            /* eslint no-console: 0 */
-            console.log(String(event.target));
+            t.comment(`performance: ${event.target}`);
         })
         // .run()
 
