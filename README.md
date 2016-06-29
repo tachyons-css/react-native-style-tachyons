@@ -210,6 +210,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.6.9` use `files` directive to ignore more files
 * `v1.6.8` added `.babelrc` to `.npmignore`
 * `v1.6.7` bugfix
 * `v1.6.6` bugfix
