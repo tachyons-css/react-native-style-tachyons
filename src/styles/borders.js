@@ -31,5 +31,13 @@ export const styles = {
     "br--top": {
         borderBottomLeftRadius: 0,
         borderBottomRightRadius: 0
+    },
+    "br--left": {
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 0
+    },
+    "br--right": {
+        borderTopLeftRadius: 0,
+        borderBottomLeftRadius: 0
     }
 }

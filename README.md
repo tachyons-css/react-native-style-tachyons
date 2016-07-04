@@ -176,8 +176,10 @@ ba                     borderWidth: 1
 bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
 
 br0 ... br4            borderRadius: 0|0.125|0.25|0.5|1rem
-br--bottom             bottom radius only = borderTopLeftRadius: 0, borderTopRightRadius: 0,
-br--top                top radius only = borderBottomLeftRadius: 0, borderBottomRightRadius: 0,
+br--bottom             bottom radius only
+br--top                top radius only
+br--right              right radius only
+br--left               left radius only
 ```
 
 ##### Text & Fonts [(Scale)](http://tachyons.io/docs/typography/scale/)
@@ -210,6 +212,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.6.10` added `br--left` and `br--right`
 * `v1.6.9` use `files` directive to ignore more files
 * `v1.6.8` added `.babelrc` to `.npmignore`
 * `v1.6.7` bugfix
