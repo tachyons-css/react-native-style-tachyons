@@ -2,6 +2,7 @@ import _ from "lodash";
 import Color from "color";
 import * as reactWrapper from "./reactWrapper";
 
+/* global require */
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
 

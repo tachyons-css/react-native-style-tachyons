@@ -212,6 +212,7 @@ o-025                   opacity: 0.25
 ```
 
 ### Changes
+* `v1.6.11` updated dependencies
 * `v1.6.10` added `br--left` and `br--right`
 * `v1.6.9` use `files` directive to ignore more files
 * `v1.6.8` added `.babelrc` to `.npmignore`
