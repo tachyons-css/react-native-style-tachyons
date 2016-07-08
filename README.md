@@ -8,6 +8,8 @@ Let's see how tachyons compares to traditional styling:
 ##### 1. Traditional `react-native` style:
 
 ```javascript
+import {StyleSheet} from "react-native";
+
 const s = StyleSheet.create({
   view: {
     borderWidth: 1,
@@ -19,6 +21,7 @@ const s = StyleSheet.create({
     textAlign: "center"
   }
 })
+
 <View style={[s.view]}
    <Text style={[s.text]}>Something</Text>
 </View>
@@ -27,40 +30,37 @@ const s = StyleSheet.create({
 ##### 2. Improved with `react-native-tachyons`:
 
 ```javascript
-<View style={[s.ba, s.jcfs, s.pa2]}      /* 'ba' means border-all */
+import {styles as s} from "react-native-tachyons";
+
+<View style={[s.ba, s.jcfs, s.pa2]}>     /* 'ba' means border-all */
    <Text style={[s.white, s.tc]}>
        Something
    </Text>
 </View>
-
-/* Note: You can still use your old styles along tachyons' classes */
 ```
-###### Advantages
-* Less code
-* No need to maintain a separate stylesheet
-* No need to find a proper name for every component you want to style
-* Looking at a component tells you exactly how it looks, it's all in one place.
-* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding, you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when  building a responsive app.
 
-  [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
-
-  [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
-
-
-
-
-
-##### 3. Further improvement by using `cls=""`:
-We can further reduce the boilerplate by specifying the properties as a property called `cls`. It will show an error if a non-existing property is used.
+or even simpler:
 
 ```javascript
-<View cls="ba jcfs pa2"}
+<View cls="ba jcfs pa2"}>
    <Text cls="white tc">
        Something
    </Text>
 </View>
 ```
-Of course use can use both the `cls` and the `style` property.
+
+###### Advantages
+* Less code
+* No need to maintain a separate stylesheet
+* No need to find a proper name for every component you want to style
+* Looking at a component tells you exactly how it looks, it's all in one place.
+* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding, you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when building a responsive app.
+  
+  [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
+
+  [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
+
+You can use your old styles along tachyons' classes, you can use the `cls` property or mix and match those approaches. The `cls` property will be checked for valid styles at runtime.
 
 
 ### Usage
