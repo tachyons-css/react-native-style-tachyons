@@ -29,7 +29,7 @@ const s = StyleSheet.create({
 
 ##### 2. Improved with `react-native-tachyons`:
 
-```javascript
+```jsx
 import {styles as s} from "react-native-tachyons";
 
 <View style={[s.ba, s.jcfs, s.pa2]}>     /* 'ba' means border-all */
@@ -42,7 +42,7 @@ import {styles as s} from "react-native-tachyons";
 or even simpler:
 
 ```javascript
-<View cls="ba jcfs pa2"}>
+<View cls="ba jcfs pa2">
    <Text cls="white tc">
        Something
    </Text>
