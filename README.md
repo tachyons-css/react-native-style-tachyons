@@ -29,7 +29,7 @@ const s = StyleSheet.create({
 
 ##### 2. Improved with `react-native-tachyons`:
 
-```jsx
+```javascript
 import {styles as s} from "react-native-tachyons";
 
 <View style={[s.ba, s.jcfs, s.pa2]}>     /* 'ba' means border-all */
@@ -39,10 +39,10 @@ import {styles as s} from "react-native-tachyons";
 </View>
 ```
 
-or even simpler:
+##### 3. or even simpler:
 
 ```javascript
-<View cls="ba jcfs pa2">
+<View cls="ba jcfs pa2">                 /* string is checked for validitiy */
    <Text cls="white tc">
        Something
    </Text>
@@ -60,7 +60,7 @@ or even simpler:
 
   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
 
-You can use your old styles along tachyons' classes, you can use the `cls` property or mix and match those approaches. The `cls` property will be checked for valid styles at runtime.
+You can use your old styles along tachyons' classes, use the `cls` property or mix and match those approaches.
 
 
 ### Usage
@@ -81,7 +81,7 @@ You can use your old styles along tachyons' classes, you can use the `cls` prope
 
 3. To use the styles
    ```javascript
-   import { styles } from "react-native-tachyons";
+   import { styles as s } from "react-native-tachyons";
    ````
 
 2. To use the `cls=''` wrapping
