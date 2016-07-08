@@ -42,7 +42,7 @@ import {styles as s} from "react-native-tachyons";
 ##### 3. or even simpler:
 
 ```javascript
-<View cls="ba jcfs pa2">                 /* string is checked for validitiy */
+<View cls="ba jcfs pa2">                 /* string is checked for validity */
    <Text cls="white tc">
        Something
    </Text>
