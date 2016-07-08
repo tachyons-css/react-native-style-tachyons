@@ -49,6 +49,8 @@ import {styles as s} from "react-native-tachyons";
 </View>
 ```
 
+Of course you can use your old styles along tachyon's classes.
+
 ###### Advantages
 * Less code
 * No need to maintain a separate stylesheet
@@ -59,9 +61,6 @@ import {styles as s} from "react-native-tachyons";
   [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
 
   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
-
-You can use your old styles along tachyons' classes, use the `cls` property or mix and match those approaches.
-
 
 ### Usage
 `react-native-tachyons` needs to know your `rem` upon start.
