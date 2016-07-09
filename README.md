@@ -206,8 +206,8 @@ rm-stretch              resizeMode: "stretch"
 ##### Opacity
 ```
 o-10|20|...|100         opacity: 0.1|0.2|...|1
-o-05                    opacity: 0.5
-o-025                   opacity: 0.25
+o-05                    opacity: 0.05
+o-025                   opacity: 0.025
 ```
 
 ### Changes
