@@ -2,6 +2,8 @@ import _ from "lodash";
 import Color from "color";
 import * as reactWrapper from "./reactWrapper";
 
+const debug = require('debug')('react-native-tachyons')
+
 /* global require */
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
@@ -67,6 +69,14 @@ const NativeTachyons = {
                 borderColor: val
             }
         }, {});
+
+        /* copy all properties with hyphens to underscore */
+        _.forEach(styleSheet, (val, key) => {
+            if (key.includes("-")) {
+                debug(`replacing ${key} -> ${key.replace(/-/g, "_")}`)
+                styleSheet[key.replace(/-/g, "_")] = val;
+            }
+        })
 
         _.assign(NativeTachyons.styles, StyleSheet.create(styleSheet));
     }

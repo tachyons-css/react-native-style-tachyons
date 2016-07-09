@@ -57,7 +57,7 @@ Of course you can use your old styles along tachyon's classes.
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
 * Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding, you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when building a responsive app.
-  
+
   [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
 
   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
@@ -66,6 +66,7 @@ Of course you can use your old styles along tachyon's classes.
 `react-native-tachyons` needs to know your `rem` upon start.
 
 1. In the entry point of your app include:
+
    ```javascript
    import NativeTachyons from 'react-native-tachyons';
    import { StyleSheet } from 'react-native';
@@ -79,11 +80,15 @@ Of course you can use your old styles along tachyon's classes.
    ```
 
 3. To use the styles
+
    ```javascript
    import { styles as s } from "react-native-tachyons";
-   ````
+   ```
+
+	To support javascript property syntax, all style names with hyphens have an equivalent with an underscore, e.g. `s.bg_black` instead of `s["bg-black"]`.
 
 2. To use the `cls=''` wrapping
+
    ```javascript
    import NativeTachyons from "react-native-tachyons";
 
@@ -91,7 +96,7 @@ Of course you can use your old styles along tachyon's classes.
        class MyComponent extends React.Component {
        ...
    })
-   ````
+   ```
 
 
 
@@ -114,41 +119,41 @@ NativeTachyons.build({
 ```
 
 ```
-bg-green            green background
-bg-light-green      lighter green background
-bg-dark-green       darker green background
+bg-green               green background
+bg-light-green         lighter green background
+bg-dark-green          darker green background
 
-b--green            green border
-b--light-green      light-green border
-b--dark-green       dark-green border
+b--green               green border
+b--light-green         light-green border
+b--dark-green          dark-green border
 
-green               green text
-light-green         light-green text
-dark-green          dark-green text
+green                  green text
+light-green            light-green text
+dark-green             dark-green text
 ```
 
 ##### FlexBox
 ```
-absolute            position: "absolute"
-relative            position: "relative"
-flx-i               flex: 1
-flx-col             flexDirection: "column"
-flx-row             flexDirection: "row"
-flx-wrap            flexWrap: "wrap"
-flx-nowrap          flexWrap: "nowrap"
-aifs                alignItems: "flex-start"
-aife                alignItems: "flex-end"
-aic                 alignItems: "center"
-ais                 alignItems: "stretch"
-asfs                alignSelf: "flex-start"
-asfe                alignSelf: "flex-end"
-asc                 alignSelf: "center"
-ass                 alignSelf: "stretch"
-jcfs                justifyContent: "flex-start"
-jcfe                justifyContent: "flex-end"
-jcc                 justifyContent: "center"
-jcsb                justifyContent: "space-between"
-jcsa                justifyContent: "space-around"
+absolute               position: "absolute"
+relative               position: "relative"
+flx-i                  flex: 1
+flx-col                flexDirection: "column"
+flx-row                flexDirection: "row"
+flx-wrap               flexWrap: "wrap"
+flx-nowrap             flexWrap: "nowrap"
+aifs                   alignItems: "flex-start"
+aife                   alignItems: "flex-end"
+aic                    alignItems: "center"
+ais                    alignItems: "stretch"
+asfs                   alignSelf: "flex-start"
+asfe                   alignSelf: "flex-end"
+asc                    alignSelf: "center"
+ass                    alignSelf: "stretch"
+jcfs                   justifyContent: "flex-start"
+jcfe                   justifyContent: "flex-end"
+jcc                    justifyContent: "center"
+jcsb                   justifyContent: "space-between"
+jcsa                   justifyContent: "space-around"
 ```
 
 ##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
@@ -211,6 +216,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
+* `v1.6.12` all styles with hypened in their names now have version with underscores
 * `v1.6.11` updated dependencies
 * `v1.6.10` added `br--left` and `br--right`
 * `v1.6.9` use `files` directive to ignore more files

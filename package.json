@@ -4,11 +4,13 @@
   "license": "MIT",
   "version": "1.6.11",
   "keywords": [
-    "react",
     "react-native",
+    "react",
     "styling",
-    "babel",
-    "babel-plugin"
+    "style",
+    "android",
+    "ios",
+    "css"
   ],
   "author": {
     "name": "Fabian Zeindl",
@@ -26,6 +28,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "color": "^0.11.3",
+    "debug": "^2.2.0",
     "lodash": "^4.13.1"
   },
   "files": [

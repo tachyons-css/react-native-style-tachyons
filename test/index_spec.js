@@ -39,6 +39,13 @@ test('styles', t => {
 
     t.deepEqual(styles["o-025"], {opacity: 0.025}, "o-025 is opacity 0.025")
 
+    /* underscore version are generated */
+    t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
+    t.ok(_.has(styles, "b__green"), "multiple underscores work")
+
+    /* sum of styles */
+    t.equal(_.keys(styles).length, 274, "274 styles generated");
+
     t.end();
 });
 
