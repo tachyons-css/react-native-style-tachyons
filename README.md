@@ -153,20 +153,20 @@ jcsa                justifyContent: "space-around"
 
 ##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
 ```
-ma0 ... ma7           margin: 0|0.25|0.5|1|2|4|8|16rem
-ml|mr|mb|mt [0-7]     marginLeft, marginRight, marginBottom, marginTop
-mh [0-7]              marginHorizontal
-mv [0-7]              marginVertical
+ma0 ... ma7            margin: 0|0.25|0.5|1|2|4|8|16rem
+ml|mr|mb|mt [0-7]      marginLeft, marginRight, marginBottom, marginTop
+mh [0-7]               marginHorizontal
+mv [0-7]               marginVertical
 
 Same with p for padding
 ```
 
 ##### Heights & Widths
 ```
-h1 ... h5             height: 1|2|4|8|16rem
-w1 ... w5             width: 1|2|4|8|16rem
+h1 ... h5              height: 1|2|4|8|16rem
+w1 ... w5              width: 1|2|4|8|16rem
 
-absolute--fill        position: absolute, top/left/right/bottom: 0
+absolute--fill         position: absolute, top/left/right/bottom: 0
 ```
 
 ##### Borders
@@ -198,16 +198,16 @@ tl|tc|tr|tj            textAlign: left|right|center|justify
 
 ##### Images
 ```
-rm-contain              resizeMode: "contain"
-rm-cover                resizeMode: "cover"
-rm-stretch              resizeMode: "stretch"
+rm-contain             resizeMode: "contain"
+rm-cover               resizeMode: "cover"
+rm-stretch             resizeMode: "stretch"
 ```
 
 ##### Opacity
 ```
-o-10|20|...|100         opacity: 0.1|0.2|...|1
-o-05                    opacity: 0.05
-o-025                   opacity: 0.025
+o-10|20|...|100        opacity: 0.1|0.2|...|1
+o-05                   opacity: 0.05
+o-025                  opacity: 0.025
 ```
 
 ### Changes
