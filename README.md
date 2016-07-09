@@ -216,7 +216,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
-* `v1.6.12` all styles with hypened in their names now have version with underscores
+* `v1.7`    all styles with hypened in their names now have version with underscores
 * `v1.6.11` updated dependencies
 * `v1.6.10` added `br--left` and `br--right`
 * `v1.6.9` use `files` directive to ignore more files
