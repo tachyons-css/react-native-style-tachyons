@@ -1,7 +1,7 @@
 # React Native Tachyons
 [![npm version](https://img.shields.io/npm/v/react-native-tachyons.svg)](https://www.npmjs.com/package/react-native-tachyons)
-[![license](https://img.shields.io/:semver-%E2%9C%93-blue.svg)](http://semver.org/)
 [![license](https://img.shields.io/npm/l/react-native-tachyons.svg)](https://github.com/fab1an/react-native-tachyons/blob/master/LICENSE)
+[![semver](https://img.shields.io/:semver-%E2%9C%93-brightgreen.svg)](http://semver.org/)
 [![Build Status](https://travis-ci.org/fab1an/react-native-tachyons.svg?branch=master)](https://travis-ci.org/fab1an/react-native-tachyons) 
 
 React Native Tachyons brings atomic styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
