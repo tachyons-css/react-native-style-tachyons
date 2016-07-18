@@ -36,15 +36,15 @@
   ],
   "devDependencies": {
     "babel-cli": "^6.10.1",
-    "babel-eslint": "^6.1.0",
+    "babel-eslint": "^6.1.2",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.11.1",
     "benchmark": "^2.1.0",
-    "eslint": "^3.0.1",
+    "eslint": "^3.1.0",
     "eslint-plugin-react": "^5.2.2",
     "faucet": "0.0.1",
     "publish-please": "^2.1.4",
-    "react": "^15.1.0",
+    "react": "^15.2.1",
     "tape": "^4.6.0"
   },
   "peerDependencies": {
