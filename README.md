@@ -1,12 +1,12 @@
-# React Native Tachyons
-[![npm version](https://img.shields.io/npm/v/react-native-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-tachyons)
-[![license](https://img.shields.io/npm/l/react-native-tachyons.svg?maxAge=2592000)](https://github.com/fab1an/react-native-tachyons/blob/master/LICENSE)
+# React Native Style Tachyons
+[![npm version](https://img.shields.io/npm/v/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
+[![license](https://img.shields.io/npm/l/react-native-style-tachyons.svg?maxAge=2592000)](https://github.com/fab1an/react-native-style-tachyons/blob/master/LICENSE)
 [![semver](https://img.shields.io/:semver-%E2%9C%93-brightgreen.svg?maxAge=2592000)](http://semver.org/)
-[![build status](https://travis-ci.org/fab1an/react-native-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/fab1an/react-native-tachyons)
-[![total townloads](https://img.shields.io/npm/dt/react-native-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-tachyons)
+[![build status](https://travis-ci.org/fab1an/react-native-style-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/fab1an/react-native-style-tachyons)
+[![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
 
 
-React Native Tachyons brings atomic styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
+React Native Style Tachyons brings atomic styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
 
 Let's see how tachyons compares to traditional styling:
 
@@ -32,10 +32,10 @@ const s = StyleSheet.create({
 </View>
 ```
 
-##### 2. Improved with `react-native-tachyons`:
+##### 2. Improved with `react-native-style-tachyons`:
 
 ```javascript
-import {styles as s} from "react-native-tachyons";
+import {styles as s} from "react-native-style-tachyons";
 
 <View style={[s.ba, s.jcfs, s.pa2]}>     /* 'ba' means border-all */
    <Text style={[s.white, s.tc]}>
@@ -68,12 +68,12 @@ Of course you can use your old styles along tachyon's classes.
   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
 
 ### Usage
-`react-native-tachyons` needs to know your `rem` upon start.
+`react-native-style-tachyons` needs to know your `rem` upon start.
 
 1. In the entry point of your app include:
 
    ```javascript
-   import NativeTachyons from 'react-native-tachyons';
+   import NativeTachyons from 'react-native-style-tachyons';
    import { StyleSheet } from 'react-native';
 
    NativeTachyons.build({
@@ -87,7 +87,7 @@ Of course you can use your old styles along tachyon's classes.
 3. To use the styles
 
    ```javascript
-   import { styles as s } from "react-native-tachyons";
+   import { styles as s } from "react-native-style-tachyons";
    ```
 
 	To support javascript property syntax, all style names with hyphens have an equivalent with an underscore, e.g. `s.bg_black` instead of `s["bg-black"]`.
@@ -95,7 +95,7 @@ Of course you can use your old styles along tachyon's classes.
 2. To use the `cls=''` wrapping
 
    ```javascript
-   import NativeTachyons from "react-native-tachyons";
+   import NativeTachyons from "react-native-style-tachyons";
 
    NativeTachyons.wrap(
        class MyComponent extends React.Component {
@@ -221,6 +221,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
+* `v1.7.3` renamed package to react-native-style-tachyons
 * `v1.7.2`  updated readme & dependencies
 * `v1.7.1`  updated readme
 * `v1.7`    all styles with hypened in their names now have version with underscores

@@ -1,6 +1,6 @@
 {
-  "name": "react-native-tachyons",
-  "description": "styling for react-native based on tachyons.css",
+  "name": "react-native-style-tachyons",
+  "description": "atomic, maintainable styling for react-native",
   "license": "MIT",
   "version": "1.7.2",
   "keywords": [
@@ -17,13 +17,13 @@
     "email": "fabian.zeindl@gmail.com",
     "url": "http://github.com/fab1an"
   },
-  "homepage": "https://github.com/fab1an/react-native-tachyons",
+  "homepage": "https://github.com/fab1an/react-native-style-tachyons",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fab1an/react-native-tachyons.git"
+    "url": "git+https://github.com/fab1an/react-native-style-tachyons.git"
   },
   "bugs": {
-    "url": "https://github.com/fab1an/react-native-tachyons/issues"
+    "url": "https://github.com/fab1an/react-native-style-tachyons/issues"
   },
   "main": "lib/index.js",
   "dependencies": {
