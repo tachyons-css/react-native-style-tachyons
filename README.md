@@ -221,6 +221,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
+* `v1.7.4` bump because of npm-quirks
 * `v1.7.3` renamed package to react-native-style-tachyons
 * `v1.7.2`  updated readme & dependencies
 * `v1.7.1`  updated readme
