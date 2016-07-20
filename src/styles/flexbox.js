@@ -2,9 +2,6 @@ export default {
     absolute: {
         position: "absolute"
     },
-    relative: {
-        position: "relative"
-    },
     "flx-i": {
         flex: 1
     },

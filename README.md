@@ -138,8 +138,7 @@ dark-green             dark-green text
 
 ##### FlexBox
 ```
-absolute               position: "absolute"
-relative               position: "relative"
+absolute               position: "absolute"                 /* position: "relative" is default */
 flx-i                  flex: 1
 flx-row                flexDirection: "row"                 /* flexDirection: "column" is default */
 flx-row-reverse        flexDirection: "row-reverse"
@@ -222,9 +221,11 @@ o-025                  opacity: 0.025
 ** renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
 ** removed `flx-col`, `flx-nowrap`, `ais` and `jcfs` as those are default-values, and there's no inheritance in RN.
 ** added `flx-row-reverse` and `flx-col-reverse`
+** removed `relative`, as it's default
 * `v1.7.8` moved package to tachyons-css and updated documentation
 * `v1.7.7` updated documentation
 * `v1.7.6` updated documentation
+>>>>>>> removed “relative” as it’s a default
 * `v1.7.5` added notice to readme
 * `v1.7.4` bump because of npm-quirks
 * `v1.7.3` renamed package to react-native-style-tachyons

@@ -44,7 +44,7 @@ test('styles', t => {
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     /* sum of styles */
-    t.equal(_.keys(styles).length, 272, "272 styles generated");
+    t.equal(_.keys(styles).length, 271, "271 styles generated");
 
     t.end();
 });
