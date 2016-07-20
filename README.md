@@ -5,6 +5,9 @@
 [![build status](https://travis-ci.org/fab1an/react-native-style-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/fab1an/react-native-style-tachyons)
 [![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
 
+<sub>
+***RENAME NOTICE:*** *This has been renamed to `react-native-style-tachyons`. The old module [`react-native-tachyons`](https://www.npmjs.com/package/react-native-tachyons) has been deprecated and will be removed from npm.*
+</sub>
 
 React Native Style Tachyons brings atomic styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
 
@@ -221,6 +224,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
+* `v1.7.5` added notice to readme
 * `v1.7.4` bump because of npm-quirks
 * `v1.7.3` renamed package to react-native-style-tachyons
 * `v1.7.2`  updated readme & dependencies
