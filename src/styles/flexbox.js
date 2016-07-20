@@ -8,17 +8,17 @@ export default {
     "flx-i": {
         flex: 1
     },
-    "flx-col": {
-        flexDirection: "column"
-    },
     "flx-row": {
         flexDirection: "row"
     },
+    "flx-row-reverse": {
+        flexDirection: "row-reverse"
+    },
+    "flx-col-reverse": {
+        flexDirection: "column-reverse"
+    },
     "flx-wrap": {
         flexWrap: "wrap"
-    },
-    "flx-nowrap": {
-        flexWrap: "nowrap"
     },
     aifs: {
         alignItems: "flex-start"
@@ -28,9 +28,6 @@ export default {
     },
     aife: {
         alignItems: "flex-end"
-    },
-    ais: {
-        alignItems: "stretch"
     },
     asfs: {
         alignSelf: "flex-start"
@@ -43,9 +40,6 @@ export default {
     },
     ass: {
         alignSelf: "stretch"
-    },
-    jcfs: {
-        justifyContent: "flex-start"
     },
     jcfe: {
         justifyContent: "flex-end"

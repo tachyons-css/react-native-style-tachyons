@@ -141,23 +141,21 @@ dark-green             dark-green text
 absolute               position: "absolute"
 relative               position: "relative"
 flx-i                  flex: 1
-flx-col                flexDirection: "column"
-flx-row                flexDirection: "row"
-flx-wrap               flexWrap: "wrap"
-flx-nowrap             flexWrap: "nowrap"
-aifs                   alignItems: "flex-start"
-aife                   alignItems: "flex-end"
+flx-row                flexDirection: "row"                 /* flexDirection: "column" is default */
+flx-row-reverse        flexDirection: "row-reverse"
+flx-col-reverse        flexDirection: "column-reverse"
+flx-wrap               flexWrap: "wrap"                     /* flexWrap: "nowrap" is default */
+aifs                   alignItems: "flex-start"             /* alignItems: "stretch" is default */
 aic                    alignItems: "center"
-ais                    alignItems: "stretch"
+aife                   alignItems: "flex-end"
+jcc                    justifyContent: "center"             /* justifyContent: "flex-start" is default */
+jcfe                   justifyContent: "flex-end"
+jcsb                   justifyContent: "space-between"
+jcsa                   justifyContent: "space-around"
 asfs                   alignSelf: "flex-start"
 asfe                   alignSelf: "flex-end"
 asc                    alignSelf: "center"
 ass                    alignSelf: "stretch"
-jcfs                   justifyContent: "flex-start"
-jcfe                   justifyContent: "flex-end"
-jcc                    justifyContent: "center"
-jcsb                   justifyContent: "space-between"
-jcsa                   justifyContent: "space-around"
 ```
 
 ##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
@@ -222,6 +220,8 @@ o-025                  opacity: 0.025
 ### Changes
 * `v2.0.0`
 ** renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
+** removed `flx-col`, `flx-nowrap`, `ais` and `jcfs` as those are default-values, and there's no inheritance in RN.
+** added `flx-row-reverse` and `flx-col-reverse`
 * `v1.7.8` moved package to tachyons-css and updated documentation
 * `v1.7.7` updated documentation
 * `v1.7.6` updated documentation
