@@ -127,8 +127,8 @@ bg-green               green background
 bg-light-green         lighter green background
 bg-dark-green          darker green background
 
-b--green               green border
-b--light-green         light-green border
+b--green               green border                 // Note: double hyphens signify a class that needs another class
+b--light-green         light-green border           //       to work, in this case one of the border-settings
 b--dark-green          dark-green border
 
 green                  green text
@@ -175,7 +175,7 @@ Same with p for padding
 h1 ... h5              height: 1|2|4|8|16rem
 w1 ... w5              width: 1|2|4|8|16rem
 
-absolute--fill         position: absolute, top/left/right/bottom: 0
+absolute-fill          position: absolute, top/left/right/bottom: 0
 ```
 
 ##### Borders
@@ -220,6 +220,8 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
+* `v2.0.0`
+** renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
 * `v1.7.8` moved package to tachyons-css and updated documentation
 * `v1.7.7` updated documentation
 * `v1.7.6` updated documentation
