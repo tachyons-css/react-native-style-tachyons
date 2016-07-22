@@ -1,8 +1,8 @@
 # React Native Style Tachyons
 [![npm version](https://img.shields.io/npm/v/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
-[![license](https://img.shields.io/npm/l/react-native-style-tachyons.svg?maxAge=2592000)](https://github.com/fab1an/react-native-style-tachyons/blob/master/LICENSE)
+[![license](https://img.shields.io/npm/l/react-native-style-tachyons.svg?maxAge=2592000)](https://github.com/tachyons-css/react-native-style-tachyons/blob/master/LICENSE)
 [![semver](https://img.shields.io/:semver-%E2%9C%93-brightgreen.svg?maxAge=2592000)](http://semver.org/)
-[![build status](https://travis-ci.org/fab1an/react-native-style-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/fab1an/react-native-style-tachyons)
+[![build status](https://travis-ci.org/tachyons-css/react-native-style-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/tachyons-css/react-native-style-tachyons)
 [![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
 
 React Native Style Tachyons brings atomic styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
@@ -220,6 +220,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Changes
+* `v1.7.8` moved package to tachyons-css and updated documentation
 * `v1.7.7` updated documentation
 * `v1.7.6` updated documentation
 * `v1.7.5` added notice to readme
