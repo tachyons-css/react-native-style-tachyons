@@ -218,10 +218,9 @@ o-025                  opacity: 0.025
 
 ### Changes
 * `v2.0.0`
-** renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
-** removed `flx-col`, `flx-nowrap`, `ais` and `jcfs` as those are default-values, and there's no inheritance in RN.
-** added `flx-row-reverse` and `flx-col-reverse`
-** removed `relative`, as it's default
+ * renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
+ * removed `relative, `flx-col`, `flx-nowrap`, `ais` and `jcfs` as those are default-values, and there's no inheritance in RN.
+ * added `flx-row-reverse` and `flx-col-reverse`
 * `v1.7.8` moved package to tachyons-css and updated documentation
 * `v1.7.7` updated documentation
 * `v1.7.6` updated documentation
