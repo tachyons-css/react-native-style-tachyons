@@ -216,40 +216,5 @@ o-05                   opacity: 0.05
 o-025                  opacity: 0.025
 ```
 
-### Changes
-* `v2.0.1` updated readme
-* `v2.0.0`
- * renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
- * removed `relative`, `flx-col`, `flx-nowrap`, `ais` and `jcfs` as those are default-values, and there's no inheritance in RN.
- * added `flx-row-reverse` and `flx-col-reverse`
-* `v1.7.8` moved package to tachyons-css and updated documentation
-* `v1.7.7` updated documentation
-* `v1.7.6` updated documentation
->>>>>>> removed “relative” as it’s a default
-* `v1.7.5` added notice to readme
-* `v1.7.4` bump because of npm-quirks
-* `v1.7.3` renamed package to react-native-style-tachyons
-* `v1.7.2`  updated readme & dependencies
-* `v1.7.1`  updated readme
-* `v1.7`    all styles with hypened in their names now have version with underscores
-* `v1.6.11` updated dependencies
-* `v1.6.10` added `br--left` and `br--right`
-* `v1.6.9` use `files` directive to ignore more files
-* `v1.6.8` added `.babelrc` to `.npmignore`
-* `v1.6.7` bugfix
-* `v1.6.6` bugfix
-* `v1.6.5` yet another small improvement
-* `v1.6.4` yet another bugfix
-* `v1.6.3` bugfix
-* `v1.6.2` translation performance improved by a factor of 2
-* `v1.6.1` removed `h-100` and `w-100`. I consider this a bugfix under semver, since using `Dimensions` is buggy on Android [#3219](https://github.com/facebook/react-native/issues/3219). You can get the same behaviour with `flx-i` and `absolute--fill`.
-* `v1.6.0` added `absolute--fill` for easy full-screen views
-* `v1.5.0` added `h-100` and `w-100` for 100% height/width of window, needs `Dimensions` to be passed into `NativeTachyons.build()`
-* `v1.4.0` support opacities
-* `v1.3.0` set react-native peer-dependency to 0.x
-* `v1.2.0` support border-radii properties
-* `v1.1.1` added more tests and a bugfix when merging existing styles
-* `v1.1.0` added more properties and references
-* `v1.0.1` fixed badge
-* `v1.0.0` first version
-
+## Changes
+See the [ChangeLog](https://github.com/tachyons-css/react-native-style-tachyons/blob/master/CHANGELOG.md)
