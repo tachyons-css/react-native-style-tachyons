@@ -1,15 +1,19 @@
 {
   "name": "react-native-style-tachyons",
-  "description": "atomic, maintainable styling for react-native",
+  "description": "functional, maintainable styling for react-native",
   "license": "MIT",
   "version": "2.0.1",
   "keywords": [
-    "react-native",
     "react",
-    "styling",
-    "style",
+    "react-native",
     "android",
     "ios",
+    "StyleSheet",
+    "style",
+    "responsive",
+    "mobile",
+    "performance",
+    "design",
     "css"
   ],
   "author": {
@@ -17,13 +21,13 @@
     "email": "fabian.zeindl@gmail.com",
     "url": "http://github.com/fab1an"
   },
-  "homepage": "https://github.com/fab1an/react-native-style-tachyons",
+  "homepage": "https://github.com/tachyons-css/react-native-style-tachyons",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fab1an/react-native-style-tachyons.git"
+    "url": "git+https://github.com/tachyons-css/react-native-style-tachyons.git"
   },
   "bugs": {
-    "url": "https://github.com/fab1an/react-native-style-tachyons/issues"
+    "url": "https://github.com/tachyons-css/react-native-style-tachyons/issues"
   },
   "main": "lib/index.js",
   "dependencies": {

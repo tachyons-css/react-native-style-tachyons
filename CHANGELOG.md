@@ -1,6 +1,7 @@
-
-## 2.0.1 
+## 2.0.1 – 2.0.2
 * updated readme
+* updated links
+* updated keywords
 
 ## 2.0
 * renamed `absolute--fill` to `absolute-fill` and explained the double hypens in the Readme.
