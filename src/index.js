@@ -36,10 +36,14 @@ const NativeTachyons = {
 
         /* calculate rem scales */
         const REM_SCALED = [
-            require("./styles/heights").default,
+            require("./styles/heights").heights,
+            require("./styles/heights").minHeights,
+            require("./styles/heights").maxHeights,
+            require("./styles/widths").widths,
+            require("./styles/widths").minWidths,
+            require("./styles/widths").maxWidths,
             require("./styles/spacing").default,
             require("./styles/typeScale").default,
-            require("./styles/widths").default,
             require("./styles/borders").radii
         ]
         _.forEach(REM_SCALED, subSheet => {

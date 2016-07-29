@@ -172,6 +172,10 @@ Same with p for padding
 h1 ... h5              height: 1|2|4|8|16rem
 w1 ... w5              width: 1|2|4|8|16rem
 
+max-h1 ... min-h5      minHeight: 1|2|4|8|16rem
+max-h1 ... max-h5      maxHeight: 1|2|4|8|16rem
+(same with w for width)
+
 absolute-fill          position: absolute, top/left/right/bottom: 0
 ```
 

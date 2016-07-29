@@ -39,12 +39,17 @@ test('styles', t => {
 
     t.deepEqual(styles["o-025"], {opacity: 0.025}, "o-025 is opacity 0.025")
 
+    t.deepEqual(styles["min-w3"], {minWidth: 64})
+    t.deepEqual(styles["max-w3"], {maxWidth: 64})
+    t.deepEqual(styles["min-h4"], {minHeight: 128})
+    t.deepEqual(styles["max-h4"], {maxHeight: 128})
+
     /* underscore version are generated */
     t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     /* sum of styles */
-    t.equal(_.keys(styles).length, 271, "271 styles generated");
+    t.equal(_.keys(styles).length, 311, "311 styles generated");
 
     t.end();
 });

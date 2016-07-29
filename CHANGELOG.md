@@ -1,3 +1,6 @@
+## 2.1
+* support `minHeight` and `maxHeight` on the scale
+
 ## 2.0.1 – 2.0.2
 * updated readme
 * updated links
