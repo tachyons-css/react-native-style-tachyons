@@ -1,3 +1,7 @@
+## 2.2
+* updated readme
+* specify `lighten: false` or `darken: false` to skip color variants
+
 ## 2.1
 * support `minHeight` and `maxHeight` on the scale
 

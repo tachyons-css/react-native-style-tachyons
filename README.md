@@ -116,8 +116,8 @@ NativeTachyons.build({
          green: "#00FF00",
          red: "#FF0000"
       },
-      lighten: 0.2        /* default: 0.2 */
-      darken: 0.2         /* default: 0.2 */
+      lighten: 0.2        /* default: 0.2 | false to skip light versions */
+      darken: 0.2         /* default: 0.2 | false to skip dark versions */
    }
 }, StyleSheet);
 ```

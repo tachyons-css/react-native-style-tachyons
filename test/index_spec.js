@@ -5,15 +5,15 @@ import React from "react";
 import Benchmark from "benchmark";
 
 test('build', t => {
-    const options = {
+    const fakeStyleSheet = {create: sheet => sheet}
+    NativeTachyons.build({
         colors: {
             palette: {
                 green: "#00FF00"
-            }
+            },
+            lighten: false
         }
-    }
-    const fakeStyleSheet = {create: sheet => sheet}
-    NativeTachyons.build(options, fakeStyleSheet);
+    }, fakeStyleSheet);
     t.pass("build");
 
     t.end();
@@ -49,7 +49,7 @@ test('styles', t => {
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     /* sum of styles */
-    t.equal(_.keys(styles).length, 311, "311 styles generated");
+    t.equal(_.keys(styles).length, 293, "293 styles generated");
 
     t.end();
 });
@@ -59,16 +59,25 @@ test('colors', t => {
     t.ok(_.has(styles, "b--green"), "border-color");
     t.ok(_.has(styles, "green"), "color");
 
-    t.ok(_.has(styles, "bg-light-green"), "light background-color");
-    t.ok(_.has(styles, "b--light-green"), "light border-color");
-    t.ok(_.has(styles, "light-green"), "light color");
-
     t.ok(_.has(styles, "bg-dark-green"), "dark background-color");
     t.ok(_.has(styles, "b--dark-green"), "dark border-color");
     t.ok(_.has(styles, "dark-green"), "dark color");
 
     t.deepEqual(_.get(styles, "bg-green"), {backgroundColor: "#00FF00"})
     t.deepEqual(_.get(styles, "b--dark-green"), {borderColor: "#00CC00"})
+
+    const fakeStyleSheet = {create: sheet => sheet}
+    NativeTachyons.build({
+        colors: {
+            palette: {
+                green: "#00FF00"
+            }
+        }
+    }, fakeStyleSheet);
+
+    t.ok(_.has(styles, "bg-light-green"), "light background-color");
+    t.ok(_.has(styles, "b--light-green"), "light border-color");
+    t.ok(_.has(styles, "light-green"), "light color");
 
     t.end();
 });

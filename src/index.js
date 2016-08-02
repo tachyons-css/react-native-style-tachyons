@@ -57,8 +57,12 @@ const NativeTachyons = {
             result[key] = val;
 
             /* light and dark alternatives */
-            result[`light-${key}`] = Color(val).lighten(options.colors.lighten).hexString();
-            result[`dark-${key}`] = Color(val).darken(options.colors.darken).hexString();
+            if (options.colors.lighten !== false) {
+                result[`light-${key}`] = Color(val).lighten(options.colors.lighten).hexString();
+            }
+            if (options.colors.darken !== false) {
+                result[`dark-${key}`] = Color(val).darken(options.colors.darken).hexString();
+            }
         }, {});
 
         /* colors: background, foreground and border */
