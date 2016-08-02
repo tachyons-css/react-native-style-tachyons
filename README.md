@@ -127,9 +127,9 @@ bg-green               green background
 bg-light-green         lighter green background
 bg-dark-green          darker green background
 
-b--green               green border                 // Note: double hyphens signify a class that needs another class
-b--light-green         light-green border           //       to work, in this case one of the border-settings
-b--dark-green          dark-green border
+b--green               green border           // Note: double hyphens signify a class that need
+b--light-green         light-green border     //       another class to work, in this case
+b--dark-green          dark-green border      //       one of the border-settings.
 
 green                  green text
 light-green            light-green text
@@ -138,16 +138,16 @@ dark-green             dark-green text
 
 ##### FlexBox
 ```
-absolute               position: "absolute"                 /* position: "relative" is default */
+absolute               position: "absolute"                 /* default: "relative" */
 flx-i                  flex: 1
-flx-row                flexDirection: "row"                 /* flexDirection: "column" is default */
+flx-row                flexDirection: "row"                 /* default: "column" */
 flx-row-reverse        flexDirection: "row-reverse"
 flx-col-reverse        flexDirection: "column-reverse"
-flx-wrap               flexWrap: "wrap"                     /* flexWrap: "nowrap" is default */
-aifs                   alignItems: "flex-start"             /* alignItems: "stretch" is default */
+flx-wrap               flexWrap: "wrap"                     /* default: "nowrap" */
+aifs                   alignItems: "flex-start"             /* default: "stretch" */
 aic                    alignItems: "center"
 aife                   alignItems: "flex-end"
-jcc                    justifyContent: "center"             /* justifyContent: "flex-start" is default */
+jcc                    justifyContent: "center"             /* default: "flex-start" */
 jcfe                   justifyContent: "flex-end"
 jcsb                   justifyContent: "space-between"
 jcsa                   justifyContent: "space-around"
@@ -159,7 +159,7 @@ ass                    alignSelf: "stretch"
 
 ##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
 ```
-ma0 ... ma7            margin: 0|0.25|0.5|1|2|4|8|16rem
+ma0 ... ma7            margin: 0|0.25|0.5|1|2|4|8|16 rem
 ml|mr|mb|mt [0-7]      marginLeft, marginRight, marginBottom, marginTop
 mh [0-7]               marginHorizontal
 mv [0-7]               marginVertical
@@ -169,11 +169,11 @@ Same with p for padding
 
 ##### Heights & Widths
 ```
-h1 ... h5              height: 1|2|4|8|16rem
-w1 ... w5              width: 1|2|4|8|16rem
+h1 ... h5              height: 1|2|4|8|16 rem
+w1 ... w5              width: 1|2|4|8|16 rem
 
-max-h1 ... min-h5      minHeight: 1|2|4|8|16rem
-max-h1 ... max-h5      maxHeight: 1|2|4|8|16rem
+min-h1 ... min-h5      minHeight: 1|2|4|8|16 rem
+max-h1 ... max-h5      maxHeight: 1|2|4|8|16 rem
 (same with w for width)
 
 absolute-fill          position: absolute, top/left/right/bottom: 0
@@ -184,7 +184,7 @@ absolute-fill          position: absolute, top/left/right/bottom: 0
 ba                     borderWidth: 1
 bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
 
-br0 ... br4            borderRadius: 0|0.125|0.25|0.5|1rem
+br0 ... br4            borderRadius: 0|0.125|0.25|0.5|1 rem
 br--bottom             bottom radius only
 br--top                top radius only
 br--right              right radius only
@@ -193,9 +193,9 @@ br--left               left radius only
 
 ##### Text & Fonts [(Scale)](http://tachyons.io/docs/typography/scale/)
 ```
-f1 ... f6              fontSize: 3|2.25|1.5|1.25|1|0.875rem
-f-headline             fontSize: 6rem
-f-subheadline          fontSize: 5rem
+f1 ... f6              fontSize: 3|2.25|1.5|1.25|1|0.875 rem
+f-headline             fontSize: 6 rem
+f-subheadline          fontSize: 5 rem
 
 normal                 fontWeight: normal
 b                      fontWeight: bold
