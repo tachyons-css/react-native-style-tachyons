@@ -4,8 +4,9 @@ import _ from "lodash";
 import React from "react";
 import Benchmark from "benchmark";
 
+const fakeStyleSheet = {create: sheet => sheet}
+
 test('build', t => {
-    const fakeStyleSheet = {create: sheet => sheet}
     NativeTachyons.build({
         colors: {
             palette: {
@@ -32,10 +33,7 @@ test('styles', t => {
     /* borders */
     t.deepEqual(styles.br3, {borderRadius: 8}, "br3 is 8")
     t.deepEqual(styles.bl, {borderLeftWidth: 1}, "bl works")
-    t.deepEqual(styles["br--top"], {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0
-    }, "br--top works")
+    t.deepEqual(styles["br--top"], {borderBottomLeftRadius: 0, borderBottomRightRadius: 0}, "br--top works")
 
     t.deepEqual(styles["o-025"], {opacity: 0.025}, "o-025 is opacity 0.025")
 
@@ -66,7 +64,7 @@ test('colors', t => {
     t.deepEqual(_.get(styles, "bg-green"), {backgroundColor: "#00FF00"})
     t.deepEqual(_.get(styles, "b--dark-green"), {borderColor: "#00CC00"})
 
-    const fakeStyleSheet = {create: sheet => sheet}
+    /* build again this time with light and dark variants */
     NativeTachyons.build({
         colors: {
             palette: {
