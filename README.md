@@ -116,28 +116,30 @@ NativeTachyons.build({
          green: "#00FF00",
          red: "#FF0000"
       },
-      lighten: 0.2        /* default: 0.2 | false to skip light versions */
-      darken: 0.2         /* default: 0.2 | false to skip dark versions */
+      lighten: 0.2        /* default: 0.2, set to false to skip light versions */
+      darken: 0.2         /* default: 0.2, set to false to skip dark versions */
    }
 }, StyleSheet);
 ```
 
-```
+```javascript
 bg-green               green background
 bg-light-green         lighter green background
 bg-dark-green          darker green background
 
-b--green               green border           // Note: double hyphens signify a class that need
-b--light-green         light-green border     //       another class to work, in this case
-b--dark-green          dark-green border      //       one of the border-settings.
+b--green               green border           /* Note: double hyphens signify a class that need
+b--light-green         light-green border              another class to work, in this case
+b--dark-green          dark-green border               one of the border-settings. */
 
 green                  green text
 light-green            light-green text
 dark-green             dark-green text
 ```
 
+If you need the hex values of the colors, you can access them via `import { colors } from "react-native-style-tachyons"`.
+
 ##### FlexBox
-```
+```javascript
 absolute               position: "absolute"                 /* default: "relative" */
 flx-i                  flex: 1
 flx-row                flexDirection: "row"                 /* default: "column" */
@@ -158,29 +160,30 @@ ass                    alignSelf: "stretch"
 ```
 
 ##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
-```
+```javascript
 ma0 ... ma7            margin: 0|0.25|0.5|1|2|4|8|16 rem
 ml|mr|mb|mt [0-7]      marginLeft, marginRight, marginBottom, marginTop
 mh [0-7]               marginHorizontal
 mv [0-7]               marginVertical
 
-Same with p for padding
+/* Same with p for padding */
 ```
 
 ##### Heights & Widths
-```
+```javascript
 h1 ... h5              height: 1|2|4|8|16 rem
 w1 ... w5              width: 1|2|4|8|16 rem
 
 min-h1 ... min-h5      minHeight: 1|2|4|8|16 rem
 max-h1 ... max-h5      maxHeight: 1|2|4|8|16 rem
-(same with w for width)
+
+/* Same with w for width */
 
 absolute-fill          position: absolute, top/left/right/bottom: 0
 ```
 
 ##### Borders
-```
+```javascript
 ba                     borderWidth: 1
 bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
 
@@ -192,7 +195,8 @@ br--left               left radius only
 ```
 
 ##### Text & Fonts [(Scale)](http://tachyons.io/docs/typography/scale/)
-```
+```javascript
+f5                     fontSize: 1 rem
 f1 ... f6              fontSize: 3|2.25|1.5|1.25|1|0.875 rem
 f-headline             fontSize: 6 rem
 f-subheadline          fontSize: 5 rem
@@ -207,14 +211,14 @@ tl|tc|tr|tj            textAlign: left|right|center|justify
 ```
 
 ##### Images
-```
+```javascript
 rm-contain             resizeMode: "contain"
 rm-cover               resizeMode: "cover"
 rm-stretch             resizeMode: "stretch"
 ```
 
 ##### Opacity
-```
+```javascript
 o-10|20|...|100        opacity: 0.1|0.2|...|1
 o-05                   opacity: 0.05
 o-025                  opacity: 0.025
