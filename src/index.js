@@ -11,6 +11,9 @@ const NativeTachyons = {
     /* placeholder */
     styles: Object.create(null),
 
+    /* placeholder */
+    colors: Object.create(null),
+
     build: function build(options = {}, StyleSheet) {
         _.defaultsDeep(options, {
             rem: 16,
@@ -78,19 +81,31 @@ const NativeTachyons = {
             }
         }, {});
 
-        /* copy all properties with hyphens to underscore */
-        _.forEach(styleSheet, (val, key) => {
-            if (key.includes("-")) {
-                debug(`replacing ${key} -> ${key.replace(/-/g, "_")}`)
-                styleSheet[key.replace(/-/g, "_")] = val;
-            }
-        })
-
-        _.assign(NativeTachyons.styles, StyleSheet.create(styleSheet));
+        _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
+        _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
     }
 }
 
+function hyphensToUnderscores(sourceObj) {
+    const translated = {}
+
+    /* copy all properties */
+    _.assign(translated, sourceObj);
+
+    /* create hypened versions */
+    _.forEach(sourceObj, (val, key) => {
+        if (key.includes("-")) {
+            debug(`replacing ${key} -> ${key.replace(/-/g, "_")}`)
+            translated[key.replace(/-/g, "_")] = val;
+        }
+    })
+
+    return translated;
+}
+
+
 export default NativeTachyons;
+export const colors = NativeTachyons.colors;
 export const styles = NativeTachyons.styles;
 export const wrap = reactWrapper.wrap;
 export const build = NativeTachyons.build;

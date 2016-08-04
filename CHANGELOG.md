@@ -1,3 +1,6 @@
+## 2.3
+* access generated colors via `import { colors } from "react-native-style-tachyons"`
+
 ## 2.2
 * updated readme
 * specify `lighten: false` or `darken: false` to skip color variants

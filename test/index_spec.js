@@ -1,5 +1,5 @@
 import { test } from "tape";
-import NativeTachyons, { styles } from "../lib/";
+import NativeTachyons, { styles, colors } from "../lib/";
 import _ from "lodash";
 import React from "react";
 import Benchmark from "benchmark";
@@ -76,6 +76,12 @@ test('colors', t => {
     t.ok(_.has(styles, "bg-light-green"), "light background-color");
     t.ok(_.has(styles, "b--light-green"), "light border-color");
     t.ok(_.has(styles, "light-green"), "light color");
+
+    /* access generated colors */
+    t.equal(Object.keys(colors).length, 15, "15 colors");
+    t.ok(_.has(colors, "light-green"));
+    t.equal(colors.green, "#00FF00");
+    t.equal(colors.light_green, "#33FF33");
 
     t.end();
 });
