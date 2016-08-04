@@ -110,12 +110,13 @@ Specify a color palette in the options and Tachyons will generate styles for you
 ```javascript
 NativeTachyons.build({
    colors: {
-      palette: {
+      palette: {		
+         /* white and black are available by default */
          green: "#00FF00",
          red: "#FF0000"
-      },
-      lighten: 0.2        /* default: 0.2, set to false to skip light versions */
-      darken: 0.2         /* default: 0.2, set to false to skip dark versions */
+      }
+      // lighten: 0.2,        default: 0.2, change or set to false to skip light versions
+      // darken: 0.2          default: 0.2, change or set to false to skip dark versions
    }
 }, StyleSheet);
 ```
