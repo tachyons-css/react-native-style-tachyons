@@ -79,8 +79,6 @@ Of course you can use your old styles along tachyon's classes.
        /* REM parameter it optional, default is 16 */
        rem: width > 340 ? 18 : 16
    }, StyleSheet);
-
-   /* the need to pass "StyleSheet" from react-native will be removed */
    ```
 
 3. To use the styles
