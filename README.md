@@ -127,9 +127,9 @@ bg-green               green background
 bg-light-green         lighter green background
 bg-dark-green          darker green background
 
-b--green               green border           /* Note: double hyphens signify a class that need
-b--light-green         light-green border              another class to work, in this case
-b--dark-green          dark-green border               one of the border-settings. */
+b--green               green border           // Note: double hyphens signify a class that need
+b--light-green         light-green border     //       another class to work, in this case
+b--dark-green          dark-green border      //       one of the border-settings. 
 
 green                  green text
 light-green            light-green text
