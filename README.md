@@ -110,7 +110,7 @@ Specify a color palette in the options and Tachyons will generate styles for you
 ```javascript
 NativeTachyons.build({
    colors: {
-      palette: {		
+      palette: {
          /* white and black are available by default */
          green: "#00FF00",
          red: "#FF0000"
@@ -128,14 +128,12 @@ bg-dark-green          darker green background
 
 b--green               green border           // Note: double hyphens signify a class that need
 b--light-green         light-green border     //       another class to work, in this case
-b--dark-green          dark-green border      //       one of the border-settings. 
+b--dark-green          dark-green border      //       one of the border-settings.
 
 green                  green text
 light-green            light-green text
 dark-green             dark-green text
 ```
-
-If you need the hex values of the colors, you can access them via `import { colors } from "react-native-style-tachyons"`.
 
 ##### FlexBox
 ```javascript
@@ -221,6 +219,17 @@ rm-stretch             resizeMode: "stretch"
 o-10|20|...|100        opacity: 0.1|0.2|...|1
 o-05                   opacity: 0.05
 o-025                  opacity: 0.025
+```
+
+### Raw Values
+
+To access the hex values of the colors, or sizes:
+
+```javascript
+import { colors, sizes } from "react-native-style-tachyons"
+
+const c = colors.bg_yellow
+const s = sizes.ma2          /* sizes.w4, ... */
 ```
 
 ## Changes

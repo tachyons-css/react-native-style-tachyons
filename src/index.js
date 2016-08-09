@@ -9,10 +9,13 @@ const NativeTachyons = {
     wrap: reactWrapper.wrap,
 
     /* placeholder */
-    styles: Object.create(null),
+    styles: {},
 
     /* placeholder */
-    colors: Object.create(null),
+    colors: {},
+
+    /* placeholder */
+    sizes: {},
 
     build: function build(options = {}, StyleSheet) {
         _.defaultsDeep(options, {
@@ -55,6 +58,27 @@ const NativeTachyons = {
                     _.mapValues(style, val => val * options.rem)))
         })
 
+        /* calculate sizes for export */
+        const sizes = {}
+        _.forEach([
+            require("./styles/heights").heights,
+            require("./styles/heights").minHeights,
+            require("./styles/heights").maxHeights,
+            require("./styles/widths").widths,
+            require("./styles/widths").minWidths,
+            require("./styles/widths").maxWidths,
+            require("./styles/spacing").default,
+            require("./styles/typeScale").default
+        ], obj => {
+            _.forEach(obj, (rule, tachyonsKey) => {
+                _.forEach(rule, val => {
+                    sizes[tachyonsKey] = val * options.rem
+                })
+            })
+        })
+        _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
+        debug("got sizes:", sizes)
+
         /* colors: dark and light variant */
         const allColors = _.transform(options.colors.palette, (result, val, key) => {
             result[key] = val;
@@ -70,15 +94,9 @@ const NativeTachyons = {
 
         /* colors: background, foreground and border */
         _.forEach(allColors, (val, key) => {
-            styleSheet[`bg-${key}`] = {
-                backgroundColor: val
-            }
-            styleSheet[`${key}`] = {
-                color: val
-            }
-            styleSheet[`b--${key}`] = {
-                borderColor: val
-            }
+            styleSheet[`bg-${key}`] = {backgroundColor: val}
+            styleSheet[`${key}`] = {color: val}
+            styleSheet[`b--${key}`] = {borderColor: val}
         }, {});
 
         _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
@@ -105,6 +123,7 @@ function hyphensToUnderscores(sourceObj) {
 
 
 export default NativeTachyons;
+export const sizes = NativeTachyons.sizes;
 export const colors = NativeTachyons.colors;
 export const styles = NativeTachyons.styles;
 export const wrap = reactWrapper.wrap;

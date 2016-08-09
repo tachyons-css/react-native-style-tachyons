@@ -1,3 +1,6 @@
+## 2.4
+* access generated sizes via `import { sizes } from "react-native-style-tachyons"`
+
 ## 2.3
 * access generated colors via `import { colors } from "react-native-style-tachyons"`
 
