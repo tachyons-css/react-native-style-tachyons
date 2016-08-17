@@ -16,6 +16,7 @@ export function wrap(WrappedComponent) {
             /* parse cls string */
             if (_.isString(props.cls)) {
                 newProps = {}
+                translated = true
                 if (_.isArray(props.style)) {
                     newProps.style = props.style.slice()
 
@@ -31,11 +32,10 @@ export function wrap(WrappedComponent) {
                     const cls = splitted[i];
                     if (cls.length > 0) {
                         const style = NativeTachyons.styles[cls];
-                        if (_.isUndefined(style)) {
+                        if (!style) {
                             throw new Error(`style '${cls}' not found`);
                         }
                         newProps.style.push(style);
-                        translated = true;
                     }
                 }
             }

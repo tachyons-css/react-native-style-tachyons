@@ -90,6 +90,15 @@ const NativeTachyons = {
             if (options.colors.darken !== false) {
                 result[`dark-${key}`] = Color(val).darken(options.colors.darken).hexString();
             }
+
+            /* alpha variants */
+            for (let i = 10; i < 100; i = i + 10) {
+                const name = `${key}-${i}`;
+                const rgbString = Color(val).alpha(i / 100).rgbString();
+                debug(`writing alpha variant: ${name}: ${rgbString}`)
+                result[name] = rgbString;
+            }
+
         }, {});
 
         /* colors: background, foreground and border */

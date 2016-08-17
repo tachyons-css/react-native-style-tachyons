@@ -133,6 +133,10 @@ b--dark-green          dark-green border      //       one of the border-setting
 green                  green text
 light-green            light-green text
 dark-green             dark-green text
+
+/* opacities (same for bg- and b--) */
+green-10, green-20 ... green-90	      green text with opacity 10%, 20%, ... , 90%
+
 ```
 
 ##### FlexBox

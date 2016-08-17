@@ -1,3 +1,6 @@
+## 2.5
+* generate opacity variants for colors: `bg-green-20` and so on.
+
 ## 2.4
 * access generated sizes via `import { sizes } from "react-native-style-tachyons"`
 

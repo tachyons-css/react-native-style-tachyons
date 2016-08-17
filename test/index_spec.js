@@ -47,7 +47,7 @@ test('styles', t => {
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     /* sum of styles */
-    t.equal(_.keys(styles).length, 293, "293 styles generated");
+    t.equal(_.keys(styles).length, 455, "455 styles generated");
 
     t.end();
 });
@@ -85,10 +85,11 @@ test('colors', t => {
     t.ok(_.has(styles, "light-green"), "light color");
 
     /* access generated colors */
-    t.equal(Object.keys(colors).length, 15, "15 colors");
+    t.equal(Object.keys(colors).length, 69, "69 colors");
     t.ok(_.has(colors, "light-green"));
     t.equal(colors.green, "#00FF00");
     t.equal(colors.light_green, "#33FF33");
+    t.equal(colors.green_50, "rgba(0, 255, 0, 0.5)");
 
     t.end();
 });
