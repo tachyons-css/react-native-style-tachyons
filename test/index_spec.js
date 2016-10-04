@@ -116,6 +116,9 @@ test('wrapping', t => {
                         <div key="child3" cls="w2">
                             <div/>
                         </div>
+                        <div key="child4" cls="bg-#abcdef b--rgba(200,144,233,1.0) burlywood">
+                            <div/>
+                        </div>
                     </div>
                 )
             }
@@ -138,10 +141,19 @@ test('wrapping', t => {
     /* children */
     t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
     t.deepEqual(instance.props.children[0].props.style, [{width: 32}], "child cls is converted");
-    t.deepEqual(instance.props.children.length, 3, "children are converted");
+    t.deepEqual(instance.props.children.length, 4, "children are converted");
     t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "nested single children are converted");
     t.deepEqual(instance.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
     t.ok(React.isValidElement(instance.props.children[2].props.children), "unaltered single children are preserved");
+
+    t.deepEqual(
+        instance.props.children[3].props.style,
+        [
+            { backgroundColor: '#abcdef' },
+            { borderColor: 'rgba(200,144,233,1.0)' },
+            { color: 'burlywood' }
+        ],
+        "ad-hoc colors are supported");
 
     t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
 

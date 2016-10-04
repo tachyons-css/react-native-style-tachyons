@@ -1,6 +1,16 @@
 import React from "react";
 import _ from "lodash";
 import NativeTachyons from "./index";
+import Color from "color";
+
+function isColor(str) {
+    try {
+        Color(str)
+        return true
+    } catch (err) {
+        return false
+    }
+}
 
 export function wrap(WrappedComponent) {
     const newClass = class extends WrappedComponent {
@@ -32,10 +42,28 @@ export function wrap(WrappedComponent) {
                     const cls = splitted[i];
                     if (cls.length > 0) {
                         const style = NativeTachyons.styles[cls];
-                        if (!style) {
+                        if (style) {
+                            newProps.style.push(style);
+
+                        } else if (cls.startsWith("bg-") && isColor(cls.slice(3))) {
+                            newProps.style.push({
+                                backgroundColor: cls.slice(3)
+                            })
+
+                        } else if (cls.startsWith("b--") && isColor(cls.slice(3))) {
+                            newProps.style.push({
+                                borderColor: cls.slice(3)
+                            })
+
+                        } else if (isColor(cls)) {
+                            newProps.style.push({
+                                color: cls
+                            })
+
+                        } else {
                             throw new Error(`style '${cls}' not found`);
                         }
-                        newProps.style.push(style);
+
                     }
                 }
             }

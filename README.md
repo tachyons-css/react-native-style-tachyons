@@ -105,40 +105,6 @@ Of course you can use your old styles along tachyon's classes.
 
 ### Reference / Supported Properties
 
-##### Colors
-Specify a color palette in the options and Tachyons will generate styles for you, complete with a light and a dark version:
-```javascript
-NativeTachyons.build({
-   colors: {
-      palette: {
-         /* white and black are available by default */
-         green: "#00FF00",
-         red: "#FF0000"
-      }
-      // lighten: 0.2,        default: 0.2, change or set to false to skip light versions
-      // darken: 0.2          default: 0.2, change or set to false to skip dark versions
-   }
-}, StyleSheet);
-```
-
-```javascript
-bg-green               green background
-bg-light-green         lighter green background
-bg-dark-green          darker green background
-
-b--green               green border           // Note: double hyphens signify a class that need
-b--light-green         light-green border     //       another class to work, in this case
-b--dark-green          dark-green border      //       one of the border-settings.
-
-green                  green text
-light-green            light-green text
-dark-green             dark-green text
-
-/* opacities (same for bg- and b--) */
-green-10, green-20 ... green-90	      green text with opacity 10%, 20%, ... , 90%
-
-```
-
 ##### FlexBox
 ```javascript
 absolute               position: "absolute"                 /* default: "relative" */
@@ -224,6 +190,50 @@ o-10|20|...|100        opacity: 0.1|0.2|...|1
 o-05                   opacity: 0.05
 o-025                  opacity: 0.025
 ```
+
+##### Colors
+Colors can be specified by in the string. If they are prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
+All of [React Native's colors](https://facebook.github.io/react-native/docs/colors.html) are supported.
+
+```javascript
+bg-green                     green background
+#232323                text color of #232323
+b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
+```
+
+You can also specify a palette in the options and Tachyons will generate styles for you, complete with a light and a dark version. These colors will overwrite the default ones, though those are still available.
+
+```javascript
+NativeTachyons.build({
+   colors: {
+      palette: {
+         gold: "#FFD700",
+      }
+      // lighten: 0.2,        default: 0.2, change or set to false to skip light versions
+      // darken: 0.2          default: 0.2, change or set to false to skip dark versions
+   }
+}, StyleSheet);
+```
+
+```javascript
+bg-gold                golden background
+bg-light-gold          lighter golden background
+bg-dark-gold           darker golden background
+
+b--gold                golden border             // Note: double hyphens signify a class that need
+b--light-gold          light-gold border         //       another class to work, in this case
+b--dark-gold           dark-gold border          //       one of the border-settings.
+
+gold                   golden text
+light-gold             light-gold text
+dark-gold              dark-gold text
+
+/* opacities (same for bg- and b--) */
+gold-10, gold-20 ... gold-90	      golden text with opacity 10%, 20%, ... , 90%
+
+```
+
+
 
 ### Raw Values
 

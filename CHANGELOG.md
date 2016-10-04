@@ -1,3 +1,6 @@
+## 2.6
+* Allow ad-hoc colors to be specified like `bg-#ffab12`
+
 ## 2.5
 * generate opacity variants for colors: `bg-green-20` and so on.
 
