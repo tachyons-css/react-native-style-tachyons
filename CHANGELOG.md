@@ -1,3 +1,6 @@
+## 2.6.1
+* updated readme
+
 ## 2.6
 * Allow ad-hoc colors to be specified like `bg-#ffab12`
 
