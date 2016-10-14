@@ -76,7 +76,7 @@ Of course you can use your old styles along tachyon's classes.
    import { StyleSheet } from 'react-native';
 
    NativeTachyons.build({
-       /* REM parameter it optional, default is 16 */
+       /* REM parameter is optional, default is 16 */
        rem: width > 340 ? 18 : 16
    }, StyleSheet);
    ```
