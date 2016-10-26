@@ -1,5 +1,5 @@
 import { test } from "tape";
-import NativeTachyons, { styles, colors, sizes } from "../lib/";
+import NativeTachyons, { styles, colors, sizes } from "../src/";
 import _ from "lodash";
 import React from "react";
 import Benchmark from "benchmark";

@@ -58,7 +58,8 @@
   },
   "scripts": {
     "build": "rm -Rf lib && babel src -d lib",
-    "test": "eslint_d --fix src && npm run build && tape -r babel-register 'test/**/*_spec.js' | faucet",
+    "_test": "tape -r babel-register 'test/**/*_spec.js' | faucet",
+    "test": "eslint_d --fix src && npm run build && npm run _test",
     "publish-please": "publish-please",
     "prepublish": "publish-please guard"
   }
