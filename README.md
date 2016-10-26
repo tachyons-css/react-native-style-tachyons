@@ -192,7 +192,7 @@ o-05                   opacity: 0.05
 o-025                  opacity: 0.025
 ```
 
-### Colors
+## Colors
 * When using the `cls=''` syntax, colors can be specified directly in the string. Every color-name and syntax that is supported by [Color](https://github.com/qix-/color) works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
 
   ```javascript
@@ -237,7 +237,7 @@ gold-10, gold-20 ... gold-90	      golden text with opacity 10%, 20%, ... , 90%
 
 
 
-### Raw Values
+## Raw Values
 
 To access the hex values of your color palette, or the actual computed sizes:
 
