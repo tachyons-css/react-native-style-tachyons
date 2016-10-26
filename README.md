@@ -61,14 +61,16 @@ Of course you can use your old styles along tachyons' classes.
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
 
-* **Tachyons' scale**: dimensions and typography build on a proven scale, which is relative to `rem`, the root font-size. Instead of finding pixel-values for padding (or a margin, width or height), you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. 
+#### Tachyons' scale
+Dimensions and typography build on a proven scale, which is relative to `rem`, the root font-size. Instead of finding pixel-values for padding (or a margin, width or height), you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. 
 
-  The scale progresses with powers of two, so each step is twice as big as the last. This means everything will always line up, no more "off-by-one-pixel"-errors.
-  You can scale the entire app just by setting a different `rem`. This is a great advantage when building a responsive app.
+The scale progresses with powers of two, so each step is twice as big as the last. This means everything will always line up, no more "off-by-one-pixel"-errors.
 
-   [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
+You can scale the entire app just by setting a different `rem`. This is a great advantage when building a responsive app.
 
-   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
+   [More about Tachyons' spacing](http://tachyons.io/docs/layout/spacing/)
+
+   [More about Tachyons' typography](http://tachyons.io/docs/typography/scale/)
   
 
 ## Usage
