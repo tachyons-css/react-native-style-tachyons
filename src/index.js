@@ -41,6 +41,7 @@ const NativeTachyons = {
         _.assign(styleSheet, require("./styles/utilities").default)
 
         /* calculate rem scales */
+        const sizes = {}
         const REM_SCALED = [
             require("./styles/heights").heights,
             require("./styles/heights").minHeights,
@@ -53,24 +54,16 @@ const NativeTachyons = {
             require("./styles/borders").radii
         ]
         _.forEach(REM_SCALED, subSheet => {
+
+            /* assign to styleSheet */
             _.assign(styleSheet,
                 _.mapValues(subSheet, style =>
-                    _.mapValues(style, val => val * options.rem)))
-        })
+                    _.mapValues(style, val => val * options.rem)
+                )
+            )
 
-        /* calculate sizes for export */
-        const sizes = {}
-        _.forEach([
-            require("./styles/heights").heights,
-            require("./styles/heights").minHeights,
-            require("./styles/heights").maxHeights,
-            require("./styles/widths").widths,
-            require("./styles/widths").minWidths,
-            require("./styles/widths").maxWidths,
-            require("./styles/spacing").default,
-            require("./styles/typeScale").default
-        ], obj => {
-            _.forEach(obj, (rule, tachyonsKey) => {
+            /* sizes for export */
+            _.forEach(subSheet, (rule, tachyonsKey) => {
                 _.forEach(rule, val => {
                     sizes[tachyonsKey] = val * options.rem
                 })
@@ -100,6 +93,7 @@ const NativeTachyons = {
             }
 
         }, {});
+        _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
 
         /* colors: background, foreground and border */
         _.forEach(allColors, (val, key) => {
@@ -108,7 +102,6 @@ const NativeTachyons = {
             styleSheet[`b--${key}`] = { borderColor: val }
         }, {});
 
-        _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
         _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
     }
 }

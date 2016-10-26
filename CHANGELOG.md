@@ -1,4 +1,7 @@
-## 2.6.1
+## 2.7
+* added the `br` values to the exported sizes
+
+### 2.6.1
 * updated readme
 
 ## 2.6

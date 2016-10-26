@@ -54,6 +54,7 @@ test('styles', t => {
 
 test('sizes', t => {
     t.equal(_.keys(sizes).length, 172, "172 sizes generated");
+    t.equal(_.keys(sizes).length, 177, "177 sizes generated");
     t.equal(sizes.pa3, 16, "pa3 is 16");
     t.equal(sizes.max_w2, 32, "max_w2 is 32");
     t.end();
