@@ -53,22 +53,28 @@ import {styles as s} from "react-native-style-tachyons";
    </Text>
 </View>
 ```
+Of course you can use your old styles along tachyons' classes.
 
-Of course you can use your old styles along tachyon's classes.
-
-###### Advantages
+#### Advantages
 * Less code
 * No need to maintain a separate stylesheet
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
-* Tachyons dimensions and typography build on a proven scale, which is relative to REM, the root font-size. Instead of specifying a pixel-padding, you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. This way your spaces are always relative to your font-size, which is a great advantage when building a responsive app.
 
-  [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
+#### Tachyons' scale
+Dimensions and typography build on a proven scale, which is relative to `rem`, the root font-size. Instead of having to find proper values for padding (or margin, width or height), you use a simple 7-step scale. `pa2` gets you `padding` of `0.5rem`. 
 
-  [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
+* The scale progresses with powers of two, so each step is twice as big as the last. This means everything will always line up, no more "off-by-one-pixel"-problems.
+
+* You can scale the entire design just by setting a different `rem`. This is a great advantage when building a responsive app.
+
+   [More about Tachyons' spacing](http://tachyons.io/docs/layout/spacing/)
+
+   [More about Tachyons' typography](http://tachyons.io/docs/typography/scale/)
+  
 
 ## Usage
-`react-native-style-tachyons` needs to know your `rem` upon start.
+`react-native-style-tachyons` needs to know your `rem` upon start: 
 
 1. In the entry point of your app include:
 
@@ -78,11 +84,11 @@ Of course you can use your old styles along tachyon's classes.
 
    NativeTachyons.build({
        /* REM parameter is optional, default is 16 */
-       rem: width > 340 ? 18 : 16
+       rem: screenWidth > 340 ? 18 : 16
    }, StyleSheet);
    ```
 
-3. To use the styles
+2. To use the styles
 
    ```javascript
    import { styles as s } from "react-native-style-tachyons";
@@ -90,7 +96,7 @@ Of course you can use your old styles along tachyon's classes.
 
 	To support javascript property syntax, all style names with hyphens have an equivalent with an underscore, e.g. `s.bg_black` instead of `s["bg-black"]`.
 
-2. To use the `cls=''` syntax, you have to wrap your component:
+3. To use the `cls=''` syntax, you have to wrap your component:
 
    ```javascript
    import NativeTachyons from "react-native-style-tachyons";
