@@ -239,7 +239,7 @@ gold-10, gold-20 ... gold-90	      golden text with opacity 10%, 20%, ... , 90%
 
 ### Raw Values
 
-To access the hex values of the colors, or sizes:
+To access the hex values of your color palette, or the actual computed sizes:
 
 ```javascript
 import { colors, sizes } from "react-native-style-tachyons"
