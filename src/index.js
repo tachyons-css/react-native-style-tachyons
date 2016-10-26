@@ -2,7 +2,7 @@ import _ from "lodash";
 import Color from "color";
 import * as reactWrapper from "./reactWrapper";
 
-const debug = require('debug')('react-native-tachyons')
+const debug = require("debug")("react-native-tachyons")
 
 /* global require */
 const NativeTachyons = {
@@ -85,16 +85,16 @@ const NativeTachyons = {
 
             /* light and dark alternatives */
             if (options.colors.lighten !== false) {
-                result[`light-${key}`] = Color(val).lighten(options.colors.lighten).hexString();
+                result[`light-${key}`] = new Color(val).lighten(options.colors.lighten).hexString();
             }
             if (options.colors.darken !== false) {
-                result[`dark-${key}`] = Color(val).darken(options.colors.darken).hexString();
+                result[`dark-${key}`] = new Color(val).darken(options.colors.darken).hexString();
             }
 
             /* alpha variants */
-            for (let i = 10; i < 100; i = i + 10) {
+            for (let i = 10; i < 100; i += 10) {
                 const name = `${key}-${i}`;
-                const rgbString = Color(val).alpha(i / 100).rgbString();
+                const rgbString = new Color(val).alpha(i / 100).rgbString();
                 debug(`writing alpha variant: ${name}: ${rgbString}`)
                 result[name] = rgbString;
             }
@@ -103,9 +103,9 @@ const NativeTachyons = {
 
         /* colors: background, foreground and border */
         _.forEach(allColors, (val, key) => {
-            styleSheet[`bg-${key}`] = {backgroundColor: val}
-            styleSheet[`${key}`] = {color: val}
-            styleSheet[`b--${key}`] = {borderColor: val}
+            styleSheet[`bg-${key}`] = { backgroundColor: val }
+            styleSheet[`${key}`] = { color: val }
+            styleSheet[`b--${key}`] = { borderColor: val }
         }, {});
 
         _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));

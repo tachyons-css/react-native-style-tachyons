@@ -1,11 +1,13 @@
 import React from "react";
 import _ from "lodash";
-import NativeTachyons from "./index";
+import { styles } from "./index";
 import Color from "color";
 
 function isColor(str) {
     try {
-        Color(str)
+        // eslint-disable-next-line no-new
+        new Color(str)
+
         return true
     } catch (err) {
         return false
@@ -41,7 +43,7 @@ export function wrap(WrappedComponent) {
                 for (let i = 0; i < splitted.length; i++) {
                     const cls = splitted[i];
                     if (cls.length > 0) {
-                        const style = NativeTachyons.styles[cls];
+                        const style = styles[cls];
                         if (style) {
                             newProps.style.push(style);
 

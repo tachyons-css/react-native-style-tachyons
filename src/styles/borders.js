@@ -6,22 +6,22 @@ export const radii = _.mapValues({
     br2: 0.25,
     br3: 0.5,
     br4: 1
-}, val => ({borderRadius: val}));
+}, val => ({ borderRadius: val }));
 
 export const styles = {
-    "ba": {
+    ba: {
         borderWidth: 1
     },
-    "bt": {
+    bt: {
         borderTopWidth: 1
     },
-    "br": {
+    br: {
         borderRightWidth: 1
     },
-    "bb": {
+    bb: {
         borderBottomWidth: 1
     },
-    "bl": {
+    bl: {
         borderLeftWidth: 1
     },
     "br--bottom": {

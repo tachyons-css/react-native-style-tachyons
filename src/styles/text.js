@@ -3,15 +3,15 @@ export default {
         fontStyle: "italic"
     },
     tl: {
-        textAlign: 'left'
+        textAlign: "left"
     },
     tc: {
-        textAlign: 'center'
+        textAlign: "center"
     },
     tr: {
-        textAlign: 'right'
+        textAlign: "right"
     },
     tj: {
-        textAlign: 'justify'
+        textAlign: "justify"
     }
 }
