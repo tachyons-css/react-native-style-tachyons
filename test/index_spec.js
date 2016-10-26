@@ -1,13 +1,13 @@
 import { test } from "tape";
-import NativeTachyons, { styles, colors, sizes } from "../src/";
+import { build, wrap, styles, colors, sizes } from "../src/";
 import _ from "lodash";
 import React from "react";
 import Benchmark from "benchmark";
 
-const fakeStyleSheet = {create: sheet => sheet}
+const fakeStyleSheet = { create: sheet => sheet }
 
-test('build', t => {
-    NativeTachyons.build({
+test("build", t => {
+    build({
         colors: {
             palette: {
                 green: "#00FF00"
@@ -20,7 +20,7 @@ test('build', t => {
     t.end();
 })
 
-test('styles', t => {
+test("styles", t => {
     t.ok(_.isObject(styles), "styles is an object");
     t.ok(_.has(styles, "w1"), "example: has w1");
     t.ok(_.has(styles, "w5"), "example: has w5");
@@ -28,19 +28,19 @@ test('styles', t => {
     t.ok(_.has(styles, "f1"), "example: has f1");
 
     t.ok(_.has(styles, "absolute-fill"), "example: has absolute-fill");
-    t.deepEqual(styles.pa3, {padding: 16}, "pa3 is 16")
+    t.deepEqual(styles.pa3, { padding: 16 }, "pa3 is 16")
 
     /* borders */
-    t.deepEqual(styles.br3, {borderRadius: 8}, "br3 is 8")
-    t.deepEqual(styles.bl, {borderLeftWidth: 1}, "bl works")
-    t.deepEqual(styles["br--top"], {borderBottomLeftRadius: 0, borderBottomRightRadius: 0}, "br--top works")
+    t.deepEqual(styles.br3, { borderRadius: 8 }, "br3 is 8")
+    t.deepEqual(styles.bl, { borderLeftWidth: 1 }, "bl works")
+    t.deepEqual(styles["br--top"], { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }, "br--top works")
 
-    t.deepEqual(styles["o-025"], {opacity: 0.025}, "o-025 is opacity 0.025")
+    t.deepEqual(styles["o-025"], { opacity: 0.025 }, "o-025 is opacity 0.025")
 
-    t.deepEqual(styles["min-w3"], {minWidth: 64})
-    t.deepEqual(styles["max-w3"], {maxWidth: 64})
-    t.deepEqual(styles["min-h4"], {minHeight: 128})
-    t.deepEqual(styles["max-h4"], {maxHeight: 128})
+    t.deepEqual(styles["min-w3"], { minWidth: 64 })
+    t.deepEqual(styles["max-w3"], { maxWidth: 64 })
+    t.deepEqual(styles["min-h4"], { minHeight: 128 })
+    t.deepEqual(styles["max-h4"], { maxHeight: 128 })
 
     /* underscore version are generated */
     t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
@@ -52,15 +52,14 @@ test('styles', t => {
     t.end();
 });
 
-test('sizes', t => {
-    t.equal(_.keys(sizes).length, 172, "172 sizes generated");
+test("sizes", t => {
     t.equal(_.keys(sizes).length, 177, "177 sizes generated");
     t.equal(sizes.pa3, 16, "pa3 is 16");
     t.equal(sizes.max_w2, 32, "max_w2 is 32");
     t.end();
 })
 
-test('colors', t => {
+test("colors", t => {
     t.ok(_.has(styles, "bg-green"), "background-color");
     t.ok(_.has(styles, "b--green"), "border-color");
     t.ok(_.has(styles, "green"), "color");
@@ -69,11 +68,11 @@ test('colors', t => {
     t.ok(_.has(styles, "b--dark-green"), "dark border-color");
     t.ok(_.has(styles, "dark-green"), "dark color");
 
-    t.deepEqual(_.get(styles, "bg-green"), {backgroundColor: "#00FF00"})
-    t.deepEqual(_.get(styles, "b--dark-green"), {borderColor: "#00CC00"})
+    t.deepEqual(_.get(styles, "bg-green"), { backgroundColor: "#00FF00" })
+    t.deepEqual(_.get(styles, "b--dark-green"), { borderColor: "#00CC00" })
 
     /* build again this time with light and dark variants */
-    NativeTachyons.build({
+    build({
         colors: {
             palette: {
                 green: "#00FF00"
@@ -95,12 +94,11 @@ test('colors', t => {
     t.end();
 });
 
-test('wrapping', t => {
+test("wrapping", t => {
 
     function createComponent(clsStr, style) {
-        return React.createClass({
-            displayName: 'Orig',
-            render: function render() {
+        const comp = class extends React.Component {
+            render() {
                 return (
                     <div
                         key="1"
@@ -108,31 +106,48 @@ test('wrapping', t => {
                         cls={clsStr}
                         style={style}
                     >
-                        <div key="child1" cls="w2">
+                        <div
+                            key="child1"
+                            cls="w2"
+                        >
                             <div cls="w4" />
                         </div>
-                        <div key="child2" cls="w1">
+                        <div
+                            key="child2"
+                            cls="w1"
+                        >
                             Test
                         </div>
-                        <div key="child3" cls="w2">
-                            <div/>
+                        <div
+                            key="child3"
+                            cls="w2"
+                        >
+                            <div />
                         </div>
-                        <div key="child4" cls="bg-#abcdef b--rgba(200,144,233,1.0) burlywood">
-                            <div/>
+                        <div
+                            key="child4"
+                            cls="bg-#abcdef b--rgba(200,144,233,1.0) burlywood"
+                        >
+                            <div />
                         </div>
                     </div>
                 )
             }
-        })
+        }
+
+        comp.displayName = "Orig"
+
+        return comp
     }
 
     function renderComponent(clsStr, style) {
-        const Comp = NativeTachyons.wrap(createComponent(clsStr, style))
+        const Comp = wrap(createComponent(clsStr, style))
+
         return new Comp().render()
     }
 
     const Orig = createComponent("w5")
-    const Wrapped = NativeTachyons.wrap(Orig);
+    const Wrapped = wrap(Orig);
     t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved");
 
     let instance = renderComponent("w5")
@@ -141,28 +156,28 @@ test('wrapping', t => {
 
     /* children */
     t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
-    t.deepEqual(instance.props.children[0].props.style, [{width: 32}], "child cls is converted");
+    t.deepEqual(instance.props.children[0].props.style, [{ width: 32 }], "child cls is converted");
     t.deepEqual(instance.props.children.length, 4, "children are converted");
-    t.deepEqual(instance.props.children[0].props.children.props.style, [{width: 128}], "nested single children are converted");
+    t.deepEqual(instance.props.children[0].props.children.props.style, [{ width: 128 }], "nested single children are converted");
     t.deepEqual(instance.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
     t.ok(React.isValidElement(instance.props.children[2].props.children), "unaltered single children are preserved");
 
     t.deepEqual(
         instance.props.children[3].props.style,
         [
-            { backgroundColor: '#abcdef' },
-            { borderColor: 'rgba(200,144,233,1.0)' },
-            { color: 'burlywood' }
+            { backgroundColor: "#abcdef" },
+            { borderColor: "rgba(200,144,233,1.0)" },
+            { color: "burlywood" }
         ],
         "ad-hoc colors are supported");
 
-    t.deepEqual(instance.props.style, [{width: 256}], "style array is created");
+    t.deepEqual(instance.props.style, [{ width: 256 }], "style array is created");
 
-    instance = renderComponent("w5", {width: 5})
-    t.deepEqual(instance.props.style, [{width: 5}, {width: 256}], "existing style object is converted to array and appended");
+    instance = renderComponent("w5", { width: 5 })
+    t.deepEqual(instance.props.style, [{ width: 5 }, { width: 256 }], "existing style object is converted to array and appended");
 
-    instance = renderComponent("w5", [{width: 5}])
-    t.deepEqual(instance.props.style, [{width: 5}, {width: 256}], "existing style array is appended");
+    instance = renderComponent("w5", [{ width: 5 }])
+    t.deepEqual(instance.props.style, [{ width: 5 }, { width: 256 }], "existing style array is appended");
 
     instance = renderComponent("")
     t.deepEqual(instance.props.style, [], "if style is undefined, an array will be created");
@@ -170,10 +185,10 @@ test('wrapping', t => {
     t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
 
     /* benchmarking */
-    const inst = new (NativeTachyons.wrap(createComponent("w2", [])))();
+    const inst = new (wrap(createComponent("w2", [])))();
     new Benchmark.Suite()
-        .add('wrap', () => inst.render())
-        .on('cycle', event => {
+        .add("wrap", () => inst.render())
+        .on("cycle", event => {
             t.comment(`performance: ${event.target}`);
         })
         // .run()

@@ -59,7 +59,8 @@
   "scripts": {
     "build": "rm -Rf lib && babel src -d lib",
     "_test": "tape -r babel-register 'test/**/*_spec.js' | faucet",
-    "test": "eslint_d --fix src && npm run build && npm run _test",
+    "lint": "eslint_d --fix src test",
+    "test": "npm run lint && npm run build && npm run _test",
     "publish-please": "publish-please",
     "prepublish": "publish-please guard"
   }
