@@ -5,6 +5,7 @@
 [![build status](https://travis-ci.org/tachyons-css/react-native-style-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/tachyons-css/react-native-style-tachyons)
 [![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
 
+## Overview
 React Native Style Tachyons brings functional styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
 
 Let's see how tachyons compares to traditional styling:
@@ -66,7 +67,7 @@ Of course you can use your old styles along tachyon's classes.
 
   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
 
-### Usage
+## Usage
 `react-native-style-tachyons` needs to know your `rem` upon start.
 
 1. In the entry point of your app include:
@@ -89,7 +90,7 @@ Of course you can use your old styles along tachyon's classes.
 
 	To support javascript property syntax, all style names with hyphens have an equivalent with an underscore, e.g. `s.bg_black` instead of `s["bg-black"]`.
 
-2. To use the `cls=''` wrapping
+2. To use the `cls=''` syntax, you have to wrap your component:
 
    ```javascript
    import NativeTachyons from "react-native-style-tachyons";
@@ -103,7 +104,7 @@ Of course you can use your old styles along tachyon's classes.
 
 
 
-### Reference / Supported Properties
+## Reference / Supported Properties
 
 ##### FlexBox
 ```javascript
@@ -191,31 +192,32 @@ o-05                   opacity: 0.05
 o-025                  opacity: 0.025
 ```
 
-##### Colors
-Colors can be specified by in the string. If they are prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
-All of [React Native's colors](https://facebook.github.io/react-native/docs/colors.html) are supported.
+## Colors
+* When using the `cls=''` syntax, colors can be specified directly in the string. Every color-name and syntax that is supported by [Color](https://github.com/qix-/color) works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
 
-```javascript
+  ```javascript
 bg-green                     green background
-#232323                text color of #232323
+#232323                      text color of #232323
 b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
 ```
 
-You can also specify a palette in the options and Tachyons will generate styles for you, complete with a light and a dark version. These colors will overwrite the default ones, though those are still available.
+* You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate a light and a dark version and variants with different opacities.
 
-```javascript
-NativeTachyons.build({
-   colors: {
-      palette: {
-         gold: "#FFD700",
-      }
-      // lighten: 0.2,        default: 0.2, change or set to false to skip light versions
-      // darken: 0.2          default: 0.2, change or set to false to skip dark versions
-   }
-}, StyleSheet);
-```
+  ```javascript
+  NativeTachyons.build({
+     colors: {
+        palette: {
+           gold: "#FFD700",
+        }
+        // lighten: 0.2,        default: 0.2, change or set to false to skip light versions
+        // darken: 0.2          default: 0.2, change or set to false to skip dark versions
+     }
+  }, StyleSheet);
+  ```
 
-```javascript
+  The same syntax with `bg-` for background and `b--` for borderColor applies.
+
+  ```javascript
 bg-gold                golden background
 bg-light-gold          lighter golden background
 bg-dark-gold           darker golden background
@@ -231,13 +233,13 @@ dark-gold              dark-gold text
 /* opacities (same for bg- and b--) */
 gold-10, gold-20 ... gold-90	      golden text with opacity 10%, 20%, ... , 90%
 
-```
+  ```
 
 
 
-### Raw Values
+## Raw Values
 
-To access the hex values of the colors, or sizes:
+To access the hex values of your color palette, or the actual computed sizes:
 
 ```javascript
 import { colors, sizes } from "react-native-style-tachyons"

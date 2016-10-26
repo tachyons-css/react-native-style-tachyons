@@ -69,7 +69,7 @@
 * support border-radii properties
 
 ## 1.1.1
-* `added more tests and a bugfix when merging existing styles
+* added more tests and a bugfix when merging existing styles
 
 ## 1.1
 * added more properties and references
