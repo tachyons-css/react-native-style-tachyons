@@ -73,9 +73,11 @@ Tachyons' dimensions and typography build on a proven scale, which is relative t
   
 
 ## Usage
-`react-native-style-tachyons` needs to know your `rem` upon start: In the entry point of your app include:
+`react-native-style-tachyons` needs to know your `rem` upon start: 
 
-```javascript
+1. In the entry point of your app include:
+
+   ```javascript
 import NativeTachyons from 'react-native-style-tachyons';
 import { StyleSheet } from 'react-native';
 
