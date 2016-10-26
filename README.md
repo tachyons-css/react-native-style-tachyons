@@ -67,9 +67,9 @@ Tachyons' dimensions and typography build on a proven scale, which is relative t
 * The scale progresses with powers of two, so each step is twice as big as the last. This means everything will always line up, no more "off-by-one-pixel"-errors.
 * You can scale the entire app just by setting a different `rem`. This is a great advantage when building a responsive app.
 
-[More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
+   [More about Tachyons' spacing scale](http://tachyons.io/docs/layout/spacing/)
 
-[More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
+   [More about Tachyons' typographic scale](http://tachyons.io/docs/typography/scale/)
   
 
 ## Usage
