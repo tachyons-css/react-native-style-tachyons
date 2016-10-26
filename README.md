@@ -87,7 +87,7 @@ NativeTachyons.build({
 }, StyleSheet);
 ```
 
-* To use the styles
+2. To use the styles
 
    ```javascript
    import { styles as s } from "react-native-style-tachyons";
@@ -95,7 +95,7 @@ NativeTachyons.build({
 
 	To support javascript property syntax, all style names with hyphens have an equivalent with an underscore, e.g. `s.bg_black` instead of `s["bg-black"]`.
 
-* To use the `cls=''` syntax, you have to wrap your component:
+3. To use the `cls=''` syntax, you have to wrap your component:
 
    ```javascript
    import NativeTachyons from "react-native-style-tachyons";
