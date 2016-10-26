@@ -78,14 +78,14 @@ Tachyons' dimensions and typography build on a proven scale, which is relative t
 1. In the entry point of your app include:
 
    ```javascript
-import NativeTachyons from 'react-native-style-tachyons';
-import { StyleSheet } from 'react-native';
+   import NativeTachyons from 'react-native-style-tachyons';
+   import { StyleSheet } from 'react-native';
 
-NativeTachyons.build({
-    /* REM parameter is optional, default is 16 */
-    rem: width > 340 ? 18 : 16
-}, StyleSheet);
-```
+   NativeTachyons.build({
+       /* REM parameter is optional, default is 16 */
+       rem: screenWidth > 340 ? 18 : 16
+   }, StyleSheet);
+   ```
 
 2. To use the styles
 
