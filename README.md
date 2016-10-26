@@ -72,6 +72,7 @@ Of course you can use your old styles along tachyons' classes.
 
    [More about Tachyons' typography](http://tachyons.io/docs/typography/scale/)
   
+  
 
 ## Usage
 `react-native-style-tachyons` needs to know your `rem` upon start: 
