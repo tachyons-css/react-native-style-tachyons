@@ -192,11 +192,7 @@ o-025                  opacity: 0.025
 ```
 
 ### Colors
-1. When using the `cls=''` syntax, colors can be specified directly in the string. Every color-name and syntax that is supported by [Color](https://github.com/qix-/color) works.
-
- * If the color is prefixed with `bg-` the `backgroundColor` will be set. 
- 
- * A prefix of `b--` sets the `borderColor`:
+1. When using the `cls=''` syntax, colors can be specified directly in the string. Every color-name and syntax that is supported by [Color](https://github.com/qix-/color) works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
 
   ```javascript
 bg-green                     green background
@@ -204,7 +200,7 @@ bg-green                     green background
 b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
 ```
 
-2. You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate a light and a dark version and variants with different opacities. These colors will overwrite the default ones.
+2. You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate a light and a dark version and variants with different opacities.
 
   ```javascript
   NativeTachyons.build({
