@@ -54,13 +54,12 @@ import {styles as s} from "react-native-style-tachyons";
 </View>
 ```
 
-Of course you can use your old styles along tachyon's classes.
-
 #### Advantages
 * Less code
 * No need to maintain a separate stylesheet
 * No need to find a proper name for every component you want to style
 * Looking at a component tells you exactly how it looks, it's all in one place.
+* Of course you can use your old styles along tachyon's classes.
 
 ## Tachyons' scale
 Tachyons' dimensions and typography build on a proven scale, which is relative to `rem`, the root font-size. Instead of finding pixel-values for padding (or a margin, width or height), you specify a step at the scale. `pa2` gets you `padding` of `0.5rem`. 
