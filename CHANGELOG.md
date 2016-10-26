@@ -1,5 +1,6 @@
 ## 2.7
 * added the `br` values to the exported sizes
+* added `fonts` option to set font-families
 
 ### 2.6.1
 * updated readme

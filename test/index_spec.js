@@ -4,10 +4,19 @@ import _ from "lodash";
 import React from "react";
 import Benchmark from "benchmark";
 
-const fakeStyleSheet = { create: sheet => sheet }
+function buildRNT(options) {
+    for (const prop in styles) {
+        if ({}.hasOwnProperty.call(styles, prop)) {
+            delete styles[prop];
+        }
+    }
+    const fakeStyleSheet = { create: sheet => sheet }
+    build(options, fakeStyleSheet);
+}
 
 test("styles", t => {
-    build({}, fakeStyleSheet);
+
+    buildRNT({})
 
     /* sum of styles */
     t.equal(_.keys(styles).length, 402, "402 styles generated");
@@ -40,26 +49,33 @@ test("styles", t => {
 });
 
 test("sizes", t => {
+    buildRNT({})
     t.equal(_.keys(sizes).length, 177, "177 sizes generated");
     t.equal(sizes.pa3, 16, "pa3 is 16");
     t.equal(sizes.max_w2, 32, "max_w2 is 32");
     t.end();
 })
 
-test("colors", t => {
-    for (const prop in styles) {
-        if ({}.hasOwnProperty.call(styles, prop)) {
-            delete styles[prop];
+test("fonts", t => {
+    buildRNT({
+        fonts: {
+            iowan: "Iowan Old Style"
         }
-    }
-    build({
+    })
+    t.deepEqual(styles.ff_iowan, { fontFamily: "Iowan Old Style" })
+    t.end();
+})
+
+test("colors", t => {
+
+    buildRNT({
         colors: {
             palette: {
                 green: "#00FF00"
             },
             lighten: false
         }
-    }, fakeStyleSheet);
+    });
 
     t.equal(_.keys(styles).length, 455, "455 styles generated");
     t.ok(_.has(styles, "bg-green"), "background-color");
@@ -76,18 +92,13 @@ test("colors", t => {
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     /* build again this time with light and dark variants */
-    for (const prop in styles) {
-        if ({}.hasOwnProperty.call(styles, prop)) {
-            delete styles[prop];
-        }
-    }
-    build({
+    buildRNT({
         colors: {
             palette: {
                 green: "#00FF00"
             }
         }
-    }, fakeStyleSheet);
+    });
 
     t.ok(_.has(styles, "bg-light-green"), "light background-color");
     t.ok(_.has(styles, "b--light-green"), "light border-color");

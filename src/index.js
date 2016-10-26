@@ -27,6 +27,8 @@ const NativeTachyons = {
                     white: "#ffffff",
                     black: "#000000",
                 }
+            },
+            fonts: {
             }
         })
 
@@ -69,10 +71,9 @@ const NativeTachyons = {
                 })
             })
         })
-        _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
         debug("got sizes:", sizes)
 
-        /* colors: dark and light variant */
+        /* palette colors: dark and light variant */
         const allColors = _.transform(options.colors.palette, (result, val, key) => {
             result[key] = val;
 
@@ -93,15 +94,21 @@ const NativeTachyons = {
             }
 
         }, {});
-        _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
 
         /* colors: background, foreground and border */
         _.forEach(allColors, (val, key) => {
             styleSheet[`bg-${key}`] = { backgroundColor: val }
             styleSheet[`${key}`] = { color: val }
             styleSheet[`b--${key}`] = { borderColor: val }
-        }, {});
+        });
 
+        /* font-families */
+        _.forEach(options.fonts, (val, key) => {
+            styleSheet[`ff-${key}`] = { fontFamily: val }
+        });
+
+        _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
+        _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
         _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
     }
 }

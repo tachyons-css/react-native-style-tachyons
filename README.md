@@ -62,7 +62,7 @@ Of course you can use your old styles along tachyons' classes.
 * Looking at a component tells you exactly how it looks, it's all in one place.
 
 #### Tachyons' scale
-* Dimensions and typography build on a proven scale, which is relative to `rem`, the root font-size. Instead of having to find proper values for padding (or margin, width or height), you use a simple 7-step scale. `pa2` gets you `padding` of `0.5rem`. 
+* Dimensions and typography build on a proven scale, which is relative to `rem`, the root font-size. Instead of having to find proper values for padding (or margin, width or height), you use a simple 7-step scale. `pa2` gets you `padding` of `0.5rem`.
 
 * The scale progresses with powers of two, so each step is twice as big as the last. This means everything will always line up, no more "off-by-one-pixel"-problems.
 
@@ -71,11 +71,11 @@ Of course you can use your old styles along tachyons' classes.
    [More about Tachyons' spacing](http://tachyons.io/docs/layout/spacing/)
 
    [More about Tachyons' typography](http://tachyons.io/docs/typography/scale/)
-  
-  
+
+
 
 ## Usage
-`react-native-style-tachyons` needs to know your `rem` upon start: 
+`react-native-style-tachyons` needs to know your `rem` upon start:
 
 1. In the entry point of your app include:
 
@@ -184,6 +184,19 @@ i                      fontStyle: italic
 
 tl|tc|tr|tj            textAlign: left|right|center|justify
 ```
+
+Specify the font-families you need in the configuration to use them:
+```javascript
+ff-iowan               fontFamily: "Iowan Old Style"
+
+/* setup: */
+NativeTachyons.build({
+    fonts: {
+        iowan: 'Iowan Old Style'
+    }
+}, StyleSheet);
+```
+
 
 ##### Images
 ```javascript
