@@ -6,21 +6,12 @@ import Benchmark from "benchmark";
 
 const fakeStyleSheet = { create: sheet => sheet }
 
-test("build", t => {
-    build({
-        colors: {
-            palette: {
-                green: "#00FF00"
-            },
-            lighten: false
-        }
-    }, fakeStyleSheet);
-    t.pass("build");
-
-    t.end();
-})
-
 test("styles", t => {
+    build({}, fakeStyleSheet);
+
+    /* sum of styles */
+    t.equal(_.keys(styles).length, 402, "402 styles generated");
+
     t.ok(_.isObject(styles), "styles is an object");
     t.ok(_.has(styles, "w1"), "example: has w1");
     t.ok(_.has(styles, "w5"), "example: has w5");
@@ -44,10 +35,6 @@ test("styles", t => {
 
     /* underscore version are generated */
     t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
-    t.ok(_.has(styles, "b__green"), "multiple underscores work")
-
-    /* sum of styles */
-    t.equal(_.keys(styles).length, 455, "455 styles generated");
 
     t.end();
 });
@@ -60,6 +47,21 @@ test("sizes", t => {
 })
 
 test("colors", t => {
+    for (const prop in styles) {
+        if ({}.hasOwnProperty.call(styles, prop)) {
+            delete styles[prop];
+        }
+    }
+    build({
+        colors: {
+            palette: {
+                green: "#00FF00"
+            },
+            lighten: false
+        }
+    }, fakeStyleSheet);
+
+    t.equal(_.keys(styles).length, 455, "455 styles generated");
     t.ok(_.has(styles, "bg-green"), "background-color");
     t.ok(_.has(styles, "b--green"), "border-color");
     t.ok(_.has(styles, "green"), "color");
@@ -71,7 +73,14 @@ test("colors", t => {
     t.deepEqual(_.get(styles, "bg-green"), { backgroundColor: "#00FF00" })
     t.deepEqual(_.get(styles, "b--dark-green"), { borderColor: "#00CC00" })
 
+    t.ok(_.has(styles, "b__green"), "multiple underscores work")
+
     /* build again this time with light and dark variants */
+    for (const prop in styles) {
+        if ({}.hasOwnProperty.call(styles, prop)) {
+            delete styles[prop];
+        }
+    }
     build({
         colors: {
             palette: {
