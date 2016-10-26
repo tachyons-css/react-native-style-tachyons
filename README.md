@@ -54,7 +54,7 @@ import {styles as s} from "react-native-style-tachyons";
 </View>
 ```
 
-#### Advantages
+##### Advantages
 * Less code
 * No need to maintain a separate stylesheet
 * No need to find a proper name for every component you want to style
