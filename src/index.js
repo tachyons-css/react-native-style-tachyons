@@ -110,10 +110,7 @@ function hyphensToUnderscores(sourceObj) {
 
     /* create hypened versions */
     _.forOwn(sourceObj, (val, key) => {
-        if (key.includes("-")) {
-            debug(`replacing ${key} -> ${key.replace(/-/g, "_")}`)
-            translated[key.replace(/-/g, "_")] = val;
-        }
+        translated[key.replace(/-/g, "_")] = val;
     })
 
     return translated;
