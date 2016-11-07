@@ -25,20 +25,20 @@ test("styles", t => {
     t.ok(_.has(styles, "pb7"), "example: has pb7");
     t.ok(_.has(styles, "f1"), "example: has f1");
 
-    t.ok(_.has(styles, "absolute-fill"), "example: has absolute-fill");
+    t.ok(_.has(styles, "absolute_fill"), "example: has absolute-fill");
     t.deepEqual(styles.pa3, { padding: 16 }, "pa3 is 16")
 
     /* borders */
     t.deepEqual(styles.br3, { borderRadius: 8 }, "br3 is 8")
     t.deepEqual(styles.bl, { borderLeftWidth: 1 }, "bl works")
-    t.deepEqual(styles["br--top"], { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }, "br--top works")
+    t.deepEqual(styles.br__top, { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }, "br--top works")
 
-    t.deepEqual(styles["o-025"], { opacity: 0.025 }, "o-025 is opacity 0.025")
+    t.deepEqual(styles.o_025, { opacity: 0.025 }, "o-025 is opacity 0.025")
 
-    t.deepEqual(styles["min-w3"], { minWidth: 64 })
-    t.deepEqual(styles["max-w3"], { maxWidth: 64 })
-    t.deepEqual(styles["min-h4"], { minHeight: 128 })
-    t.deepEqual(styles["max-h4"], { maxHeight: 128 })
+    t.deepEqual(styles.min_w3, { minWidth: 64 })
+    t.deepEqual(styles.max_w3, { maxWidth: 64 })
+    t.deepEqual(styles.min_h4, { minHeight: 128 })
+    t.deepEqual(styles.max_h4, { maxHeight: 128 })
 
     /* underscore version are generated */
     t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
@@ -72,10 +72,10 @@ test("colors", t => {
         }
     });
 
-    t.deepEqual(_.get(styles, "green"), { color: "#00FF00" })
-    t.deepEqual(_.get(styles, "b--green"), { borderColor: "#00FF00" })
-    t.deepEqual(_.get(styles, "bg-green"), { backgroundColor: "#00FF00" })
-    t.deepEqual(_.get(styles, "bg-green-10"), { backgroundColor: "rgba(0, 255, 0, 0.1)" })
+    t.deepEqual(styles.green, { color: "#00FF00" })
+    t.deepEqual(styles.b__green, { borderColor: "#00FF00" })
+    t.deepEqual(styles.bg_green, { backgroundColor: "#00FF00" })
+    t.deepEqual(styles.bg_green_10, { backgroundColor: "rgba(0, 255, 0, 0.1)" })
 
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
@@ -169,6 +169,9 @@ test("wrapping", t => {
 
     instance = renderComponent("")
     t.deepEqual(instance.props.style, [], "if style is undefined, an array will be created");
+
+    instance = renderComponent("flx-i")
+    t.deepEqual(instance.props.style, [{ flex: 1 }], "hyphens work");
 
     t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
 

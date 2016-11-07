@@ -105,9 +105,6 @@ const NativeTachyons = {
 function hyphensToUnderscores(sourceObj) {
     const translated = {}
 
-    /* copy all properties */
-    _.assign(translated, sourceObj);
-
     /* create hypened versions */
     _.forOwn(sourceObj, (val, key) => {
         translated[key.replace(/-/g, "_")] = val;

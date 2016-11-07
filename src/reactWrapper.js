@@ -39,7 +39,7 @@ export function wrap(WrappedComponent) {
                     newProps.style = []
                 }
 
-                const splitted = props.cls.split(" ");
+                const splitted = props.cls.replace(/-/g, "_").split(" ")
                 for (let i = 0; i < splitted.length; i++) {
                     const cls = splitted[i];
                     if (cls.length > 0) {
@@ -47,12 +47,12 @@ export function wrap(WrappedComponent) {
                         if (style) {
                             newProps.style.push(style);
 
-                        } else if (cls.startsWith("bg-") && isColor(cls.slice(3))) {
+                        } else if (cls.startsWith("bg_") && isColor(cls.slice(3))) {
                             newProps.style.push({
                                 backgroundColor: cls.slice(3)
                             })
 
-                        } else if (cls.startsWith("b--") && isColor(cls.slice(3))) {
+                        } else if (cls.startsWith("b__") && isColor(cls.slice(3))) {
                             newProps.style.push({
                                 borderColor: cls.slice(3)
                             })
