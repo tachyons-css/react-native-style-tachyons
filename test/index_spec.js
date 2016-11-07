@@ -75,6 +75,7 @@ test("colors", t => {
     t.deepEqual(_.get(styles, "green"), { color: "#00FF00" })
     t.deepEqual(_.get(styles, "b--green"), { borderColor: "#00FF00" })
     t.deepEqual(_.get(styles, "bg-green"), { backgroundColor: "#00FF00" })
+    t.deepEqual(_.get(styles, "bg-green-10"), { backgroundColor: "rgba(0, 255, 0, 0.1)" })
 
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
