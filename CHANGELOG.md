@@ -1,3 +1,17 @@
+## 3.0
+* Initializing is now twice as fast.
+* Dark/light color variants aren't created anymore, please specify them directly in the palette:
+
+ ```javascript
+    palette: {
+       light_green: "#00FF01"
+    }
+ ```
+ Opacity-variants (e.g. `bg-green-10`) are still available.
+
+* The styles object contains only the underscore names, so `styles.flx_i` works, but `styles["flx-i"]` doesn't. The class-wrapping isn't changed, it's syntax is still `cls="flx-i"`.
+* The raw values of colors aren't exported anymore.
+
 ## 2.7
 * added the `br` values to the exported sizes
 * added `fonts` option to set font-families
@@ -81,5 +95,5 @@
 ### 1.0.1
 * fixed badge
 
-# 1.0
+## 1.0
 * initial version

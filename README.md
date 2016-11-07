@@ -221,16 +221,14 @@ bg-green                     green background
 b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
 ```
 
-* You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate a light and a dark version and variants with different opacities.
+* You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate variants with different opacities.
 
   ```javascript
   NativeTachyons.build({
      colors: {
         palette: {
-           gold: "#FFD700",
+           green: "#00FF00",
         }
-        // lighten: 0.2,        default: 0.2, change or set to false to skip light versions
-        // darken: 0.2          default: 0.2, change or set to false to skip dark versions
      }
   }, StyleSheet);
   ```
@@ -238,20 +236,12 @@ b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
   The same syntax with `bg-` for background and `b--` for borderColor applies.
 
   ```javascript
-bg-gold                golden background
-bg-light-gold          lighter golden background
-bg-dark-gold           darker golden background
-
-b--gold                golden border             // Note: double hyphens signify a class that need
-b--light-gold          light-gold border         //       another class to work, in this case
-b--dark-gold           dark-gold border          //       one of the border-settings.
-
-gold                   golden text
-light-gold             light-gold text
-dark-gold              dark-gold text
+bg-green                green background
+b--green                green border             // Note: double hyphens signify a class that need
+green                   green text
 
 /* opacities (same for bg- and b--) */
-gold-10, gold-20 ... gold-90	      golden text with opacity 10%, 20%, ... , 90%
+green-10, green-20 ... green-90	      green text with opacity 10%, 20%, ... , 90%
 
   ```
 
@@ -259,12 +249,11 @@ gold-10, gold-20 ... gold-90	      golden text with opacity 10%, 20%, ... , 90%
 
 ## Raw Values
 
-To access the hex values of your color palette, or the actual computed sizes:
+To access the actual computed sizes:
 
 ```javascript
-import { colors, sizes } from "react-native-style-tachyons"
+import { sizes } from "react-native-style-tachyons"
 
-const c = colors.bg_yellow
 const s = sizes.ma2          /* sizes.w4, ... */
 ```
 
