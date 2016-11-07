@@ -1,10 +1,20 @@
 import _ from "lodash";
 import Color from "color";
 import * as reactWrapper from "./reactWrapper";
+import { heights, minHeights, maxHeights } from "./styles/heights"
+import { widths, minWidths, maxWidths } from "./styles/widths"
+import * as borders from "./styles/borders"
+import flexbox from "./styles/flexbox"
+import spacing from "./styles/spacing"
+import typeScale from "./styles/typeScale"
+import text from "./styles/text"
+import images from "./styles/images"
+import fontWeights from "./styles/fontWeights"
+import opacity from "./styles/opacity"
+import utilities from "./styles/utilities"
 
 const debug = require("debug")("react-native-tachyons")
 
-/* global require */
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
 
@@ -18,6 +28,7 @@ const NativeTachyons = {
     sizes: {},
 
     build: function build(options = {}, StyleSheet) {
+
         _.defaultsDeep(options, {
             rem: 16,
             colors: {
@@ -34,27 +45,28 @@ const NativeTachyons = {
 
         /* assign all the styles */
         const styleSheet = {}
-        _.assign(styleSheet, require("./styles/borders").styles)
-        _.assign(styleSheet, require("./styles/flexbox").default)
-        _.assign(styleSheet, require("./styles/fontWeights").default)
-        _.assign(styleSheet, require("./styles/images").default)
-        _.assign(styleSheet, require("./styles/text").default)
-        _.assign(styleSheet, require("./styles/opacity").default)
-        _.assign(styleSheet, require("./styles/utilities").default)
+        _.assign(styleSheet, borders.styles)
+        _.assign(styleSheet, flexbox)
+        _.assign(styleSheet, fontWeights)
+        _.assign(styleSheet, images)
+        _.assign(styleSheet, text)
+        _.assign(styleSheet, opacity)
+        _.assign(styleSheet, utilities)
 
         /* calculate rem scales */
         const sizes = {}
         const REM_SCALED = [
-            require("./styles/heights").heights,
-            require("./styles/heights").minHeights,
-            require("./styles/heights").maxHeights,
-            require("./styles/widths").widths,
-            require("./styles/widths").minWidths,
-            require("./styles/widths").maxWidths,
-            require("./styles/spacing").default,
-            require("./styles/typeScale").default,
-            require("./styles/borders").radii
+            heights,
+            minHeights,
+            maxHeights,
+            widths,
+            minWidths,
+            maxWidths,
+            spacing,
+            typeScale,
+            borders.radii
         ]
+
         _.forEach(REM_SCALED, subSheet => {
 
             /* assign to styleSheet */
