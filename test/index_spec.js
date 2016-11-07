@@ -67,7 +67,8 @@ test("colors", t => {
     buildRNT({
         colors: {
             palette: {
-                green: "#00FF00"
+                green: "#00FF00",
+                light_green: "#00FF00"
             }
         }
     });
@@ -75,7 +76,7 @@ test("colors", t => {
     t.deepEqual(styles.green, { color: "#00FF00" })
     t.deepEqual(styles.b__green, { borderColor: "#00FF00" })
     t.deepEqual(styles.bg_green, { backgroundColor: "#00FF00" })
-    t.deepEqual(styles.bg_green_10, { backgroundColor: "rgba(0, 255, 0, 0.1)" })
+    t.deepEqual(styles.bg_light_green, { backgroundColor: "#00FF00" })
 
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
