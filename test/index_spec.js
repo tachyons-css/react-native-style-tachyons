@@ -1,5 +1,5 @@
 import { test } from "tape";
-import { build, wrap, styles, colors, sizes } from "../src/";
+import { build, wrap, styles, sizes } from "../src/";
 import _ from "lodash";
 import React from "react";
 import Benchmark from "benchmark";
@@ -19,8 +19,6 @@ test("styles", t => {
     buildRNT({})
 
     /* sum of styles */
-    t.equal(_.keys(styles).length, 402, "402 styles generated");
-
     t.ok(_.isObject(styles), "styles is an object");
     t.ok(_.has(styles, "w1"), "example: has w1");
     t.ok(_.has(styles, "w5"), "example: has w5");
@@ -50,7 +48,6 @@ test("styles", t => {
 
 test("sizes", t => {
     buildRNT({})
-    t.equal(_.keys(sizes).length, 177, "177 sizes generated");
     t.equal(sizes.pa3, 16, "pa3 is 16");
     t.equal(sizes.max_w2, 32, "max_w2 is 32");
     t.end();
@@ -67,31 +64,6 @@ test("fonts", t => {
 })
 
 test("colors", t => {
-
-    buildRNT({
-        colors: {
-            palette: {
-                green: "#00FF00"
-            },
-            lighten: false
-        }
-    });
-
-    t.equal(_.keys(styles).length, 455, "455 styles generated");
-    t.ok(_.has(styles, "bg-green"), "background-color");
-    t.ok(_.has(styles, "b--green"), "border-color");
-    t.ok(_.has(styles, "green"), "color");
-
-    t.ok(_.has(styles, "bg-dark-green"), "dark background-color");
-    t.ok(_.has(styles, "b--dark-green"), "dark border-color");
-    t.ok(_.has(styles, "dark-green"), "dark color");
-
-    t.deepEqual(_.get(styles, "bg-green"), { backgroundColor: "#00FF00" })
-    t.deepEqual(_.get(styles, "b--dark-green"), { borderColor: "#00CC00" })
-
-    t.ok(_.has(styles, "b__green"), "multiple underscores work")
-
-    /* build again this time with light and dark variants */
     buildRNT({
         colors: {
             palette: {
@@ -100,16 +72,11 @@ test("colors", t => {
         }
     });
 
-    t.ok(_.has(styles, "bg-light-green"), "light background-color");
-    t.ok(_.has(styles, "b--light-green"), "light border-color");
-    t.ok(_.has(styles, "light-green"), "light color");
+    t.deepEqual(_.get(styles, "green"), { color: "#00FF00" })
+    t.deepEqual(_.get(styles, "b--green"), { borderColor: "#00FF00" })
+    t.deepEqual(_.get(styles, "bg-green"), { backgroundColor: "#00FF00" })
 
-    /* access generated colors */
-    t.equal(Object.keys(colors).length, 69, "69 colors");
-    t.ok(_.has(colors, "light-green"));
-    t.equal(colors.green, "#00FF00");
-    t.equal(colors.light_green, "#33FF33");
-    t.equal(colors.green_50, "rgba(0, 255, 0, 0.5)");
+    t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     t.end();
 });

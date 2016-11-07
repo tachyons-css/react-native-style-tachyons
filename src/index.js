@@ -22,9 +22,6 @@ const NativeTachyons = {
     styles: {},
 
     /* placeholder */
-    colors: {},
-
-    /* placeholder */
     sizes: {},
 
     build: function build(options = {}, StyleSheet) {
@@ -32,11 +29,7 @@ const NativeTachyons = {
         _.defaultsDeep(options, {
             rem: 16,
             colors: {
-                lighten: 0.2,
-                darken: 0.2,
                 palette: {
-                    white: "#ffffff",
-                    black: "#000000",
                 }
             },
             fonts: {
@@ -67,60 +60,44 @@ const NativeTachyons = {
             borders.radii
         ]
 
-        _.forEach(REM_SCALED, subSheet => {
+        REM_SCALED.forEach(subSheet => {
 
-            /* assign to styleSheet */
-            _.assign(styleSheet,
-                _.mapValues(subSheet, style =>
-                    _.mapValues(style, val => val * options.rem)
-                )
-            )
-
-            /* sizes for export */
-            _.forEach(subSheet, (rule, tachyonsKey) => {
-                _.forEach(rule, val => {
+            _.forOwn(subSheet, (styleObj, tachyonsKey) => {
+                _.forOwn(styleObj, (val, name) => {
+                    styleSheet[tachyonsKey] = {
+                        [name]: val * options.rem
+                    }
                     sizes[tachyonsKey] = val * options.rem
                 })
             })
         })
         debug("got sizes:", sizes)
 
-        /* palette colors: dark and light variant */
-        const allColors = _.transform(options.colors.palette, (result, val, key) => {
-            result[key] = val;
+        _.forOwn(options.colors.palette, (val, name) => {
+            styleSheet[`bg-${name}`] = { backgroundColor: val }
+            styleSheet[`${name}`] = { color: val }
+            styleSheet[`b--${name}`] = { borderColor: val }
 
-            /* light and dark alternatives */
-            if (options.colors.lighten !== false) {
-                result[`light-${key}`] = new Color(val).lighten(options.colors.lighten).hexString();
-            }
-            if (options.colors.darken !== false) {
-                result[`dark-${key}`] = new Color(val).darken(options.colors.darken).hexString();
-            }
+            const color = new Color(val)
 
             /* alpha variants */
             for (let i = 10; i < 100; i += 10) {
-                const name = `${key}-${i}`;
-                const rgbString = new Color(val).alpha(i / 100).rgbString();
+                const rgbString = color.alpha(i / 100).rgbString();
                 debug(`writing alpha variant: ${name}: ${rgbString}`)
-                result[name] = rgbString;
+
+                styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }
+                styleSheet[`${name}-${i}`] = { color: rgbString }
+                styleSheet[`b--${name}-${i}`] = { borderColor: rgbString }
             }
-
-        }, {});
-
-        /* colors: background, foreground and border */
-        _.forEach(allColors, (val, key) => {
-            styleSheet[`bg-${key}`] = { backgroundColor: val }
-            styleSheet[`${key}`] = { color: val }
-            styleSheet[`b--${key}`] = { borderColor: val }
         });
 
+
         /* font-families */
-        _.forEach(options.fonts, (val, key) => {
+        _.forOwn(options.fonts, (val, key) => {
             styleSheet[`ff-${key}`] = { fontFamily: val }
         });
 
         _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
-        _.assign(NativeTachyons.colors, hyphensToUnderscores(allColors));
         _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
     }
 }
@@ -132,7 +109,7 @@ function hyphensToUnderscores(sourceObj) {
     _.assign(translated, sourceObj);
 
     /* create hypened versions */
-    _.forEach(sourceObj, (val, key) => {
+    _.forOwn(sourceObj, (val, key) => {
         if (key.includes("-")) {
             debug(`replacing ${key} -> ${key.replace(/-/g, "_")}`)
             translated[key.replace(/-/g, "_")] = val;
@@ -145,7 +122,6 @@ function hyphensToUnderscores(sourceObj) {
 
 export default NativeTachyons;
 export const sizes = NativeTachyons.sizes;
-export const colors = NativeTachyons.colors;
 export const styles = NativeTachyons.styles;
 export const wrap = reactWrapper.wrap;
 export const build = NativeTachyons.build;
