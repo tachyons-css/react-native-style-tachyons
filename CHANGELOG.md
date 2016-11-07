@@ -1,3 +1,6 @@
+### 3.0.1
+* improved wrapper speed
+
 ## 3.0
 * Initializing is now twice as fast.
 * Dark/light color variants aren't created anymore, please specify them directly in the palette:

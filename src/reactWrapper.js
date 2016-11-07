@@ -1,18 +1,7 @@
 import React from "react";
 import _ from "lodash";
 import { styles } from "./index";
-import Color from "color";
-
-function isColor(str) {
-    try {
-        // eslint-disable-next-line no-new
-        new Color(str)
-
-        return true
-    } catch (err) {
-        return false
-    }
-}
+import cssColors from "css-color-names"
 
 export function wrap(WrappedComponent) {
     const newClass = class extends WrappedComponent {
@@ -45,19 +34,21 @@ export function wrap(WrappedComponent) {
                     if (cls.length > 0) {
                         const style = styles[cls];
                         if (style) {
+
+                            /* style found */
                             newProps.style.push(style);
 
-                        } else if (cls.startsWith("bg_") && isColor(cls.slice(3))) {
+                        } else if (cls.startsWith("bg_")) {
                             newProps.style.push({
                                 backgroundColor: cls.slice(3)
                             })
 
-                        } else if (cls.startsWith("b__") && isColor(cls.slice(3))) {
+                        } else if (cls.startsWith("b__")) {
                             newProps.style.push({
                                 borderColor: cls.slice(3)
                             })
 
-                        } else if (isColor(cls)) {
+                        } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
                             newProps.style.push({
                                 color: cls
                             })

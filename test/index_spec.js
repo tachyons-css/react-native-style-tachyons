@@ -174,7 +174,13 @@ test("wrapping", t => {
     instance = renderComponent("flx-i")
     t.deepEqual(instance.props.style, [{ flex: 1 }], "hyphens work");
 
-    t.throws(renderComponent.bind(this, "w8"), /style 'w8' not found/, "throws if invalid styles are used")
+    /* throw when using invalid properties */
+    t.throws(() => renderComponent("w8"), /style 'w8' not found/)
+
+    /* don't throw when setting css-color-names */
+    instance = renderComponent("azure")
+    t.deepEqual(instance.props.style, [{ color: "azure" }]);
+
 
     /* benchmarking */
     const inst = new (wrap(createComponent("w2", [])))();
