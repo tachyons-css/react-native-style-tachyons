@@ -78,11 +78,9 @@ const NativeTachyons = {
             styleSheet[`${name}`] = { color: val }
             styleSheet[`b--${name}`] = { borderColor: val }
 
-            const color = new Color(val)
-
             /* alpha variants */
             for (let i = 10; i < 100; i += 10) {
-                const rgbString = color.alpha(i / 100).rgbString();
+                const rgbString = new Color(val).alpha(i / 100).rgbString();
                 debug(`writing alpha variant: ${name}: ${rgbString}`)
 
                 styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }

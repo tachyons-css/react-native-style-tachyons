@@ -1,3 +1,6 @@
+### 3.0.2
+* Bugfix
+
 ### 3.0.1
 * improved wrapper speed
 
