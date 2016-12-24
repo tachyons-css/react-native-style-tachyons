@@ -213,7 +213,7 @@ o-025                  opacity: 0.025
 ```
 
 ## Colors
-* When using the `cls=''` syntax, colors can be specified directly in the string. Every color-name and syntax that is supported by [Color](https://github.com/qix-/color) works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
+* When using the `cls=''` syntax, colors can be specified directly in the string. Every [Color](https://facebook.github.io/react-native/docs/colors.html) supported by react-native works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
 
   ```javascript
 bg-green                     green background
@@ -237,11 +237,11 @@ b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
 
   ```javascript
 bg-green                green background
-b--green                green border             // Note: double hyphens signify a class that need
-green                   green text
+b--green                green border        // Note: double hyphens signify a class that needs
+green                   green text          // another class to work in this case a border-setting
 
-/* opacities (same for bg- and b--) */
-green-10, green-20 ... green-90	      green text with opacity 10%, 20%, ... , 90%
+/* alpha variants (same for bg- and b--) */
+green-10, green-20 ... green-90	      green text with 10%, 20%, ... , 90% alpha
 
   ```
 
