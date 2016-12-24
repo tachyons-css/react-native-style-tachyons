@@ -14,7 +14,7 @@ export function wrap(WrappedComponent) {
             let newProps;
             let translated = false;
 
-            /* parse cls string */
+            /* Parse cls string */
             if (_.isString(props.cls)) {
                 newProps = {}
                 translated = true
@@ -35,7 +35,7 @@ export function wrap(WrappedComponent) {
                         const style = styles[cls];
                         if (style) {
 
-                            /* style found */
+                            /* Style found */
                             newProps.style.push(style);
 
                         } else if (cls.startsWith("bg_")) {
@@ -64,7 +64,7 @@ export function wrap(WrappedComponent) {
             let newChildren = props.children;
             if (_.isArray(newChildren)) {
 
-                /* convert child array */
+                /* Convert child array */
                 newChildren = React.Children.toArray(newChildren);
                 for (let i = 0; i < newChildren.length; i++) {
                     const c = newChildren[i];
@@ -79,7 +79,7 @@ export function wrap(WrappedComponent) {
 
             } else if (React.isValidElement(newChildren)) {
 
-                /* convert single child */
+                /* Convert single child */
                 const converted = this._recursiveStyle(newChildren);
                 if (converted !== newChildren) {
                     translated = true;
@@ -95,7 +95,7 @@ export function wrap(WrappedComponent) {
         }
     }
 
-    /* fix name */
+    /* Fix name */
     newClass.displayName = WrappedComponent.displayName || WrappedComponent.name
 
     return newClass;

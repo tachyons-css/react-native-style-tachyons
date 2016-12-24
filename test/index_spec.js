@@ -18,7 +18,7 @@ test("styles", t => {
 
     buildRNT({})
 
-    /* sum of styles */
+    /* Sum of styles */
     t.ok(_.isObject(styles), "styles is an object");
     t.ok(_.has(styles, "w1"), "example: has w1");
     t.ok(_.has(styles, "w5"), "example: has w5");
@@ -28,7 +28,7 @@ test("styles", t => {
     t.ok(_.has(styles, "absolute_fill"), "example: has absolute-fill");
     t.deepEqual(styles.pa3, { padding: 16 }, "pa3 is 16")
 
-    /* borders */
+    /* Borders */
     t.deepEqual(styles.br3, { borderRadius: 8 }, "br3 is 8")
     t.deepEqual(styles.bl, { borderLeftWidth: 1 }, "bl works")
     t.deepEqual(styles.br__top, { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }, "br--top works")
@@ -40,7 +40,7 @@ test("styles", t => {
     t.deepEqual(styles.min_h4, { minHeight: 128 })
     t.deepEqual(styles.max_h4, { maxHeight: 128 })
 
-    /* underscore version are generated */
+    /* Underscore version are generated */
     t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
 
     t.end();
@@ -143,7 +143,7 @@ test("wrapping", t => {
     t.deepEqual(instance.key, "1", "key is preserved");
     t.deepEqual(instance.props.other, "2", "other properties are preserved");
 
-    /* children */
+    /* Children */
     t.deepEqual(instance.props.children[0].props.cls, "w2", "child is preserved");
     t.deepEqual(instance.props.children[0].props.style, [{ width: 32 }], "child cls is converted");
     t.deepEqual(instance.props.children.length, 4, "children are converted");
@@ -174,15 +174,15 @@ test("wrapping", t => {
     instance = renderComponent("flx-i")
     t.deepEqual(instance.props.style, [{ flex: 1 }], "hyphens work");
 
-    /* throw when using invalid properties */
+    /* Throw when using invalid properties */
     t.throws(() => renderComponent("w8"), /style 'w8' not found/)
 
-    /* don't throw when setting css-color-names */
+    /* Don't throw when setting css-color-names */
     instance = renderComponent("azure")
     t.deepEqual(instance.props.style, [{ color: "azure" }]);
 
 
-    /* benchmarking */
+    /* Benchmarking */
     const inst = new (wrap(createComponent("w2", [])))();
     new Benchmark.Suite()
         .add("wrap", () => inst.render())

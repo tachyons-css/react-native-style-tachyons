@@ -18,10 +18,10 @@ const debug = require("debug")("react-native-tachyons")
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
 
-    /* placeholder */
+    /* Placeholder */
     styles: {},
 
-    /* placeholder */
+    /* Placeholder */
     sizes: {},
 
     build: function build(options = {}, StyleSheet) {
@@ -36,7 +36,7 @@ const NativeTachyons = {
             }
         })
 
-        /* assign all the styles */
+        /* Assign all the styles */
         const styleSheet = {}
         _.assign(styleSheet, borders.styles)
         _.assign(styleSheet, flexbox)
@@ -46,7 +46,7 @@ const NativeTachyons = {
         _.assign(styleSheet, opacity)
         _.assign(styleSheet, utilities)
 
-        /* calculate rem scales */
+        /* Calculate rem scales */
         const sizes = {}
         const REM_SCALED = [
             heights,
@@ -78,9 +78,9 @@ const NativeTachyons = {
             styleSheet[`${name}`] = { color: val }
             styleSheet[`b--${name}`] = { borderColor: val }
 
-            /* alpha variants */
+            /* Alpha variants */
             for (let i = 10; i < 100; i += 10) {
-                const rgbString = new Color(val).alpha(i / 100).rgbString();
+                const rgbString = new Color(val).alpha(i / 100).rgb().string();
                 debug(`writing alpha variant: ${name}: ${rgbString}`)
 
                 styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }
@@ -90,7 +90,7 @@ const NativeTachyons = {
         });
 
 
-        /* font-families */
+        /* Font-families */
         _.forOwn(options.fonts, (val, key) => {
             styleSheet[`ff-${key}`] = { fontFamily: val }
         });
@@ -103,7 +103,7 @@ const NativeTachyons = {
 function hyphensToUnderscores(sourceObj) {
     const translated = {}
 
-    /* create hypened versions */
+    /* Create hypened versions */
     _.forOwn(sourceObj, (val, key) => {
         translated[key.replace(/-/g, "_")] = val;
     })
