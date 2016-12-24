@@ -1,3 +1,6 @@
+### 3.0.3
+* updated dependencies, fix #28
+
 ### 3.0.2
 * Bugfix
 
