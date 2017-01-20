@@ -136,21 +136,21 @@ ass                    alignSelf: "stretch"
 
 ##### Margins & Paddings [(Scale)](http://tachyons.io/docs/layout/spacing/)
 ```javascript
-ma0 ... ma7            margin: 0|0.25|0.5|1|2|4|8|16 rem
-ml|mr|mb|mt [0-7]      marginLeft, marginRight, marginBottom, marginTop
-mh [0-7]               marginHorizontal
-mv [0-7]               marginVertical
+ma0 ... ma8            margin: 0|0.25|0.5|1|2|4|8|16|32 rem
+ml|mr|mb|mt [0-8]      marginLeft, marginRight, marginBottom, marginTop
+mh [0-8]               marginHorizontal
+mv [0-8]               marginVertical
 
 /* Same with p for padding */
 ```
 
 ##### Heights & Widths
 ```javascript
-h1 ... h5              height: 1|2|4|8|16 rem
-w1 ... w5              width: 1|2|4|8|16 rem
+h1 ... h6              height: 1|2|4|8|16|32 rem
+w1 ... w6              width: 1|2|4|8|16|32 rem
 
-min-h1 ... min-h5      minHeight: 1|2|4|8|16 rem
-max-h1 ... max-h5      maxHeight: 1|2|4|8|16 rem
+min-h1 ... min-h6      minHeight: 1|2|4|8|16|32 rem
+max-h1 ... max-h6      maxHeight: 1|2|4|8|16|32 rem
 
 /* Same with w for width */
 
@@ -162,7 +162,7 @@ absolute-fill          position: absolute, top/left/right/bottom: 0
 ba                     borderWidth: 1
 bl|br|bt|bb            borderLeftWidth: 1 | borderRightWidth: 1...
 
-br0 ... br4            borderRadius: 0|0.125|0.25|0.5|1 rem
+br0 ... br5            borderRadius: 0|0.125|0.25|0.5|1]2 rem
 br--bottom             bottom radius only
 br--top                top radius only
 br--right              right radius only

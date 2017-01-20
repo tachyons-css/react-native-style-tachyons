@@ -1,3 +1,7 @@
+### 3.1
+* added additional step for margins, paddings, heights and widths for `32rem`
+* added additional step `br5`
+
 ### 3.0.3
 * updated dependencies, fix #28
 
