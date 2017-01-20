@@ -113,7 +113,4 @@ function hyphensToUnderscores(sourceObj) {
 
 
 export default NativeTachyons;
-export const sizes = NativeTachyons.sizes;
-export const styles = NativeTachyons.styles;
-export const wrap = reactWrapper.wrap;
-export const build = NativeTachyons.build;
+export const { sizes, styles, wrap, build } = NativeTachyons;

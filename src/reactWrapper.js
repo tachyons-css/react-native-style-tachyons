@@ -10,7 +10,7 @@ export function wrap(WrappedComponent) {
         }
 
         _recursiveStyle(elementsTree) {
-            const props = elementsTree.props;
+            const { props } = elementsTree;
             let newProps;
             let translated = false;
 
