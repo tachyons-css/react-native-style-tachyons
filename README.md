@@ -4,8 +4,9 @@
 [![license](https://img.shields.io/npm/l/react-native-style-tachyons.svg?maxAge=2592000)](https://github.com/tachyons-css/react-native-style-tachyons/blob/master/LICENSE)
 [![semver](https://img.shields.io/:semver-%E2%9C%93-brightgreen.svg?maxAge=2592000)](http://semver.org/)
 [![build status](https://travis-ci.org/tachyons-css/react-native-style-tachyons.svg?branch=master&maxAge=900)](https://travis-ci.org/tachyons-css/react-native-style-tachyons)
-[![Greenkeeper badge](https://badges.greenkeeper.io/tachyons-css/react-native-style-tachyons.svg)](https://greenkeeper.io/)
 [![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/tachyons-css/react-native-style-tachyons.svg)](https://greenkeeper.io/)
 
 ## Overview
 React Native Style Tachyons brings functional styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
