@@ -108,7 +108,27 @@ Of course you can use your old styles along tachyons' classes.
        ...
    })
    ```
+4. To use custom style definitions:
 
+   ```javascript
+   import NativeTachyons from 'react-native-style-tachyons';
+   import { StyleSheet, Dimensions } from 'react-native';
+
+   const { screenWidth, screenHeight } = Dimensions.get('window')
+   const rem = screenWidth > 340 ? 18: 16
+
+   const myStyles = {
+       bhair: { borderWidth: StyleSheet.hairlineWidth },
+       card: { flex: 1, padding: 2*rem, borderWidth: 0.5*rem, borderColor: 'lightgrey' },
+       /* custom styles take precedence and overwrite builtin styles ! */
+       b: { fontWeight: 'bold', color: 'red' }
+   }
+
+   NativeTachyons.build({
+       rem: rem,
+       custom: myStyles
+   }, StyleSheet);
+   ```
 
 
 
