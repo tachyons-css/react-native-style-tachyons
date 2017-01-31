@@ -193,3 +193,12 @@ test("wrapping", t => {
 
     t.end();
 });
+
+test("wrapping JSX", t => {
+    const orig = (<div cls="b">Some Text</div>);
+    const expexted = (<div cls="b" style={[{ fontWeight: 'bold' }]}>Some Text</div>);
+
+    const wrapped = wrap(orig);
+    t.deepEqual(wrapped, expexted, "wrapped as expected");
+    t.end();
+});
