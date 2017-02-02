@@ -194,7 +194,7 @@ test('wrapping', t => {
     t.end();
 });
 
-test('wrapp createClass', t => {
+test('wrap createClass', t => {
     // eslint-disable-next-line react/prefer-es6-class
     const Orig = React.createClass({
         render() {
