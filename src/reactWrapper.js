@@ -13,8 +13,8 @@ export function wrap(componentOrFunction) {
     if (typeof componentOrFunction.prototype.isReactComponent !== 'object') {
         const func = componentOrFunction;
 
-        return function () {
-            return recursiveStyle(func.apply(this, arguments))
+        return function wrappedRender(...args) {
+            return recursiveStyle(func.apply(this, args))
         };
     }
     const WrappedComponent = componentOrFunction;
