@@ -10,7 +10,7 @@ import cssColors from "css-color-names"
    this will not work. Hence the such functions need to be wrapped
    individually */
 export function wrap(componentOrFunction) {
-    if (typeof componentOrFunction.prototype.isReactComponent !== "object") {
+    if (!(componentOrFunction.prototype && "render" in componentOrFunction.prototype)) {
         const func = componentOrFunction;
 
         return function wrappedRender(...args) {
