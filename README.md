@@ -107,6 +107,9 @@ Of course you can use your old styles along tachyons' classes.
        class MyComponent extends React.Component {
        ...
    })
+
+   /* or if you use simple functions */
+   NativeTachyons.wrap(() => <Text cls="b">Hi there!</Text>)
    ```
 
 

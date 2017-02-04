@@ -1,3 +1,10 @@
+## 3.2
+* Wrapper can take functions now. Thanks to [@stefnnn](https://github.com/stefnnn) for [PR#31](https://github.com/tachyons-css/react-native-style-tachyons/pull/31).
+
+  ```jsx
+  const wrapped = NativeTachyons.wrap(() => <Text cls="b">Hi there!</Text>).
+  ```
+
 ## 3.1.1
 * updated dependencies
 
