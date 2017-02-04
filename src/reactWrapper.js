@@ -1,16 +1,16 @@
-import React from 'react';
-import _ from 'lodash';
-import { styles } from './index';
-import cssColors from 'css-color-names'
+import React from "react";
+import _ from "lodash";
+import { styles } from "./index";
+import cssColors from "css-color-names"
 
-/* wrap takes a Component or a render function and recursively replaces
+/* Wrap takes a Component or a render function and recursively replaces
    the prop 'cls' with the respective 'style' definitions.
    Usually, wrapping a whole Class / Component will do the trick,
    but for some render functions (e.g. ListView -> renderHeader)
    this will not work. Hence the such functions need to be wrapped
    individually */
 export function wrap(componentOrFunction) {
-    if (typeof componentOrFunction.prototype.isReactComponent !== 'object') {
+    if (typeof componentOrFunction.prototype.isReactComponent !== "object") {
         const func = componentOrFunction;
 
         return function wrappedRender(...args) {
@@ -49,7 +49,7 @@ function recursiveStyle(elementsTree) {
             newProps.style = []
         }
 
-        const splitted = props.cls.replace(/-/g, '_').split(' ')
+        const splitted = props.cls.replace(/-/g, "_").split(" ")
         for (let i = 0; i < splitted.length; i++) {
             const cls = splitted[i];
             if (cls.length > 0) {
@@ -59,12 +59,12 @@ function recursiveStyle(elementsTree) {
                     /* Style found */
                     newProps.style.push(style);
 
-                } else if (cls.startsWith('bg_')) {
+                } else if (cls.startsWith("bg_")) {
                     newProps.style.push({
                         backgroundColor: cls.slice(3)
                     })
 
-                } else if (cls.startsWith('b__')) {
+                } else if (cls.startsWith("b__")) {
                     newProps.style.push({
                         borderColor: cls.slice(3)
                     })
