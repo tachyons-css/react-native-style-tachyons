@@ -259,5 +259,40 @@ test("wrapping render functions", t => {
 
     wrapped = wrap(orig);
     t.deepEqual(wrapped(1, 2), expexted(1, 2), "render function with arguments wrapped as expected");
+
+    class Comp extends React.Component {
+        constructor(props) {
+            super(props);
+            this.renderWrapped = wrap(this.renderWrapped.bind(this));
+        }
+        render() {
+            return (
+                <div>{ this.renderWrapped() }</div>
+            );
+        }
+        renderWrapped() {
+            return (
+                <p cls="b">
+                    Text
+                </p>
+            );
+        }
+    }
+    Comp.displayName = "Comp";
+
+    const expected = (
+        <div>
+            <p
+                cls="b"
+                style={[{ fontWeight: "bold" }]}
+            >
+                Text
+            </p>
+        </div>
+    );
+
+    const comp = new Comp();
+    const output = comp.render();
+    t.deepEqual(output, expected);
     t.end();
 });
