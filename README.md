@@ -155,10 +155,16 @@ w1 ... w6              width: 1|2|4|8|16|32 rem
 
 min-h1 ... min-h6      minHeight: 1|2|4|8|16|32 rem
 max-h1 ... max-h6      maxHeight: 1|2|4|8|16|32 rem
+```
 
-/* Same with w for width */
+##### Absolute
+```javascript
+absolute                     position: absolute
+top|right|bottom|left-0      top|right|bottom|left: 0 rem
+                  ... 1                         ... 1 rem
+                  ... 2                         ... 2 rem
 
-absolute-fill          position: absolute, top/left/right/bottom: 0
+absolute-fill                position: absolute, top/left/right/bottom: 0
 ```
 
 ##### Borders

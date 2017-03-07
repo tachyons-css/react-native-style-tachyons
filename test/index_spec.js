@@ -46,6 +46,15 @@ test("styles", t => {
     t.end();
 });
 
+test("styles.absolute", t => {
+    buildRNT({})
+    t.deepEqual(styles.left_1, { left: 16 })
+    t.deepEqual(styles.top_2, { top: 32 })
+    t.deepEqual(styles.absolute, { position: "absolute" })
+    t.deepEqual(styles.bottom_0, { bottom: 0 })
+    t.end();
+})
+
 test("sizes", t => {
     buildRNT({})
     t.equal(sizes.pa3, 16, "pa3 is 16");

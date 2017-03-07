@@ -11,7 +11,7 @@ import text from "./styles/text"
 import images from "./styles/images"
 import fontWeights from "./styles/fontWeights"
 import opacity from "./styles/opacity"
-import utilities from "./styles/utilities"
+import * as absolute from "./styles/absolute"
 
 const debug = require("debug")("react-native-tachyons")
 
@@ -44,7 +44,6 @@ const NativeTachyons = {
         _.assign(styleSheet, images)
         _.assign(styleSheet, text)
         _.assign(styleSheet, opacity)
-        _.assign(styleSheet, utilities)
 
         /* Calculate rem scales */
         const sizes = {}
@@ -73,6 +72,10 @@ const NativeTachyons = {
         })
         debug("got sizes:", sizes)
 
+        /* Absolute */
+        _.assign(styleSheet, absolute.scaleStyles(options.rem));
+
+        /* Colors */
         _.forOwn(options.colors.palette, (val, name) => {
             styleSheet[`bg-${name}`] = { backgroundColor: val }
             styleSheet[`${name}`] = { color: val }

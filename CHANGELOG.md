@@ -1,3 +1,6 @@
+## 3.3
+* added [`absolute`](https://github.com/tachyons-css/react-native-style-tachyons#absolute) styles
+
 ### 3.2.1
 * bugfix
 
