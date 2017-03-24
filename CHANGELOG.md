@@ -1,3 +1,6 @@
+### 3.3.2
+* upgraded readme
+
 ### 3.3.1
 * upgraded dependencies
 
