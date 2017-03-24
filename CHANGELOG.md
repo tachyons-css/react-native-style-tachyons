@@ -1,3 +1,6 @@
+### 3.3.1
+* upgraded dependencies
+
 ## 3.3
 * added [`absolute`](https://github.com/tachyons-css/react-native-style-tachyons#absolute) styles
 
