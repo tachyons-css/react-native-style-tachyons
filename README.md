@@ -226,10 +226,10 @@ o-025                  opacity: 0.025
 * When using the `cls=''` syntax, colors can be specified directly in the string. Every [Color](https://facebook.github.io/react-native/docs/colors.html) supported by react-native works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
 
   ```javascript
-bg-green                     green background
-#232323                      text color of #232323
-b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
-```
+  bg-green                     green background
+  #232323                      text color of #232323
+  b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
+  ```
 
 * You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate variants with different opacities.
 
@@ -241,17 +241,18 @@ b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
         }
      }
   }, StyleSheet);
+  
   ```
 
   The same syntax with `bg-` for background and `b--` for borderColor applies.
 
   ```javascript
-bg-green                green background
-b--green                green border        // Note: double hyphens signify a class that needs
-green                   green text          // another class to work in this case a border-setting
+  bg-green                green background
+  b--green                green border        // Note: double hyphens signify a class that needs
+  green                   green text          // another class to work in this case a border-setting
 
-/* alpha variants (same for bg- and b--) */
-green-10, green-20 ... green-90	      green text with 10%, 20%, ... , 90% alpha
+  /* alpha variants (same for bg- and b--) */
+  green-10, green-20 ... green-90	      green text with 10%, 20%, ... , 90% alpha
 
   ```
 
