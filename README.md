@@ -225,7 +225,7 @@ o-025                  opacity: 0.025
 ## Colors
 * When using the `cls=''` syntax, colors can be specified directly in the string. Every [Color](https://facebook.github.io/react-native/docs/colors.html) supported by react-native works. If the color is prefixed with `bg-` the `backgroundColor` will be set. A prefix of `b--` sets the `borderColor`.
 
-  ```javascript
+```javascript
 bg-green                     green background
 #232323                      text color of #232323
 b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
