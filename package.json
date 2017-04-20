@@ -45,13 +45,10 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "benchmark": "^2.1.4",
-    "eslint": "^3.19.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-react": "^6.10.3",
-    "eslint_d": "^4.2.5",
     "faucet": "0.0.1",
     "publish-please": "^2.3.1",
-    "react": "^15.4.2",
+    "react": "^15.5.4",
+    "standard": "^10.0.2",
     "tape": "^4.6.3"
   },
   "peerDependencies": {
@@ -60,9 +57,12 @@
   "scripts": {
     "build": "rm -Rf lib && babel src -d lib",
     "_test": "tape -r babel-register 'test/**/*_spec.js' | faucet",
-    "lint": "eslint_d --fix src test",
     "test": "npm run lint && npm run build && npm run _test",
     "publish-please": "publish-please",
-    "prepublish": "publish-please guard"
+    "prepublish": "publish-please guard",
+    "lint": "standard --fix"
+  },
+  "standard": {
+    "parser": "babel-eslint"
   }
 }
