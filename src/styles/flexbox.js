@@ -5,6 +5,9 @@ export default {
     "flx-i": {
         flex: 1
     },
+    "flx-grow": {
+        flexGrow: 1
+    },
     "flx-row": {
         flexDirection: "row"
     },
