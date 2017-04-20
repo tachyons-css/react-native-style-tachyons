@@ -5,7 +5,7 @@ export default {
     "flx-i": {
         flex: 1
     },
-    "flex-grow": {
+    "flx-grow": {
         flexGrow: 1
     },
     "flx-row": {
