@@ -13,8 +13,6 @@ import fontWeights from "./styles/fontWeights"
 import opacity from "./styles/opacity"
 import * as absolute from "./styles/absolute"
 
-const debug = require("debug")("react-native-tachyons")
-
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
 
@@ -70,7 +68,6 @@ const NativeTachyons = {
                 })
             })
         })
-        debug("got sizes:", sizes)
 
         /* Absolute */
         _.assign(styleSheet, absolute.scaleStyles(options.rem));
@@ -84,7 +81,6 @@ const NativeTachyons = {
             /* Alpha variants */
             for (let i = 10; i < 100; i += 10) {
                 const rgbString = new Color(val).alpha(i / 100).rgb().string();
-                debug(`writing alpha variant: ${name}: ${rgbString}`)
 
                 styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }
                 styleSheet[`${name}-${i}`] = { color: rgbString }

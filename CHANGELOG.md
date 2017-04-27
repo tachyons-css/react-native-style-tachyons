@@ -1,3 +1,6 @@
+### 3.3.3
+* removed debug dependency, as it keeps making problems.
+
 ### 3.3.2
 * upgraded readme
 
