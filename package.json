@@ -46,7 +46,7 @@
     "benchmark": "^2.1.4",
     "eslint": "^3.19.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-react": "^6.10.3",
+    "eslint-plugin-react": "^7.0.0",
     "eslint_d": "^4.2.5",
     "faucet": "0.0.1",
     "publish-please": "^2.3.1",
