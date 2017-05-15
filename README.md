@@ -198,9 +198,9 @@ lh-solid               lineHeight: 1 rem
 lh-title               lineHeight: 1.25 rem
 lh-copy                lineHeight: 1.5 rem
 
-tracked                letterSpacing:  .1 rem
-tracked-tight          letterSpacing: -.05 rem
-tracked-mega           letterSpacing:  .25 rem
+tracked                letterSpacing:  0.1 rem
+tracked-tight          letterSpacing: -0.05 rem
+tracked-mega           letterSpacing:  0.25 rem
 
 /* letterSpacing is only supported on iOS */
 ```
