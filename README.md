@@ -201,6 +201,8 @@ lh-copy                lineHeight: 1.5 rem
 tracked                letterSpacing:  .1 rem
 tracked-tight          letterSpacing: -.05 rem
 tracked-mega           letterSpacing:  .25 rem
+
+/* letterSpacing is only supported on iOS */
 ```
 
 Specify the font-families you need in the configuration to use them:
