@@ -12,6 +12,8 @@ import images from "./styles/images"
 import fontWeights from "./styles/fontWeights"
 import opacity from "./styles/opacity"
 import * as absolute from "./styles/absolute"
+import lineHeight from "./styles/lineHeight"
+import tracked from "./styles/tracked"
 
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
@@ -54,7 +56,9 @@ const NativeTachyons = {
             maxWidths,
             spacing,
             typeScale,
-            borders.radii
+            borders.radii,
+            lineHeight,
+            tracked
         ]
 
         REM_SCALED.forEach(subSheet => {
