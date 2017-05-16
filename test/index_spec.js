@@ -18,7 +18,6 @@ test("styles", t => {
 
     buildRNT({})
 
-    /* Sum of styles */
     t.ok(_.isObject(styles), "styles is an object");
     t.ok(_.has(styles, "w1"), "example: has w1");
     t.ok(_.has(styles, "w5"), "example: has w5");
@@ -39,6 +38,9 @@ test("styles", t => {
     t.deepEqual(styles.max_w3, { maxWidth: 64 })
     t.deepEqual(styles.min_h4, { minHeight: 128 })
     t.deepEqual(styles.max_h4, { maxHeight: 128 })
+
+    t.deepEqual(styles.lh_copy, { lineHeight: 24 })
+    t.deepEqual(styles.tracked_tight, { letterSpacing: -0.8 })
 
     /* Underscore version are generated */
     t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
