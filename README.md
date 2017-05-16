@@ -198,11 +198,11 @@ lh-solid               lineHeight: 1 rem
 lh-title               lineHeight: 1.25 rem
 lh-copy                lineHeight: 1.5 rem
 
+/* Letter-spacing is only supported on iOS */
 tracked                letterSpacing:  0.1 rem
 tracked-tight          letterSpacing: -0.05 rem
 tracked-mega           letterSpacing:  0.25 rem
 
-/* letterSpacing is only supported on iOS */
 ```
 
 Specify the font-families you need in the configuration to use them:
@@ -251,7 +251,7 @@ o-025                  opacity: 0.025
         }
      }
   }, StyleSheet);
-  
+
   ```
 
   The same syntax with `bg-` for background and `b--` for borderColor applies.
