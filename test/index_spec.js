@@ -205,16 +205,16 @@ test("wrapping", t => {
 
 test("wrap createClass", t => {
     // eslint-disable-next-line react/prefer-es6-class
-    const Orig = React.createClass({
+    const Orig = class Orig extends React.Component {
         render() {
             return (
                 <div cls="b">hello</div>
             );
         }
-    });
+    };
 
     // eslint-disable-next-line react/prefer-es6-class
-    const Expected = React.createClass({
+    const Expected = class Expected extends React.Component {
         render() {
             return (
                 <div
@@ -223,7 +223,7 @@ test("wrap createClass", t => {
                 >hello</div>
             );
         }
-    });
+    };
     const WrappedComp = wrap(Orig);
     const comp = new WrappedComp();
     const expect = new Expected();
