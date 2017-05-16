@@ -1,3 +1,6 @@
+## 3.4
+* added `line-height` and `letter-spacing` options. Thanks to [@luangch](https://github.com/luangch)
+
 ### 3.3.3
 * removed debug dependency, as it keeps making problems.
 
