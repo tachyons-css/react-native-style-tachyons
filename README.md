@@ -193,6 +193,16 @@ fw1 ... fw900          fontWeight: 100 ... fontWeight: 900
 i                      fontStyle: italic
 
 tl|tc|tr|tj            textAlign: left|right|center|justify
+
+lh-solid               lineHeight: 1 rem
+lh-title               lineHeight: 1.25 rem
+lh-copy                lineHeight: 1.5 rem
+
+tracked                letterSpacing:  0.1 rem
+tracked-tight          letterSpacing: -0.05 rem
+tracked-mega           letterSpacing:  0.25 rem
+
+/* letterSpacing is only supported on iOS */
 ```
 
 Specify the font-families you need in the configuration to use them:
