@@ -41,6 +41,9 @@ export default {
     ass: {
         alignSelf: "stretch"
     },
+    jcfs: {
+        justifyContent: "flex-start"
+    },
     jcfe: {
         justifyContent: "flex-end"
     },
