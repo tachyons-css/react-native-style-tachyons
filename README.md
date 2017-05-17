@@ -145,7 +145,7 @@ ml|mr|mb|mt [0-8]      marginLeft, marginRight, marginBottom, marginTop
 mh [0-8]               marginHorizontal
 mv [0-8]               marginVertical
 
-/* Same with p for padding */
+/* Same with pa for padding */
 ```
 
 ##### Heights & Widths
