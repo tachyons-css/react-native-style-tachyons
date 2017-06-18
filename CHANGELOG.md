@@ -1,3 +1,8 @@
+### 3.4.1
+* upgraded dependencies
+* removed yarn.lock
+* added npm-5 `package-lock.json`
+
 ## 3.4
 * added `line-height` and `letter-spacing` options. Thanks to [@luangch](https://github.com/luangch)
 

@@ -174,10 +174,16 @@ test("wrapping", t => {
     t.deepEqual(instance.props.style, [{ width: 256 }], "style array is created");
 
     instance = renderComponent("w5", { width: 5 })
-    t.deepEqual(instance.props.style, [{ width: 5 }, { width: 256 }], "existing style object is converted to array and appended");
+    t.deepEqual(instance.props.style, [
+        { width: 5 },
+        { width: 256 }
+    ], "existing style object is converted to array and appended");
 
     instance = renderComponent("w5", [{ width: 5 }])
-    t.deepEqual(instance.props.style, [{ width: 5 }, { width: 256 }], "existing style array is appended");
+    t.deepEqual(instance.props.style, [
+        { width: 5 },
+        { width: 256 }
+    ], "existing style array is appended");
 
     instance = renderComponent("")
     t.deepEqual(instance.props.style, [], "if style is undefined, an array will be created");
@@ -222,7 +228,8 @@ test("wrap createClass", t => {
                 <div
                     cls="b"
                     style={[{ fontWeight: "bold" }]}
-                >hello</div>
+                >hello
+                </div>
             );
         }
     };
