@@ -31,7 +31,7 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "color": "^1.0.3",
+    "color": "^2.0.0",
     "css-color-names": "0.0.4",
     "lodash": "^4.17.4"
   },
