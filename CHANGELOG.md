@@ -1,3 +1,6 @@
+### 3.4.2
+* updated dependencies
+
 ### 3.4.1
 * upgraded dependencies
 * removed yarn.lock
