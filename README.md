@@ -7,7 +7,7 @@
 [![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
 
 ## Overview
-React Native Style Tachyons brings functional styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention. [More about the advantages of this approach](http://mrmrs.io/writing/2016/03/24/scalable-css).
+React Native Style Tachyons brings functional styling to react-native. It is inspired by [Tachyons](http://tachyons.io) and uses it's scales and naming convention.
 
 Let's see how tachyons compares to traditional styling:
 
