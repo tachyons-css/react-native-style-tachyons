@@ -67,7 +67,7 @@ Of course you can use your old styles along tachyons' classes.
 
 * The scale progresses with powers of two, so each step is twice as big as the last. This means everything will always line up, no more "off-by-one-pixel"-problems.
 
-* You can scale the entire design just by setting a different `rem`. This is a great advantage when building a responsive app.
+* You can scale the entire design just by setting a different `rem`. This is a great advantage when building a responsive app, e.g. `require('react-native-orientation-listener').addListener.(actions.ofRedux)` or `window.addEventListener('resize', actions.ofRedux)` with [react-web](https://github.com/flyskywhy/react-web), to get the responsive state `isPortrait` from `return { ...state, isPortrait: width < height }` in reducer of Redux.
 
    [More about Tachyons' spacing](http://tachyons.io/docs/layout/spacing/)
 
