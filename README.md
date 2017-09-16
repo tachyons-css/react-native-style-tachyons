@@ -192,7 +192,7 @@ fw1 ... fw900          fontWeight: 100 ... fontWeight: 900
 
 i                      fontStyle: italic
 
-tl|tc|tr|tj            textAlign: left|right|center|justify
+tl|tc|tr|tj            textAlign: left|center|right|justify
 
 lh-solid               lineHeight: 1 rem
 lh-title               lineHeight: 1.25 rem
