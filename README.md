@@ -223,6 +223,8 @@ NativeTachyons.build({
 rm-contain             resizeMode: "contain"
 rm-cover               resizeMode: "cover"
 rm-stretch             resizeMode: "stretch"
+
+tint-black             tintColor: "black" ("black" is from colors palette, see Colors section)
 ```
 
 ##### Opacity
