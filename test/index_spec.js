@@ -59,13 +59,39 @@ test("styles", t => {
     t.equal(sizes.pa3, 16, "pa3 is 16");
     t.equal(sizes.max_w2, 32, "max_w2 is 32");
 
+    t.end();
+})
+
+test("fonts", t => {
+    buildRNT({
+        fonts: {
+            iowan: "Iowan Old Style"
+        }
+    })
+    t.deepEqual(styles.ff_iowan, { fontFamily: "Iowan Old Style" })
+    t.end();
+})
+
+test("colors", t => {
+    buildRNT({
+        colors: {
+            palette: {
+                green: "#00FF00",
+                light_green: "#CCFFCC"
+            }
+        }
+    });
+
     /* Colors */
     t.deepEqual(styles.green, { color: "#00FF00" })
     t.deepEqual(styles.b__green, { borderColor: "#00FF00" })
     t.deepEqual(styles.bg_green, { backgroundColor: "#00FF00" })
-    t.deepEqual(styles.bg_light_green, { backgroundColor: "#00FF00" })
-    t.ok(_.has(styles, "b__green"), "multiple underscores work")
+    t.deepEqual(styles.bg_light_green, { backgroundColor: "#CCFFCC" })
 
+    t.deepEqual(styles.tint_green, { tintColor: "#00FF00" })
+    t.deepEqual(styles.tint_light_green, { tintColor: "#CCFFCC" })
+
+    t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
     t.end();
 });
@@ -145,7 +171,8 @@ test("wrapping", t => {
             { borderColor: "rgba(200,144,233,1.0)" },
             { color: "burlywood" }
         ],
-        "ad-hoc colors are supported");
+        "ad-hoc colors are supported"
+    );
 
     t.deepEqual(result.props.style, [{ width: 256 }], "style array is created");
 

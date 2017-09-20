@@ -81,6 +81,7 @@ const NativeTachyons = {
             styleSheet[`bg-${name}`] = { backgroundColor: val }
             styleSheet[`${name}`] = { color: val }
             styleSheet[`b--${name}`] = { borderColor: val }
+            styleSheet[`tint-${name}`] = { tintColor: val }
 
             /* Alpha variants */
             for (let i = 10; i < 100; i += 10) {
