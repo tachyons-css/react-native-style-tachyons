@@ -183,7 +183,8 @@ test("wrapping", t => {
             { width: 5 },
             { width: 256 }
         ],
-        "existing style object is converted to array and appended");
+        "existing style object is converted to array and appended"
+    );
 
     result = renderComponent("w5", [{ width: 5 }])
     t.deepEqual(
@@ -192,7 +193,8 @@ test("wrapping", t => {
             { width: 5 },
             { width: 256 }
         ],
-        "existing style array is appended");
+        "existing style array is appended"
+    );
 
     result = renderComponent("")
     t.deepEqual(result.props.style, [], "if style is undefined, an array will be created");
