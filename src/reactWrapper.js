@@ -69,6 +69,11 @@ function recursiveStyle(elementsTree) {
                         borderColor: cls.slice(3)
                     })
 
+                } else if (cls.startsWith("tint_")) {
+                    newProps.style.push({
+                        tintColor: cls.slice(3)
+                    })
+
                 } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
                     newProps.style.push({
                         color: cls
