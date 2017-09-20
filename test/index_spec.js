@@ -79,7 +79,7 @@ test("colors", t => {
         colors: {
             palette: {
                 green: "#00FF00",
-                light_green: "#00FF00"
+                light_green: "#CCFFCC"
             }
         }
     });
@@ -87,7 +87,10 @@ test("colors", t => {
     t.deepEqual(styles.green, { color: "#00FF00" })
     t.deepEqual(styles.b__green, { borderColor: "#00FF00" })
     t.deepEqual(styles.bg_green, { backgroundColor: "#00FF00" })
-    t.deepEqual(styles.bg_light_green, { backgroundColor: "#00FF00" })
+    t.deepEqual(styles.bg_light_green, { backgroundColor: "#CCFFCC" })
+
+    t.deepEqual(styles.tint_green, { tintColor: "#00FF00" })
+    t.deepEqual(styles.tint_light_green, { tintColor: "#CCFFCC" })
 
     t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
@@ -169,7 +172,8 @@ test("wrapping", t => {
             { borderColor: "rgba(200,144,233,1.0)" },
             { color: "burlywood" }
         ],
-        "ad-hoc colors are supported");
+        "ad-hoc colors are supported"
+    );
 
     t.deepEqual(instance.props.style, [{ width: 256 }], "style array is created");
 
