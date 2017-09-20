@@ -224,7 +224,7 @@ rm-contain             resizeMode: "contain"
 rm-cover               resizeMode: "cover"
 rm-stretch             resizeMode: "stretch"
 
-tint-black             tintColor: "black" ("black" is from colors palette, see Colors section)
+tint-$color            tintColor: $color, see Colors section
 ```
 
 ##### Opacity
@@ -241,6 +241,7 @@ o-025                  opacity: 0.025
   bg-green                     green background
   #232323                      text color of #232323
   b--rgba(255,255,255,0.5)     border set to rgba(255,255,255,0.5)
+  tint-blue                    tint-color set to blue
   ```
 
 * You can also specify a palette in the options and Tachyons will generate styles for you. It will also generate variants with different opacities.

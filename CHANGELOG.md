@@ -1,3 +1,6 @@
+## 3.5
+* added support for `tint-color`. Thanks to [@mordaha](https://github.com/mordaha)
+
 ### 3.4.2
 * updated dependencies
 
