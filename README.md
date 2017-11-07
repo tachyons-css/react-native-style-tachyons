@@ -188,7 +188,7 @@ f-subheadline          fontSize: 5 rem
 
 normal                 fontWeight: normal
 b                      fontWeight: bold
-fw1 ... fw900          fontWeight: 100 ... fontWeight: 900
+fw1 ... fw9            fontWeight: 100 ... fontWeight: 900
 
 i                      fontStyle: italic
 
