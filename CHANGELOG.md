@@ -1,3 +1,6 @@
+## 3.5.2
+* bugfix for min-height
+
 ## 3.5.1
 * updated dependencies
 
