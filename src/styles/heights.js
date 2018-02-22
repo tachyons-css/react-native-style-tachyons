@@ -24,5 +24,5 @@ export const minHeights = _.mapValues({
     "min-h3": 4,
     "min-h4": 8,
     "min-h5": 16,
-    "max-h6": 32
+    "min-h6": 32
 }, val => ({ minHeight: val }))
