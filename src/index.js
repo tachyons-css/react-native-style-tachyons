@@ -74,7 +74,7 @@ const NativeTachyons = {
                     styleSheet[tachyonsKey] = {
                         [name]: val * rem
                     }
-                    sizes[tachyonsKey] = val * options.rem
+                    sizes[tachyonsKey] = val * rem
                 })
             })
         })
