@@ -1,10 +1,10 @@
 import React from "react";
 import _ from "lodash";
-import { styles } from "./index";
+import { styles, options } from "./index";
 import cssColors from "css-color-names"
 
 /* Wrap takes a Component or a render function and recursively replaces
-   the prop 'cls' with the respective 'style' definitions.
+   the prop 'cls' (or custom overriden prop name) with the respective 'style' definitions.
    Usually, wrapping a whole Class / Component will do the trick,
    but for some render functions (e.g. ListView -> renderHeader)
    this will not work. Hence the such functions need to be wrapped
@@ -32,11 +32,12 @@ export function wrap(componentOrFunction) {
 
 function recursiveStyle(elementsTree) {
     const { props } = elementsTree;
+    const { clsPropName } = options;
     let newProps;
     let translated = false;
 
     /* Parse cls string */
-    if (_.isString(props.cls)) {
+    if (_.isString(props[clsPropName])) {
         newProps = {}
         translated = true
         if (_.isArray(props.style)) {
@@ -49,7 +50,7 @@ function recursiveStyle(elementsTree) {
             newProps.style = []
         }
 
-        const splitted = props.cls.replace(/-/g, "_").split(" ")
+        const splitted = props[clsPropName].replace(/-/g, "_").split(" ")
         for (let i = 0; i < splitted.length; i++) {
             const cls = splitted[i];
             if (cls.length > 0) {
