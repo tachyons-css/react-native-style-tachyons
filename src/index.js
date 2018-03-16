@@ -36,7 +36,8 @@ const NativeTachyons = {
             },
             fonts: {
             },
-            clsPropName: 'cls'
+            clsPropName: 'cls',
+            customStyles: {}
         })
 
         /* Assign all the styles */
@@ -101,6 +102,8 @@ const NativeTachyons = {
         _.forOwn(options.fonts, (val, key) => {
             styleSheet[`ff-${key}`] = { fontFamily: val }
         });
+
+        _.assign(styleSheet, options.customStyles);
 
         _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
         _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
