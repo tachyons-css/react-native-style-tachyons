@@ -112,6 +112,13 @@ Of course you can use your old styles along tachyons' classes.
    NativeTachyons.wrap(() => <Text cls="b">Hi there!</Text>)
    ```
 
+   If you prefer to use a different propName instead of `cls`, specify the name in the options:
+
+   ```javascript
+   NativeTachyons.build({
+       clsPropName: "cls"
+   }, StyleSheet);
+   ```
 
 
 

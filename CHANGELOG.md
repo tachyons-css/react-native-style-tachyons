@@ -1,7 +1,10 @@
-## 3.5.2
+## 3.6
+* Allow the `cls` property-name to be customized to something else. Thanks to [@artificis](https://github.com/artificis)
+
+### 3.5.2
 * bugfix for min-height
 
-## 3.5.1
+### 3.5.1
 * updated dependencies
 
 ## 3.5
