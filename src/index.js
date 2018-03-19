@@ -24,6 +24,8 @@ const NativeTachyons = {
     /* Placeholder */
     sizes: {},
 
+    options: {},
+
     build: function build(options = {}, StyleSheet) {
 
         _.defaultsDeep(options, {
@@ -33,7 +35,9 @@ const NativeTachyons = {
                 }
             },
             fonts: {
-            }
+            },
+            clsPropName: 'cls',
+            customStyles: {}
         })
 
         /* Assign all the styles */
@@ -99,8 +103,11 @@ const NativeTachyons = {
             styleSheet[`ff-${key}`] = { fontFamily: val }
         });
 
+        _.assign(styleSheet, options.customStyles);
+
         _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
         _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
+        _.assign(NativeTachyons.options, options);
     }
 }
 
@@ -117,4 +124,4 @@ function hyphensToUnderscores(sourceObj) {
 
 
 export default NativeTachyons;
-export const { sizes, styles, wrap, build } = NativeTachyons;
+export const { sizes, styles, wrap, build, options } = NativeTachyons;
