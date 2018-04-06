@@ -14,4 +14,4 @@ export default {
     tj: {
         textAlign: "justify"
     }
-}
+};

@@ -15,6 +15,18 @@ import * as absolute from "./styles/absolute"
 import lineHeight from "./styles/lineHeight"
 import tracked from "./styles/tracked"
 
+
+const hyphensToUnderscores = function(sourceObj) {
+    const translated = {}
+
+    /* Create hypened versions */
+    _.forOwn(sourceObj, (val, key) => {
+        translated[key.replace(/-/g, "_")] = val;
+    })
+
+    return translated;
+}
+
 const NativeTachyons = {
     wrap: reactWrapper.wrap,
 
@@ -26,7 +38,7 @@ const NativeTachyons = {
 
     options: {},
 
-    build: function build(options = {}, StyleSheet) {
+    build: function build (options = {}, StyleSheet) {
 
         _.defaultsDeep(options, {
             rem: 16,
@@ -36,7 +48,7 @@ const NativeTachyons = {
             },
             fonts: {
             },
-            clsPropName: 'cls',
+            clsPropName: "cls",
             customStyles: {}
         })
 
@@ -66,7 +78,6 @@ const NativeTachyons = {
         ]
 
         REM_SCALED.forEach(subSheet => {
-
             _.forOwn(subSheet, (styleObj, tachyonsKey) => {
                 _.forOwn(styleObj, (val, name) => {
                     styleSheet[tachyonsKey] = {
@@ -89,7 +100,9 @@ const NativeTachyons = {
 
             /* Alpha variants */
             for (let i = 10; i < 100; i += 10) {
-                const rgbString = new Color(val).alpha(i / 100).rgb().string();
+                const rgbString = new Color(val).alpha(i / 100)
+                    .rgb()
+                    .string();
 
                 styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }
                 styleSheet[`${name}-${i}`] = { color: rgbString }
@@ -109,17 +122,6 @@ const NativeTachyons = {
         _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
         _.assign(NativeTachyons.options, options);
     }
-}
-
-function hyphensToUnderscores(sourceObj) {
-    const translated = {}
-
-    /* Create hypened versions */
-    _.forOwn(sourceObj, (val, key) => {
-        translated[key.replace(/-/g, "_")] = val;
-    })
-
-    return translated;
 }
 
 

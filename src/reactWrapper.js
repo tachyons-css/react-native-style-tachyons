@@ -3,17 +3,20 @@ import _ from "lodash";
 import { styles, options } from "./index";
 import cssColors from "css-color-names"
 
-/* Wrap takes a Component or a render function and recursively replaces
-   the prop 'cls' (or custom overriden prop name) with the respective 'style' definitions.
-   Usually, wrapping a whole Class / Component will do the trick,
-   but for some render functions (e.g. ListView -> renderHeader)
-   this will not work. Hence the such functions need to be wrapped
-   individually */
+/*
+ * Wrap takes a Component or a render function and recursively replaces
+ * the prop 'cls' (or custom overriden prop name) with the respective 'style' definitions.
+ * Usually, wrapping a whole Class / Component will do the trick,
+ * but for some render functions (e.g. ListView -> renderHeader)
+ * this will not work. Hence the such functions need to be wrapped
+ *individually
+ */
 export function wrap(componentOrFunction) {
     if (!(componentOrFunction.prototype && "render" in componentOrFunction.prototype)) {
         const func = componentOrFunction;
 
         return function wrappedRender(...args) {
+            /* eslint-disable no-invalid-this */
             return recursiveStyle(func.apply(this, args))
         };
     }
@@ -33,7 +36,7 @@ export function wrap(componentOrFunction) {
 function recursiveStyle(elementsTree) {
     const { props } = elementsTree;
     const { clsPropName } = options;
-    let newProps;
+    let newProps = null;
     let translated = false;
 
     /* Parse cls string */
@@ -54,11 +57,10 @@ function recursiveStyle(elementsTree) {
         for (let i = 0; i < splitted.length; i++) {
             const cls = splitted[i];
             if (cls.length > 0) {
-                const style = styles[cls];
-                if (style) {
+                if (styles[cls]) {
 
                     /* Style found */
-                    newProps.style.push(style);
+                    newProps.style.push(styles[cls]);
 
                 } else if (cls.startsWith("bg_")) {
                     newProps.style.push({

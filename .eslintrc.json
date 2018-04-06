@@ -1,0 +1,61 @@
+{
+    "parser": "babel-eslint",
+    "extends": [
+        "eslint:all",
+        "plugin:react/all",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "impliedStrict": true,
+            "jsx": true
+        }
+    },
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "plugins": [
+        "react"
+    ],
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "moduleDirectory": ["node_modules", "src", "test"]
+            }
+        },
+        "import/ignore": [
+            "node_modules"
+        ]
+    },
+    "rules": {
+        "sort-keys": 0,
+        "no-magic-numbers": 0,
+        "id-length": 0,
+        "semi": 0,
+        "object-curly-newline": 0,
+        "padded-blocks": 0,
+        "one-var": 0,
+        "sort-imports": 0,
+        "max-statements": 0,
+        "max-len": 0,
+        "space-before-function-paren": 0,
+        "require-jsdoc": 0,
+        "func-names": 0,
+        "func-style": 0,
+        "no-use-before-define": 0,
+        "no-plusplus": 0,
+
+        "quote-props": [2, "as-needed"],
+        "arrow-spacing": [2, { "before": true, "after": true }],
+        "brace-style": [2, "1tbs", { "allowSingleLine": true }],
+        "comma-spacing": [2, { "before": false, "after": true }],
+        "dot-location": [2, "property"],
+        "object-curly-spacing": [2, "always"],
+        "arrow-parens": [2, "as-needed"]
+    }
+}
