@@ -34,6 +34,7 @@
     },
     "rules": {
         "sort-keys": 0,
+        "camelcase": 0,
         "no-magic-numbers": 0,
         "id-length": 0,
         "semi": 0,
@@ -50,12 +51,29 @@
         "no-use-before-define": 0,
         "no-plusplus": 0,
 
+        "react/jsx-filename-extension": 0,
+        "react/prefer-stateless-function": 0,
+        "react/class-methods-use-this": 0,
+        "react/jsx-sort-props": 0,
+
         "quote-props": [2, "as-needed"],
         "arrow-spacing": [2, { "before": true, "after": true }],
         "brace-style": [2, "1tbs", { "allowSingleLine": true }],
         "comma-spacing": [2, { "before": false, "after": true }],
         "dot-location": [2, "property"],
         "object-curly-spacing": [2, "always"],
-        "arrow-parens": [2, "as-needed"]
+        "arrow-parens": [2, "as-needed"],
+
+        "react/jsx-indent": [2, 4],
+        "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],
+        "react/jsx-wrap-multilines": [2, {
+          "declaration": "parens",
+          "assignment": "parens",
+          "return": "parens",
+          "arrow": "parens-new-line",
+          "condition": "ignore",
+          "logical": "ignore",
+          "prop": "ignore"
+        }]
     }
 }

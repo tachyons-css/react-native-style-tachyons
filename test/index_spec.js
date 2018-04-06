@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { test } from "tape";
 import { build, wrap, styles, sizes } from "../src/";
 import _ from "lodash";
