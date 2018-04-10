@@ -80,10 +80,14 @@ const NativeTachyons = {
         REM_SCALED.forEach(subSheet => {
             _.forOwn(subSheet, (styleObj, tachyonsKey) => {
                 _.forOwn(styleObj, (val, name) => {
-                    styleSheet[tachyonsKey] = {
-                        [name]: val * options.rem
+                    let rem = options.rem;
+                    if (name === "fontSize") {
+                        rem = options.fontRem || options.rem;
                     }
-                    sizes[tachyonsKey] = val * options.rem
+                    styleSheet[tachyonsKey] = {
+                        [name]: val * rem
+                    }
+                    sizes[tachyonsKey] = val * rem
                 })
             })
         })

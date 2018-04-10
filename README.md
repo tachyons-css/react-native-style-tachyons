@@ -73,6 +73,7 @@ Of course you can use your old styles along tachyons' classes.
 
    [More about Tachyons' typography](http://tachyons.io/docs/typography/scale/)
 
+* The optional `fontRem` parameter scales the font sizes independently of other styles.
 
 
 ## Usage
@@ -86,9 +87,16 @@ Of course you can use your old styles along tachyons' classes.
 
    NativeTachyons.build({
        /* REM parameter is optional, default is 16 */
-       rem: screenWidth > 340 ? 18 : 16
+       rem: screenWidth > 340 ? 18 : 16,
+       /* fontRem parameter is optional to allow adjustment in font-scaling. default falls back to rem */
+       fontRem: 20
    }, StyleSheet);
    ```
+
+   # Sensible rem/fontRem values
+   Experience showed that for tablets, rem values in the range of 12 - 18, depending on device resolution, work well.
+   For phones, the same rem might be used, but fontRem should be floored at 14, to keep everything readable.
+   These value work well for various sized iPhone and Android phones from 4" to 6" displays.
 
 2. To use the styles
 
@@ -212,6 +220,7 @@ tracked-mega           letterSpacing:  0.25 rem
 
 ```
 
+##### Font-Families
 Specify the font-families you need in the configuration to use them:
 ```javascript
 ff-iowan               fontFamily: "Iowan Old Style"
