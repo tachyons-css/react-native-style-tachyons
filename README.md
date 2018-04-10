@@ -73,6 +73,7 @@ Of course you can use your old styles along tachyons' classes.
 
    [More about Tachyons' typography](http://tachyons.io/docs/typography/scale/)
 
+* The optional `fontRem` parameter scales the font sizes independently of other styles.
 
 
 ## Usage
@@ -86,7 +87,9 @@ Of course you can use your old styles along tachyons' classes.
 
    NativeTachyons.build({
        /* REM parameter is optional, default is 16 */
-       rem: screenWidth > 340 ? 18 : 16
+       rem: screenWidth > 340 ? 18 : 16,
+       /* fontRem parameter is optional. default falls back to rem */
+       fontRem: 20
    }, StyleSheet);
    ```
 
