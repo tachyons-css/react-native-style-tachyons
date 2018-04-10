@@ -1,3 +1,6 @@
+## 3.7
+* Add `fontRem` option for more flexibility on phone-screens. Thank to [@peacechen](https://github.com/peacechen)
+
 ## 3.6
 * Allow the `cls` property-name to be customized to something else. Thanks to [@artificis](https://github.com/artificis)
 
