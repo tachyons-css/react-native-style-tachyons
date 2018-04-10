@@ -93,10 +93,10 @@ Of course you can use your old styles along tachyons' classes.
    }, StyleSheet);
    ```
 
-   # Sensible rem/fontRem values
-   Experience showed that for tablets, rem values in the range of 12 - 18, depending on device resolution, work well.
-   For phones, the same rem might be used, but fontRem should be floored at 14, to keep everything readable.
-   These value work well for various sized iPhone and Android phones from 4" to 6" displays.
+   ##### Sensible rem/fontRem values
+   Experience with variously sized iPhone and Android phones from 4" to 6" displays showed,
+   that for tablets, rem values in the range of 12 - 18, depending on device resolution, work well.
+   For phones, the same rem can be used, but fontRem should be floored at 14, to keep everything readable.
 
 2. To use the styles
 
