@@ -297,5 +297,13 @@ import { sizes } from "react-native-style-tachyons"
 const s = sizes.ma2          /* sizes.w4, ... */
 ```
 
+To access config options passed to NativeTachyons at build time
+```javascript
+import { options } from "react-native-style-tachyons";
+
+const font = options.fonts.regular	// The structure of the object depends on the one you passed to
+					// NativeTachyons.build()
+```
+
 ## Changes
 See the [ChangeLog](https://github.com/tachyons-css/react-native-style-tachyons/blob/master/CHANGELOG.md)
