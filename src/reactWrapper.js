@@ -54,7 +54,7 @@ function recursiveStyle(elementsTree) {
         }
 
         const splitted = props[clsPropName].replace(/-/g, "_").split(" ")
-        for (let i = 0; i < splitted.length; i++) {
+        for (let i = splitted.length - 1; i >= 0; i--) {
             const cls = splitted[i];
             if (cls.length > 0) {
                 if (styles[cls]) {
