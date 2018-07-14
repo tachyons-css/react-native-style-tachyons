@@ -12,7 +12,6 @@ import images from "./styles/images"
 import fontWeights from "./styles/fontWeights"
 import opacity from "./styles/opacity"
 import * as absolute from "./styles/absolute"
-import lineHeight from "./styles/lineHeight"
 import tracked from "./styles/tracked"
 
 
@@ -73,7 +72,6 @@ const NativeTachyons = {
             spacing,
             typeScale,
             borders.radii,
-            lineHeight,
             tracked
         ]
 

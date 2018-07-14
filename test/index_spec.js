@@ -45,7 +45,6 @@ test("styles", t => {
     t.deepEqual(styles.max_w3, { maxWidth: 64 })
     t.deepEqual(styles.min_h4, { minHeight: 128 })
     t.deepEqual(styles.max_h4, { maxHeight: 128 })
-    t.deepEqual(styles.lh_copy, { lineHeight: 24 })
     t.deepEqual(styles.tracked_tight, { letterSpacing: -0.8 })
     t.deepEqual(styles.left_1, { left: 16 })
     t.deepEqual(styles.top_2, { top: 32 })
@@ -255,6 +254,37 @@ test("wrapping render class", t => {
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");
     t.deepEqual(result.props.style, [{ fontWeight: "bold" }])
+    t.end();
+});
+
+test("calculate line-height fails without font-size", t => {
+    const Orig = wrap(class Orig extends React.Component {
+        render() {
+            return (
+                <div cls="lh-copy">hello</div>
+            );
+        }
+    });
+
+    const renderer = new ShallowRenderer();
+    t.throws(() => renderer.render(<Orig />), /setting 'lh_copy' needs explicit font-size/)
+    t.end();
+});
+
+test("calculate line-height", t => {
+    const Orig = wrap(class Orig extends React.Component {
+        render() {
+            return (
+                <div cls="f3 lh-copy">hello</div>
+            );
+        }
+    });
+
+    const renderer = new ShallowRenderer();
+    renderer.render(<Orig />);
+    const result = renderer.getRenderOutput();
+    t.deepEqual(result.type, "div");
+    t.deepEqual(result.props.style, [{ fontSize: 24 }, { lineHeight: 36 }])
     t.end();
 });
 

@@ -2,6 +2,8 @@ import React from "react";
 import _ from "lodash";
 import { styles, options } from "./index";
 import cssColors from "css-color-names"
+import typeScale from "./styles/typeScale"
+import lineHeights from "./styles/lineHeight"
 
 /*
  * Wrap takes a Component or a render function and recursively replaces
@@ -33,6 +35,70 @@ export function wrap(componentOrFunction) {
     return newClass;
 }
 
+function setStyles(props, clsPropName) {
+    const newProps = {}
+    if (_.isArray(props.style)) {
+        newProps.style = props.style.slice()
+
+    } else if (_.isObject(props.style)) {
+        newProps.style = [props.style]
+
+    } else {
+        newProps.style = []
+    }
+
+    const splitted = props[clsPropName].replace(/-/g, "_").split(" ")
+    const fontSize = _.find(_.keys(typeScale), fSetting => _.includes(splitted, fSetting));
+
+    for (let i = 0; i < splitted.length; i++) {
+        const cls = splitted[i];
+        if (cls.length > 0) {
+            if (styles[cls]) {
+
+                /* Style found */
+                newProps.style.push(styles[cls]);
+
+            } else if (cls.startsWith("lh_")) {
+
+                /* Get font style */
+                if (!_.isString(fontSize)) {
+                    throw new Error(`setting '${cls}' needs explicit font-size`);
+                }
+
+                newProps.style.push({
+                    lineHeight: lineHeights[cls.replace(/_/g, "-")] * styles[fontSize].fontSize
+                })
+
+            } else if (cls.startsWith("bg_")) {
+                newProps.style.push({
+                    backgroundColor: cls.slice(3)
+                })
+
+            } else if (cls.startsWith("b__")) {
+                newProps.style.push({
+                    borderColor: cls.slice(3)
+                })
+
+            } else if (cls.startsWith("tint_")) {
+                newProps.style.push({
+                    tintColor: cls.slice(3)
+                })
+
+            } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
+                newProps.style.push({
+                    color: cls
+                })
+
+            } else {
+                throw new Error(`style '${cls}' not found`);
+            }
+
+        }
+    }
+
+    return newProps;
+}
+
 function recursiveStyle(elementsTree) {
     const { props } = elementsTree;
     const { clsPropName } = options;
@@ -41,53 +107,8 @@ function recursiveStyle(elementsTree) {
 
     /* Parse cls string */
     if (_.isString(props[clsPropName])) {
-        newProps = {}
-        translated = true
-        if (_.isArray(props.style)) {
-            newProps.style = props.style.slice()
-
-        } else if (_.isObject(props.style)) {
-            newProps.style = [props.style]
-
-        } else {
-            newProps.style = []
-        }
-
-        const splitted = props[clsPropName].replace(/-/g, "_").split(" ")
-        for (let i = 0; i < splitted.length; i++) {
-            const cls = splitted[i];
-            if (cls.length > 0) {
-                if (styles[cls]) {
-
-                    /* Style found */
-                    newProps.style.push(styles[cls]);
-
-                } else if (cls.startsWith("bg_")) {
-                    newProps.style.push({
-                        backgroundColor: cls.slice(3)
-                    })
-
-                } else if (cls.startsWith("b__")) {
-                    newProps.style.push({
-                        borderColor: cls.slice(3)
-                    })
-
-                } else if (cls.startsWith("tint_")) {
-                    newProps.style.push({
-                        tintColor: cls.slice(3)
-                    })
-
-                } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
-                    newProps.style.push({
-                        color: cls
-                    })
-
-                } else {
-                    throw new Error(`style '${cls}' not found`);
-                }
-
-            }
-        }
+        translated = true;
+        newProps = setStyles(props, clsPropName);
     }
 
     let newChildren = props.children;
