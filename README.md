@@ -218,6 +218,12 @@ tracked                letterSpacing:  0.1 rem
 tracked-tight          letterSpacing: -0.05 rem
 tracked-mega           letterSpacing:  0.25 rem
 
+
+no-underline           textDecorationLine: "none"
+strike                 textDecorationLine: "line-through"
+underline              textDecorationLine: "underline"
+strike-underline       textDecorationLine: "underline line-through"
+
 ```
 
 ##### Font-Families
