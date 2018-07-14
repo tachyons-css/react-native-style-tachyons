@@ -33,25 +33,25 @@
   "dependencies": {
     "color": "^3.0.0",
     "css-color-names": "0.0.4",
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.10"
   },
   "files": [
     "lib/"
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.2",
-    "babel-preset-env": "^1.6.1",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "benchmark": "^2.1.4",
-    "eslint": "^4.19.1",
-    "eslint-plugin-import": "^2.10.0",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint": "^5.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-react": "^7.10.0",
     "faucet": "0.0.1",
-    "publish-please": "^2.4.1",
-    "react": "^16.3.1",
-    "react-test-renderer": "^16.3.1",
-    "tape": "^4.9.0"
+    "publish-please": "^3.1.1",
+    "react": "^16.4.1",
+    "react-test-renderer": "^16.4.1",
+    "tape": "^4.9.1"
   },
   "peerDependencies": {
     "react-native": "0.x"
@@ -59,7 +59,6 @@
   "scripts": {
     "build": "rm -Rf lib && babel src -d lib",
     "test": "eslint --fix src && eslint --fix test && npm run build && tape -r babel-register 'test/**/*_spec.js' | faucet",
-    "publish-please": "publish-please",
-    "prepublish": "publish-please guard"
+    "publish-please": "publish-please"
   }
 }

@@ -51,6 +51,7 @@
         "no-use-before-define": 0,
         "no-plusplus": 0,
         "prefer-destructuring": 0,
+        "max-lines-per-function": 0,
 
 
         "react/jsx-filename-extension": 0,
