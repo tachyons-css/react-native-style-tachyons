@@ -1,3 +1,7 @@
+## 3.8
+* Add `textDecorationLine` styles. Thank to [@ sbycrosz](https://github.com/ sbycrosz)
+* Updated dependencies
+
 ## 3.7
 * Add `fontRem` option for more flexibility on phone-screens. Thank to [@peacechen](https://github.com/peacechen)
 
