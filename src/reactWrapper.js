@@ -46,7 +46,7 @@ function setStyles(props, clsPropName, typeScale) {
         newProps.style = []
     }
 
-    const splitted = props[clsPropName].replace(/-/g, "_").split(" ")
+    const splitted = props[clsPropName].replace(/-/ug, "_").split(" ")
     const fontSize = _.find(_.keys(typeScale), fSetting => _.includes(splitted, fSetting));
 
     for (let i = 0; i < splitted.length; i++) {
@@ -65,7 +65,7 @@ function setStyles(props, clsPropName, typeScale) {
                 }
 
                 newProps.style.push({
-                    lineHeight: lineHeights[cls.replace(/_/g, "-")] * styles[fontSize].fontSize
+                    lineHeight: lineHeights[cls.replace(/_/ug, "-")] * styles[fontSize].fontSize
                 })
 
             } else if (cls.startsWith("bg_")) {
@@ -83,7 +83,7 @@ function setStyles(props, clsPropName, typeScale) {
                     tintColor: cls.slice(3)
                 })
 
-            } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
+            } else if (cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
                 newProps.style.push({
                     color: cls
                 })
