@@ -6,7 +6,7 @@ import { widths, minWidths, maxWidths } from "./styles/widths"
 import * as borders from "./styles/borders"
 import flexbox from "./styles/flexbox"
 import spacing from "./styles/spacing"
-import typeScale from "./styles/typeScale"
+import generateTypeScale, { defaultTypeScale } from "./styles/typeScale"
 import text from "./styles/text"
 import images from "./styles/images"
 import fontWeights from "./styles/fontWeights"
@@ -47,6 +47,7 @@ const NativeTachyons = {
             },
             fonts: {
             },
+            typeScale: defaultTypeScale,
             clsPropName: "cls",
             customStyles: {}
         })
@@ -59,6 +60,8 @@ const NativeTachyons = {
         _.assign(styleSheet, images)
         _.assign(styleSheet, text)
         _.assign(styleSheet, opacity)
+
+        const typeScale = generateTypeScale(options.typeScale)
 
         /* Calculate rem scales */
         const sizes = {}

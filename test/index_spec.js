@@ -302,3 +302,26 @@ test("wrapping render functions", t => {
     t.deepEqual(result.props.style, [{ fontWeight: "bold" }])
     t.end();
 });
+
+test("custom type scale", t => {
+    buildRNT({
+        typeScale: {
+            f1: "1.625",
+            f2: "1.375",
+            f3: "1.125",
+            f4: "0.9375",
+            f5: "0.8125",
+            f6: "0.75",
+            f7: "0.625",
+        }
+    })
+    t.deepEqual(styles.f1, { fontSize: 26 })
+    t.deepEqual(styles.f2, { fontSize: 22 })
+    t.deepEqual(styles.f3, { fontSize: 18 })
+    t.deepEqual(styles.f4, { fontSize: 15 })
+    t.deepEqual(styles.f5, { fontSize: 13 })
+    t.deepEqual(styles.f6, { fontSize: 12 })
+    t.deepEqual(styles.f7, { fontSize: 10 })
+
+    t.end();
+})

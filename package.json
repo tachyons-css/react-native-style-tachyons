@@ -2,7 +2,7 @@
   "name": "react-native-style-tachyons",
   "description": "functional, maintainable styling for react-native",
   "license": "Apache-2.0",
-  "version": "4.0.0",
+  "version": "4.0.1-alpha.0",
   "keywords": [
     "react",
     "react-native",
