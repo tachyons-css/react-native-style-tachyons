@@ -291,7 +291,37 @@ o-025                  opacity: 0.025
 
   ```
 
+## TypeScale
+* You can specify the typescale in the options and Tachyons will generate the font sizes for you.
 
+```javascript
+NativeTachyons.build({
+    typeScale: {
+        f1: '1.625',
+        f2: '1.375',
+        f3: '1.125',
+        f4: '0.9375',
+        f5: '0.8125',
+        f6: '0.75',
+        f7: '0.625',
+    },
+    rem: 16,
+}, StyleSheet);
+```
+
+This will result in font sizes of:
+
+```javascript
+{
+    f1: 26,
+    f2: 22,
+    f3: 18,
+    f4: 15,
+    f5: 13,
+    f6: 12,
+    f7: 10,
+}
+```
 
 ## Raw Values
 
