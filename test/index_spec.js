@@ -98,6 +98,8 @@ test("colors", t => {
 
 
 test("wrapping", t => {
+    const TestContext = React.createContext()
+    const tesContextValue = { test: 'testValue' };
 
     function createComponent(clsStr, style) {
         const comp = class extends React.Component {
@@ -133,7 +135,20 @@ test("wrapping", t => {
                         >
                             <div />
                         </div>
+                        <TestContext.Provider value={tesContextValue}>
+                            <TestContext.Consumer>
+                                {context => (
+                                    <div
+                                        key="child5"
+                                        cls="bg-white burlywood"
+                                >
+                                {context.test}
+                                    </div>
+                            )}
+                            </TestContext.Consumer>
+                        </TestContext.Provider>
                     </div>
+                    
                 )
             }
         }
@@ -159,7 +174,7 @@ test("wrapping", t => {
     t.deepEqual(result.props.other, "2", "other properties are preserved");
     t.deepEqual(result.props.children[0].props.cls, "w2", "child is preserved");
     t.deepEqual(result.props.children[0].props.style, [{ width: 32 }], "child cls is converted");
-    t.deepEqual(result.props.children.length, 4, "children are converted");
+    t.deepEqual(result.props.children.length, 5, "children are converted");
     t.deepEqual(result.props.children[0].props.children.props.style, [{ width: 128 }], "nested single children are converted");
     t.deepEqual(result.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
     t.ok(React.isValidElement(result.props.children[2].props.children), "unaltered single children are preserved");
@@ -172,6 +187,15 @@ test("wrapping", t => {
             { color: "burlywood" }
         ],
         "ad-hoc colors are supported"
+    );
+
+    t.deepEqual(
+        result.props.children[4].props.children.props.children(tesContextValue).props.style,
+        [
+            { backgroundColor: 'white' },
+            { color: 'burlywood' }
+        ],
+        "render props are supported"
     );
 
     t.deepEqual(result.props.style, [{ width: 256 }], "style array is created");
