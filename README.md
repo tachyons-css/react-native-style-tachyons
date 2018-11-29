@@ -254,6 +254,7 @@ tint-$color            tintColor: $color, see Colors section
 o-10|20|...|100        opacity: 0.1|0.2|...|1
 o-05                   opacity: 0.05
 o-025                  opacity: 0.025
+o-0                    opacity: 0
 ```
 
 ## Colors
