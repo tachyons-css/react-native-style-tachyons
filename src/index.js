@@ -20,7 +20,7 @@ const hyphensToUnderscores = function(sourceObj) {
 
     /* Create hypened versions */
     _.forOwn(sourceObj, (val, key) => {
-        translated[key.replace(/-/g, "_")] = val;
+        translated[key.replace(/-/gu, "_")] = val;
     })
 
     return translated;
