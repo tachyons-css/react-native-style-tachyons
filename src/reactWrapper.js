@@ -30,7 +30,7 @@ export function wrap(componentOrFunction) {
     }
 
     /* Fix name */
-    newClass.displayName = WrappedComponent.displayName || WrappedComponent.name;
+    newClass.displayName = WrappedComponent.displayName || WrappedComponent.name
 
     /* Mark the class as wrapped by tachyons */
     newClass.isTachyonsWrapped = true;
