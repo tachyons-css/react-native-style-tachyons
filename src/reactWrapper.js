@@ -30,7 +30,10 @@ export function wrap(componentOrFunction) {
     }
 
     /* Fix name */
-    newClass.displayName = WrappedComponent.displayName || WrappedComponent.name
+    newClass.displayName = WrappedComponent.displayName || WrappedComponent.name;
+
+    /* Mark the class as wrapped by tachyons */
+    newClass.isTachyonsWrapped = true;
 
     return newClass;
 }
@@ -100,6 +103,16 @@ function setStyles(props, clsPropName) {
 }
 
 function recursiveStyle(elementsTree) {
+
+    /*
+     * If the node type is wrapped by tachyons then return immediately. This
+     * will prevent unnecessarily applying styles to elements that have already
+     * been wrapped.
+     */
+    if (elementsTree.type.isTachyonsWrapped) {
+        return elementsTree;
+    }
+
     const { props } = elementsTree;
     const { clsPropName } = options;
     let newProps = null;
