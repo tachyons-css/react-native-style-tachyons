@@ -33,7 +33,7 @@
   "dependencies": {
     "color": "^3.0.0",
     "css-color-names": "0.0.4",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.11"
   },
   "files": [
     "lib/"
@@ -44,11 +44,11 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "benchmark": "^2.1.4",
-    "eslint": "^5.1.0",
+    "eslint": "^5.13.0",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-react": "^7.10.0",
     "faucet": "0.0.1",
-    "publish-please": "^3.1.1",
+    "publish-please": "^5.4.3",
     "react": "^16.4.1",
     "react-test-renderer": "^16.4.1",
     "tape": "^4.9.1"
