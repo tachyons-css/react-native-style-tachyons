@@ -84,7 +84,7 @@ function setStyles(props, clsPropName) {
                     tintColor: cls.slice(3)
                 })
 
-            } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
+            } else if (cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
                 newProps.style.push({
                     color: cls
                 })
