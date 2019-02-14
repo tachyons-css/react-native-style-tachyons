@@ -74,7 +74,6 @@ const NativeTachyons = {
             spacing,
             typeScale,
             borders.radii,
-            tracked
             tracked,
             lineHeights
         ]
