@@ -57,10 +57,7 @@ const NativeTachyons = {
         _.assign(styleSheet, borders.styles)
         _.assign(styleSheet, flexbox)
         _.assign(styleSheet, fontWeights)
-<<<<<<< HEAD
-=======
         _.assign(styleSheet, lineHeights)
->>>>>>> export a variation of the lineHeights with each item mapped to a lineHeight property. This variation of the lineHeights is then imported into the styles index, which it is then treated as every other style, thus allowing us to access it in our NativeTachyons.Styles StyleSheet
         _.assign(styleSheet, images)
         _.assign(styleSheet, text)
         _.assign(styleSheet, opacity)
@@ -77,12 +74,9 @@ const NativeTachyons = {
             spacing,
             typeScale,
             borders.radii,
-<<<<<<< HEAD
             tracked
-=======
             tracked,
             lineHeights
->>>>>>> export a variation of the lineHeights with each item mapped to a lineHeight property. This variation of the lineHeights is then imported into the styles index, which it is then treated as every other style, thus allowing us to access it in our NativeTachyons.Styles StyleSheet
         ]
 
         REM_SCALED.forEach(subSheet => {
