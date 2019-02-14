@@ -10,6 +10,7 @@ import typeScale from "./styles/typeScale"
 import text from "./styles/text"
 import images from "./styles/images"
 import fontWeights from "./styles/fontWeights"
+import { lineHeightsWithProperties as lineHeights } from "./styles/lineHeight"
 import opacity from "./styles/opacity"
 import * as absolute from "./styles/absolute"
 import tracked from "./styles/tracked"
@@ -20,7 +21,7 @@ const hyphensToUnderscores = function(sourceObj) {
 
     /* Create hypened versions */
     _.forOwn(sourceObj, (val, key) => {
-        translated[key.replace(/-/g, "_")] = val;
+        translated[key.replace(/-/gu, "_")] = val;
     })
 
     return translated;
@@ -56,6 +57,7 @@ const NativeTachyons = {
         _.assign(styleSheet, borders.styles)
         _.assign(styleSheet, flexbox)
         _.assign(styleSheet, fontWeights)
+        _.assign(styleSheet, lineHeights)
         _.assign(styleSheet, images)
         _.assign(styleSheet, text)
         _.assign(styleSheet, opacity)
@@ -72,7 +74,8 @@ const NativeTachyons = {
             spacing,
             typeScale,
             borders.radii,
-            tracked
+            tracked,
+            lineHeights
         ]
 
         REM_SCALED.forEach(subSheet => {
