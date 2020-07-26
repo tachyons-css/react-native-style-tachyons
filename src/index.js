@@ -19,9 +19,15 @@ const hyphensToUnderscores = function(sourceObj) {
     const translated = {}
 
     /* Create hypened versions */
-    _.forOwn(sourceObj, (val, key) => {
-        translated[key.replace(/-/g, "_")] = val;
-    })
+    _.forOwn(
+        sourceObj,
+        (val, key) => {
+            translated[key.replace(
+                /-/gu,
+                "_"
+            )] = val;
+        }
+    )
 
     return translated;
 }
@@ -37,28 +43,50 @@ const NativeTachyons = {
 
     options: {},
 
+    /* eslint default-param-last: off */
     build: function build (options = {}, StyleSheet) {
 
-        _.defaultsDeep(options, {
-            rem: 16,
-            colors: {
-                palette: {
-                }
-            },
-            fonts: {
-            },
-            clsPropName: "cls",
-            customStyles: {}
-        })
+        _.defaultsDeep(
+            options,
+            {
+                rem: 16,
+                colors: {
+                    palette: {
+                    }
+                },
+                fonts: {
+                },
+                clsPropName: "cls",
+                customStyles: {}
+            }
+        )
 
         /* Assign all the styles */
         const styleSheet = {}
-        _.assign(styleSheet, borders.styles)
-        _.assign(styleSheet, flexbox)
-        _.assign(styleSheet, fontWeights)
-        _.assign(styleSheet, images)
-        _.assign(styleSheet, text)
-        _.assign(styleSheet, opacity)
+        _.assign(
+            styleSheet,
+            borders.styles
+        )
+        _.assign(
+            styleSheet,
+            flexbox
+        )
+        _.assign(
+            styleSheet,
+            fontWeights
+        )
+        _.assign(
+            styleSheet,
+            images
+        )
+        _.assign(
+            styleSheet,
+            text
+        )
+        _.assign(
+            styleSheet,
+            opacity
+        )
 
         /* Calculate rem scales */
         const sizes = {}
@@ -76,53 +104,80 @@ const NativeTachyons = {
         ]
 
         REM_SCALED.forEach(subSheet => {
-            _.forOwn(subSheet, (styleObj, tachyonsKey) => {
-                _.forOwn(styleObj, (val, name) => {
-                    let rem = options.rem;
-                    if (name === "fontSize") {
-                        rem = options.fontRem || options.rem;
-                    }
-                    styleSheet[tachyonsKey] = {
-                        [name]: val * rem
-                    }
-                    sizes[tachyonsKey] = val * rem
-                })
-            })
+            _.forOwn(
+                subSheet,
+                (styleObj, tachyonsKey) => {
+                    _.forOwn(
+                        styleObj,
+                        (val, name) => {
+                            let rem = options.rem;
+                            if (name === "fontSize") {
+                                rem = options.fontRem || options.rem;
+                            }
+                            styleSheet[tachyonsKey] = {
+                                [name]: val * rem
+                            }
+                            sizes[tachyonsKey] = val * rem
+                        }
+                    )
+                }
+            )
         })
 
         /* Absolute */
-        _.assign(styleSheet, absolute.scaleStyles(options.rem));
+        _.assign(
+            styleSheet,
+            absolute.scaleStyles(options.rem)
+        );
 
         /* Colors */
-        _.forOwn(options.colors.palette, (val, name) => {
-            styleSheet[`bg-${name}`] = { backgroundColor: val }
-            styleSheet[`${name}`] = { color: val }
-            styleSheet[`b--${name}`] = { borderColor: val }
-            styleSheet[`tint-${name}`] = { tintColor: val }
+        _.forOwn(
+            options.colors.palette,
+            (val, name) => {
+                styleSheet[`bg-${name}`] = { backgroundColor: val }
+                styleSheet[`${name}`] = { color: val }
+                styleSheet[`b--${name}`] = { borderColor: val }
+                styleSheet[`tint-${name}`] = { tintColor: val }
 
-            /* Alpha variants */
-            for (let i = 10; i < 100; i += 10) {
-                const rgbString = new Color(val).alpha(i / 100)
-                    .rgb()
-                    .string();
+                /* Alpha variants */
+                for (let i = 10; i < 100; i += 10) {
+                    const rgbString = new Color(val).alpha(i / 100)
+                        .rgb()
+                        .string();
 
-                styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }
-                styleSheet[`${name}-${i}`] = { color: rgbString }
-                styleSheet[`b--${name}-${i}`] = { borderColor: rgbString }
+                    styleSheet[`bg-${name}-${i}`] = { backgroundColor: rgbString }
+                    styleSheet[`${name}-${i}`] = { color: rgbString }
+                    styleSheet[`b--${name}-${i}`] = { borderColor: rgbString }
+                }
             }
-        });
+        );
 
 
         /* Font-families */
-        _.forOwn(options.fonts, (val, key) => {
-            styleSheet[`ff-${key}`] = { fontFamily: val }
-        });
+        _.forOwn(
+            options.fonts,
+            (val, key) => {
+                styleSheet[`ff-${key}`] = { fontFamily: val }
+            }
+        );
 
-        _.assign(styleSheet, options.customStyles);
+        _.assign(
+            styleSheet,
+            options.customStyles
+        );
 
-        _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
-        _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
-        _.assign(NativeTachyons.options, options);
+        _.assign(
+            NativeTachyons.sizes,
+            hyphensToUnderscores(sizes)
+        );
+        _.assign(
+            NativeTachyons.styles,
+            StyleSheet.create(hyphensToUnderscores(styleSheet))
+        );
+        _.assign(
+            NativeTachyons.options,
+            options
+        );
     }
 }
 

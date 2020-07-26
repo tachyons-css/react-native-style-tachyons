@@ -19,7 +19,10 @@ export function wrap(componentOrFunction) {
 
         return function wrappedRender(...args) {
             /* eslint-disable no-invalid-this */
-            return recursiveStyle(func.apply(this, args))
+            return recursiveStyle(func.apply(
+                this,
+                args
+            ))
         };
     }
     const WrappedComponent = componentOrFunction;
@@ -47,8 +50,17 @@ function setStyles(props, clsPropName) {
         newProps.style = []
     }
 
-    const splitted = props[clsPropName].replace(/-/g, "_").split(" ")
-    const fontSize = _.find(_.keys(typeScale), fSetting => _.includes(splitted, fSetting));
+    const splitted = props[clsPropName].replace(
+        /-/gu,
+        "_"
+    ).split(" ")
+    const fontSize = _.find(
+        _.keys(typeScale),
+        fSetting => _.includes(
+            splitted,
+            fSetting
+        )
+    );
 
     for (let i = 0; i < splitted.length; i++) {
         const cls = splitted[i];
@@ -66,7 +78,10 @@ function setStyles(props, clsPropName) {
                 }
 
                 newProps.style.push({
-                    lineHeight: lineHeights[cls.replace(/_/g, "-")] * styles[fontSize].fontSize
+                    lineHeight: lineHeights[cls.replace(
+                        /_/gu,
+                        "-"
+                    )] * styles[fontSize].fontSize
                 })
 
             } else if (cls.startsWith("bg_")) {
@@ -84,7 +99,7 @@ function setStyles(props, clsPropName) {
                     tintColor: cls.slice(3)
                 })
 
-            } else if (cssColors[cls] || (/^(rgb|#|hsl)/).test(cls)) {
+            } else if (cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
                 newProps.style.push({
                     color: cls
                 })
@@ -108,7 +123,10 @@ function recursiveStyle(elementsTree) {
     /* Parse cls string */
     if (_.isString(props[clsPropName])) {
         translated = true;
-        newProps = setStyles(props, clsPropName);
+        newProps = setStyles(
+            props,
+            clsPropName
+        );
     }
 
     let newChildren = props.children;
@@ -138,7 +156,11 @@ function recursiveStyle(elementsTree) {
     }
 
     if (translated) {
-        return React.cloneElement(elementsTree, newProps, newChildren)
+        return React.cloneElement(
+            elementsTree,
+            newProps,
+            newChildren
+        )
     }
 
     return elementsTree;
