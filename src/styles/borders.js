@@ -1,13 +1,16 @@
 import _ from "lodash";
 
-export const radii = _.mapValues({
-    br0: 0,
-    br1: 0.125,
-    br2: 0.25,
-    br3: 0.5,
-    br4: 1,
-    br5: 2
-}, val => ({ borderRadius: val }));
+export const radii = _.mapValues(
+    {
+        br0: 0,
+        br1: 0.125,
+        br2: 0.25,
+        br3: 0.5,
+        br4: 1,
+        br5: 2
+    },
+    val => ({ borderRadius: val })
+);
 
 export const styles = {
     ba: {
