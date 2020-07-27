@@ -6,11 +6,10 @@ import lineHeights from "./styles/lineHeight"
 
 /*
  * Wrap takes a Component or a render function and recursively replaces
- * the prop 'cls' (or custom overriden prop name) with the respective 'style' definitions.
- * Usually, wrapping a whole Class / Component will do the trick,
- * but for some render functions (e.g. ListView -> renderHeader)
- * this will not work. Hence the such functions need to be wrapped
- *individually
+ * the prop 'cls' (or custom overridden prop name) with the respective 'style' definitions.
+ * Render functions are decorated so that when they are invoked the resulting
+ * element tree will be be recursively evaluated and 'cls' will be replaced with
+ * 'style' definitions.
  */
 export function wrap(componentOrFunction) {
     if (!(componentOrFunction.prototype && "render" in componentOrFunction.prototype)) {
@@ -18,7 +17,10 @@ export function wrap(componentOrFunction) {
 
         return function wrappedRender(...args) {
             /* eslint-disable no-invalid-this */
-            return recursiveStyle(func.apply(this, args))
+            return recursiveStyle(func.apply(
+                this,
+                args
+            ))
         };
     }
     const WrappedComponent = componentOrFunction;
@@ -30,6 +32,9 @@ export function wrap(componentOrFunction) {
 
     /* Fix name */
     newClass.displayName = WrappedComponent.displayName || WrappedComponent.name
+
+    /* Mark the class as wrapped by tachyons */
+    newClass.isTachyonsWrapped = true;
 
     return newClass;
 }
@@ -46,7 +51,7 @@ function setStyles(props, clsPropName, typeScale) {
         newProps.style = []
     }
 
-    const splitted = props[clsPropName].replace(/-/ug, "_").split(" ")
+    const splitted = props[clsPropName].replace(/-/gu, "_").split(" ")
     const fontSize = _.find(_.keys(typeScale), fSetting => _.includes(splitted, fSetting));
 
     for (let i = 0; i < splitted.length; i++) {
@@ -65,7 +70,7 @@ function setStyles(props, clsPropName, typeScale) {
                 }
 
                 newProps.style.push({
-                    lineHeight: lineHeights[cls.replace(/_/ug, "-")] * styles[fontSize].fontSize
+                    lineHeight: lineHeights[cls.replace(/_/gu, "-")] * styles[fontSize].fontSize
                 })
 
             } else if (cls.startsWith("bg_")) {
@@ -99,6 +104,16 @@ function setStyles(props, clsPropName, typeScale) {
 }
 
 function recursiveStyle(elementsTree) {
+
+    /*
+     * If the node type is wrapped by tachyons then return immediately. This
+     * will prevent unnecessarily applying styles to elements that have already
+     * been wrapped.
+     */
+    if (elementsTree.type.isTachyonsWrapped) {
+        return elementsTree;
+    }
+
     const { props } = elementsTree;
     const { clsPropName, typeScale } = options;
     let newProps = null;
@@ -134,10 +149,23 @@ function recursiveStyle(elementsTree) {
             translated = true;
             newChildren = converted;
         }
+    } else if (_.isFunction(newChildren)) {
+
+        /* Convert a fumction child to evaluate on invocation */
+        const originalChildrenFunction = newChildren;
+        const converted = (...args) => recursiveStyle(originalChildrenFunction(...args));
+        if (converted !== newChildren) {
+            translated = true;
+            newChildren = converted;
+        }
     }
 
     if (translated) {
-        return React.cloneElement(elementsTree, newProps, newChildren)
+        return React.cloneElement(
+            elementsTree,
+            newProps,
+            newChildren
+        )
     }
 
     return elementsTree;

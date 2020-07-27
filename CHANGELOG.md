@@ -1,3 +1,6 @@
+## 4.0.1
+* updated dependencies
+
 ## 4.0.0
 * Fixed #65 (Line-Height) calculation which is a breaking change, there new major-version.
 

@@ -27,20 +27,29 @@ const where = _.toPairs({
 })
 
 const style = {}
-_.forEach(what, ([
-    whatShort,
-    whatLong
-]) => {
-    _.forEach(where, ([
-        whereShort,
-        whereLong
+_.forEach(
+    what,
+    ([
+        whatShort,
+        whatLong
     ]) => {
-        _.forEach(REM_SCALE, (scale, idx) => {
-            style[`${whatShort}${whereShort}${idx}`] = {
-                [`${whatLong}${whereLong}`]: scale
+        _.forEach(
+            where,
+            ([
+                whereShort,
+                whereLong
+            ]) => {
+                _.forEach(
+                    REM_SCALE,
+                    (scale, idx) => {
+                        style[`${whatShort}${whereShort}${idx}`] = {
+                            [`${whatLong}${whereLong}`]: scale
+                        }
+                    }
+                )
             }
-        })
-    })
-});
+        )
+    }
+);
 
 export default style

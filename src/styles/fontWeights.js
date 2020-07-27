@@ -14,4 +14,7 @@ const weights = {
     fw9: "900"
 }
 
-export default _.mapValues(weights, val => ({ fontWeight: val }))
+export default _.mapValues(
+    weights,
+    val => ({ fontWeight: val })
+)
