@@ -15,7 +15,4 @@ const opacities = {
     "o-025": 0.025
 }
 
-export default _.mapValues(
-    opacities,
-    val => ({ opacity: val })
-)
+export default _.mapValues(opacities, val => ({ opacity: val }))

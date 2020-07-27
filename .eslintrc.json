@@ -69,6 +69,7 @@
         "dot-location": [2, "property"],
         "object-curly-spacing": [2, "always"],
         "arrow-parens": [2, "as-needed"],
+        "function-call-argument-newline": ["error", "never"],
 
         "react/jsx-indent": [2, 4],
         "react/jsx-first-prop-new-line": [2, "multiline-multiprop"],

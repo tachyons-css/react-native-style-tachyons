@@ -17,10 +17,7 @@ export function wrap(componentOrFunction) {
 
         return function wrappedRender(...args) {
             /* eslint-disable no-invalid-this */
-            return recursiveStyle(func.apply(
-                this,
-                args
-            ))
+            return recursiveStyle(func.apply(this, args))
         };
     }
     const WrappedComponent = componentOrFunction;
@@ -161,11 +158,7 @@ function recursiveStyle(elementsTree) {
     }
 
     if (translated) {
-        return React.cloneElement(
-            elementsTree,
-            newProps,
-            newChildren
-        )
+        return React.cloneElement(elementsTree, newProps, newChildren)
     }
 
     return elementsTree;
