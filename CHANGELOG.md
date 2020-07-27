@@ -1,7 +1,7 @@
 ## 4.1.0
-* <#77> Allow overriding of default typescale: <https://github.com/tachyons-css/react-native-style-tachyons#typescale>
-* #79 Add support for render-functions
-* #81 Optimized rendering of subtrees 
+* Allow overriding of default typescale: <https://github.com/tachyons-css/react-native-style-tachyons#typescale> https://github.com/tachyons-css/react-native-style-tachyons/pull/77
+* Add support for render-functions: https://github.com/tachyons-css/react-native-style-tachyons/pull/79 
+* Optimized rendering of subtrees: https://github.com/tachyons-css/react-native-style-tachyons/pull/81
 
 ## 4.0.1
 * updated dependencies
