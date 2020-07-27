@@ -35,6 +35,9 @@ export function wrap(componentOrFunction) {
     /* Fix name */
     newClass.displayName = WrappedComponent.displayName || WrappedComponent.name
 
+    /* Mark the class as wrapped by tachyons */
+    newClass.isTachyonsWrapped = true;
+
     return newClass;
 }
 
@@ -50,17 +53,8 @@ function setStyles(props, clsPropName) {
         newProps.style = []
     }
 
-    const splitted = props[clsPropName].replace(
-        /-/gu,
-        "_"
-    ).split(" ")
-    const fontSize = _.find(
-        _.keys(typeScale),
-        fSetting => _.includes(
-            splitted,
-            fSetting
-        )
-    );
+    const splitted = props[clsPropName].replace(/-/gu, "_").split(" ")
+    const fontSize = _.find(_.keys(typeScale), fSetting => _.includes(splitted, fSetting));
 
     for (let i = 0; i < splitted.length; i++) {
         const cls = splitted[i];
@@ -78,10 +72,7 @@ function setStyles(props, clsPropName) {
                 }
 
                 newProps.style.push({
-                    lineHeight: lineHeights[cls.replace(
-                        /_/gu,
-                        "-"
-                    )] * styles[fontSize].fontSize
+                    lineHeight: lineHeights[cls.replace(/_/gu, "-")] * styles[fontSize].fontSize
                 })
 
             } else if (cls.startsWith("bg_")) {
@@ -115,6 +106,16 @@ function setStyles(props, clsPropName) {
 }
 
 function recursiveStyle(elementsTree) {
+
+    /*
+     * If the node type is wrapped by tachyons then return immediately. This
+     * will prevent unnecessarily applying styles to elements that have already
+     * been wrapped.
+     */
+    if (elementsTree.type.isTachyonsWrapped) {
+        return elementsTree;
+    }
+
     const { props } = elementsTree;
     const { clsPropName } = options;
     let newProps = null;
