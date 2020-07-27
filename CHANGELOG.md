@@ -1,3 +1,8 @@
+## 4.1.0
+* #77 Allow overriding of default typescale: <https://github.com/tachyons-css/react-native-style-tachyons#typescale>
+* #79 Add support for render-functions
+* #81 Optimized rendering of subtrees 
+
 ## 4.0.1
 * updated dependencies
 
@@ -5,7 +10,7 @@
 * Fixed #65 (Line-Height) calculation which is a breaking change, there new major-version.
 
 ## 3.8
-* Add `textDecorationLine` styles. Thank to [@ sbycrosz](https://github.com/ sbycrosz)
+* Add `textDecorationLine` styles. Thank to [@sbycrosz](https://github.com/sbycrosz)
 * Updated dependencies
 
 ## 3.7
