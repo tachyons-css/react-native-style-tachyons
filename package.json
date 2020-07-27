@@ -2,7 +2,7 @@
   "name": "react-native-style-tachyons",
   "description": "functional, maintainable styling for react-native",
   "license": "Apache-2.0",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "keywords": [
     "react",
     "react-native",
@@ -31,27 +31,27 @@
   },
   "main": "lib/index.js",
   "dependencies": {
-    "color": "^3.0.0",
-    "css-color-names": "0.0.4",
-    "lodash": "^4.17.10"
+    "color": "3.1.2",
+    "css-color-names": "1.0.1",
+    "lodash": "4.17.19"
   },
   "files": [
     "lib/"
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^8.2.6",
+    "babel-eslint": "10.1.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "benchmark": "^2.1.4",
-    "eslint": "^5.1.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint": "7.5.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-react": "7.20.3",
     "faucet": "0.0.1",
-    "publish-please": "^3.1.1",
-    "react": "^16.4.1",
-    "react-test-renderer": "^16.4.1",
-    "tape": "^4.9.1"
+    "publish-please": "5.5.1",
+    "react": "16.13.1",
+    "react-test-renderer": "16.13.1",
+    "tape": "5.0.1"
   },
   "peerDependencies": {
     "react-native": "0.x"

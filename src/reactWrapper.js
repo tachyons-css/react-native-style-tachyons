@@ -19,7 +19,10 @@ export function wrap(componentOrFunction) {
 
         return function wrappedRender(...args) {
             /* eslint-disable no-invalid-this */
-            return recursiveStyle(func.apply(this, args))
+            return recursiveStyle(func.apply(
+                this,
+                args
+            ))
         };
     }
     const WrappedComponent = componentOrFunction;
@@ -121,7 +124,10 @@ function recursiveStyle(elementsTree) {
     /* Parse cls string */
     if (_.isString(props[clsPropName])) {
         translated = true;
-        newProps = setStyles(props, clsPropName);
+        newProps = setStyles(
+            props,
+            clsPropName
+        );
     }
 
     let newChildren = props.children;
@@ -151,7 +157,11 @@ function recursiveStyle(elementsTree) {
     }
 
     if (translated) {
-        return React.cloneElement(elementsTree, newProps, newChildren)
+        return React.cloneElement(
+            elementsTree,
+            newProps,
+            newChildren
+        )
     }
 
     return elementsTree;

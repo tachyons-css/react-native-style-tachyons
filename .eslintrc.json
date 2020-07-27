@@ -30,7 +30,10 @@
         },
         "import/ignore": [
             "node_modules"
-        ]
+        ],
+        "react": {
+            "version": "detect"
+        }
     },
     "rules": {
         "sort-keys": 0,
@@ -52,7 +55,7 @@
         "no-plusplus": 0,
         "prefer-destructuring": 0,
         "max-lines-per-function": 0,
-
+        "prefer-named-capture-group":  0,
 
         "react/jsx-filename-extension": 0,
         "react/prefer-stateless-function": 0,

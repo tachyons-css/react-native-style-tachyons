@@ -6,4 +6,7 @@ const scale = {
     "tracked-mega": 0.25
 }
 
-export default _.mapValues(scale, val => ({ letterSpacing: val }))
+export default _.mapValues(
+    scale,
+    val => ({ letterSpacing: val })
+)
