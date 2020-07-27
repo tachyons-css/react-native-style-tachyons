@@ -7,11 +7,10 @@ import lineHeights from "./styles/lineHeight"
 
 /*
  * Wrap takes a Component or a render function and recursively replaces
- * the prop 'cls' (or custom overriden prop name) with the respective 'style' definitions.
- * Usually, wrapping a whole Class / Component will do the trick,
- * but for some render functions (e.g. ListView -> renderHeader)
- * this will not work. Hence the such functions need to be wrapped
- *individually
+ * the prop 'cls' (or custom overridden prop name) with the respective 'style' definitions.
+ * Render functions are decorated so that when they are invoked the resulting
+ * element tree will be be recursively evaluated and 'cls' will be replaced with
+ * 'style' definitions.
  */
 export function wrap(componentOrFunction) {
     if (!(componentOrFunction.prototype && "render" in componentOrFunction.prototype)) {
@@ -150,6 +149,15 @@ function recursiveStyle(elementsTree) {
 
         /* Convert single child */
         const converted = recursiveStyle(newChildren);
+        if (converted !== newChildren) {
+            translated = true;
+            newChildren = converted;
+        }
+    } else if (_.isFunction(newChildren)) {
+
+        /* Convert a fumction child to evaluate on invocation */
+        const originalChildrenFunction = newChildren;
+        const converted = (...args) => recursiveStyle(originalChildrenFunction(...args));
         if (converted !== newChildren) {
             translated = true;
             newChildren = converted;
