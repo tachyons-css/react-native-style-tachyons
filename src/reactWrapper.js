@@ -2,7 +2,6 @@ import React from "react";
 import _ from "lodash";
 import { styles, options } from "./index";
 import cssColors from "css-color-names"
-import typeScale from "./styles/typeScale"
 import lineHeights from "./styles/lineHeight"
 
 /*
@@ -40,7 +39,7 @@ export function wrap(componentOrFunction) {
     return newClass;
 }
 
-function setStyles(props, clsPropName) {
+function setStyles(props, clsPropName, typeScale) {
     const newProps = {}
     if (_.isArray(props.style)) {
         newProps.style = props.style.slice()
@@ -116,17 +115,14 @@ function recursiveStyle(elementsTree) {
     }
 
     const { props } = elementsTree;
-    const { clsPropName } = options;
+    const { clsPropName, typeScale } = options;
     let newProps = null;
     let translated = false;
 
     /* Parse cls string */
     if (_.isString(props[clsPropName])) {
         translated = true;
-        newProps = setStyles(
-            props,
-            clsPropName
-        );
+        newProps = setStyles(props, clsPropName, typeScale);
     }
 
     let newChildren = props.children;

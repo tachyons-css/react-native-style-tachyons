@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-const scale = {
+export const defaultTypeScale = {
     "f-headline": 6,
     "f-subheadline": 5,
     f1: 3,
@@ -11,7 +11,6 @@ const scale = {
     f6: 0.875
 }
 
-export default _.mapValues(
-    scale,
-    val => ({ fontSize: val })
-)
+const generateTypeScale = scale => _.mapValues(scale, val => ({ fontSize: val }))
+
+export default generateTypeScale
