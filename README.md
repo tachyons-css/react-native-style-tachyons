@@ -323,6 +323,20 @@ This will result in font sizes of:
 }
 ```
 
+## Custom Styles
+You can add custom styles you may need to the configuration at startup.
+
+```javascript
+/* setup: */
+NativeTachyons.build({
+    customStyles: {
+        myCustomBW: {
+	    borderWidth: 2
+	}
+    }
+}, StyleSheet);
+```
+
 ## Raw Values
 
 To access the actual computed sizes:
