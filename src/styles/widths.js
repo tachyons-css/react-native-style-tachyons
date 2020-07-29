@@ -7,7 +7,7 @@ export const widths = _.mapValues({
     w4: 8,
     w5: 16,
     w6: 32
-}, val => ({ width: val }))
+}, (val) => ({ width: val }));
 
 export const maxWidths = _.mapValues({
     "max-w1": 1,
@@ -16,7 +16,7 @@ export const maxWidths = _.mapValues({
     "max-w4": 8,
     "max-w5": 16,
     "max-w6": 32
-}, val => ({ maxWidth: val }))
+}, (val) => ({ maxWidth: val }));
 
 export const minWidths = _.mapValues({
     "min-w1": 1,
@@ -25,4 +25,4 @@ export const minWidths = _.mapValues({
     "min-w4": 8,
     "min-w5": 16,
     "min-w6": 32
-}, val => ({ minWidth: val }))
+}, (val) => ({ minWidth: val }));

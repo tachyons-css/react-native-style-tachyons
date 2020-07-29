@@ -1,8 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable no-use-before-define */
 import React from "react";
 import _ from "lodash";
+import cssColors from "css-color-names";
+/* eslint-disable import/no-cycle */
 import { styles, options } from "./index";
-import cssColors from "css-color-names"
-import lineHeights from "./styles/lineHeight"
+import lineHeights from "./styles/lineHeight";
 
 /*
  * Wrap takes a Component or a render function and recursively replaces
@@ -11,13 +14,13 @@ import lineHeights from "./styles/lineHeight"
  * element tree will be be recursively evaluated and 'cls' will be replaced with
  * 'style' definitions.
  */
-export function wrap(componentOrFunction) {
+export default function wrap(componentOrFunction) {
     if (!(componentOrFunction.prototype && "render" in componentOrFunction.prototype)) {
         const func = componentOrFunction;
 
         return function wrappedRender(...args) {
             /* eslint-disable no-invalid-this */
-            return recursiveStyle(func.apply(this, args))
+            return recursiveStyle(func.apply(this, args));
         };
     }
     const WrappedComponent = componentOrFunction;
@@ -25,10 +28,10 @@ export function wrap(componentOrFunction) {
         render() {
             return recursiveStyle(super.render());
         }
-    }
+    };
 
     /* Fix name */
-    newClass.displayName = WrappedComponent.displayName || WrappedComponent.name
+    newClass.displayName = WrappedComponent.displayName || WrappedComponent.name;
 
     /* Mark the class as wrapped by tachyons */
     newClass.isTachyonsWrapped = true;
@@ -37,30 +40,25 @@ export function wrap(componentOrFunction) {
 }
 
 function setStyles(props, clsPropName, typeScale) {
-    const newProps = {}
+    const newProps = {};
     if (_.isArray(props.style)) {
-        newProps.style = props.style.slice()
-
+        newProps.style = props.style.slice();
     } else if (_.isObject(props.style)) {
-        newProps.style = [props.style]
-
+        newProps.style = [props.style];
     } else {
-        newProps.style = []
+        newProps.style = [];
     }
 
-    const splitted = props[clsPropName].replace(/-/gu, "_").split(" ")
-    const fontSize = _.find(_.keys(typeScale), fSetting => _.includes(splitted, fSetting));
+    const splitted = props[clsPropName].replace(/-/gu, "_").split(" ");
+    const fontSize = _.find(_.keys(typeScale), (fSetting) => _.includes(splitted, fSetting));
 
     for (let i = 0; i < splitted.length; i++) {
         const cls = splitted[i];
         if (cls.length > 0) {
             if (styles[cls]) {
-
                 /* Style found */
                 newProps.style.push(styles[cls]);
-
             } else if (cls.startsWith("lh_")) {
-
                 /* Get font style */
                 if (!_.isString(fontSize)) {
                     throw new Error(`setting '${cls}' needs explicit font-size`);
@@ -68,32 +66,26 @@ function setStyles(props, clsPropName, typeScale) {
 
                 newProps.style.push({
                     lineHeight: lineHeights[cls.replace(/_/gu, "-")] * styles[fontSize].fontSize
-                })
-
+                });
             } else if (cls.startsWith("bg_")) {
                 newProps.style.push({
                     backgroundColor: cls.slice(3)
-                })
-
+                });
             } else if (cls.startsWith("b__")) {
                 newProps.style.push({
                     borderColor: cls.slice(3)
-                })
-
+                });
             } else if (cls.startsWith("tint_")) {
                 newProps.style.push({
                     tintColor: cls.slice(3)
-                })
-
+                });
             } else if (cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
                 newProps.style.push({
                     color: cls
-                })
-
+                });
             } else {
                 throw new Error(`style '${cls}' not found`);
             }
-
         }
     }
 
@@ -101,7 +93,6 @@ function setStyles(props, clsPropName, typeScale) {
 }
 
 function recursiveStyle(elementsTree) {
-
     /*
      * If the node type is wrapped by tachyons then return immediately. This
      * will prevent unnecessarily applying styles to elements that have already
@@ -124,7 +115,6 @@ function recursiveStyle(elementsTree) {
 
     let newChildren = props.children;
     if (_.isArray(newChildren)) {
-
         /* Convert child array */
         newChildren = React.Children.toArray(newChildren);
         for (let i = 0; i < newChildren.length; i++) {
@@ -137,9 +127,7 @@ function recursiveStyle(elementsTree) {
                 }
             }
         }
-
     } else if (React.isValidElement(newChildren)) {
-
         /* Convert single child */
         const converted = recursiveStyle(newChildren);
         if (converted !== newChildren) {
@@ -147,7 +135,6 @@ function recursiveStyle(elementsTree) {
             newChildren = converted;
         }
     } else if (_.isFunction(newChildren)) {
-
         /* Convert a fumction child to evaluate on invocation */
         const originalChildrenFunction = newChildren;
         const converted = (...args) => recursiveStyle(originalChildrenFunction(...args));
@@ -158,7 +145,7 @@ function recursiveStyle(elementsTree) {
     }
 
     if (translated) {
-        return React.cloneElement(elementsTree, newProps, newChildren)
+        return React.cloneElement(elementsTree, newProps, newChildren);
     }
 
     return elementsTree;

@@ -8,4 +8,4 @@ export default {
     "rm-stretch": {
         resizeMode: "stretch"
     }
-}
+};

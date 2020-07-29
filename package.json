@@ -45,8 +45,11 @@
     "babel-preset-react": "^6.24.1",
     "benchmark": "^2.1.4",
     "eslint": "7.5.0",
+    "eslint-config-airbnb": "18.2.0",
     "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jsx-a11y": "6.3.1",
     "eslint-plugin-react": "7.20.5",
+    "eslint-plugin-react-hooks": "4.0.8",
     "faucet": "0.0.1",
     "microtime": "3.0.0",
     "publish-please": "5.5.1",
@@ -59,8 +62,8 @@
   },
   "scripts": {
     "build": "rm -Rf lib && babel src -d lib",
-    "lint": "eslint --fix src && eslint --fix test",
-    "test": "npm run lint && npm run build && tape -r babel-register 'test/**/*_spec.js' | faucet",
+    "lint": "eslint --fix src && eslint --ext .js,.jsx --fix test",
+    "test": "npm run lint && npm run build && tape -r babel-register 'test/**/*_spec.jsx' | faucet",
     "_test": "tape -r babel-register 'test/**/*_spec.js'",
     "publish-please": "publish-please"
   }

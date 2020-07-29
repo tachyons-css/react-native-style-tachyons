@@ -53,4 +53,4 @@ export default {
     jcsa: {
         justifyContent: "space-around"
     }
-}
+};

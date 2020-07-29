@@ -9,8 +9,8 @@ export const defaultTypeScale = {
     f4: 1.25,
     f5: 1,
     f6: 0.875
-}
+};
 
-const generateTypeScale = scale => _.mapValues(scale, val => ({ fontSize: val }))
+const generateTypeScale = (scale) => _.mapValues(scale, (val) => ({ fontSize: val }));
 
-export default generateTypeScale
+export default generateTypeScale;
