@@ -148,7 +148,7 @@ test("wrapping", t => {
                             </TestContext.Consumer>
                         </TestContext.Provider>
                     </div>
-                    
+
                 )
             }
         }
@@ -253,13 +253,16 @@ test("wrapping benchmark", t => {
     ));
 
     /* Benchmarking */
-    const inst = <Orig />
+    const renderer = new ShallowRenderer();
     new Benchmark.Suite()
-        .add("wrap", () => inst.render())
+        .add("wrap", () => renderer.render(<Orig />))
         .on("cycle", event => {
             t.comment(`performance: ${event.target}`);
         })
-        // .run()
+        .on("error", event => {
+            t.error(event.target.error)
+        })
+        .run()
 
     t.end();
 })
