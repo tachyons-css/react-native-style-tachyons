@@ -1,3 +1,6 @@
+## 4.1.1
+* Minor changes
+
 ## 4.1.0
 * Allow overriding of default typescale: <https://github.com/tachyons-css/react-native-style-tachyons#typescale> [#77](https://github.com/tachyons-css/react-native-style-tachyons/pull/77)
 * Add support for render-functions: [#79](https://github.com/tachyons-css/react-native-style-tachyons/pull/79)
