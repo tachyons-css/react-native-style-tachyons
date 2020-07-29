@@ -239,6 +239,14 @@ NativeTachyons.build({
 }, StyleSheet);
 ```
 
+***Note***: For weights on custom fonts to work correctly you have to name them like this [(reference)](https://stackoverflow.com/a/38820631/342947):
+```
+    {fontFamilyName}.(ttf|otf)
+    {fontFamilyName}_bold.(ttf|otf)
+    {fontFamilyName}_italic.(ttf|otf)
+    {fontFamilyName}_bold_italic.(ttf|otf)
+```
+
 
 ##### Images
 ```javascript
