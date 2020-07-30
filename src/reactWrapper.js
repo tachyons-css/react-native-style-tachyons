@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-use-before-define */
 import React from "react";
 import _ from "lodash";
@@ -19,7 +18,7 @@ export default function wrap(componentOrFunction) {
         const func = componentOrFunction;
 
         return function wrappedRender(...args) {
-            /* eslint-disable no-invalid-this */
+            /* isable no-invalid-this */
             return recursiveStyle(func.apply(this, args));
         };
     }
