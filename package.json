@@ -70,7 +70,7 @@
     "build": "rm -Rf lib && tsc --build src",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src && eslint --ext .js,.jsx,.ts,.tsx --fix test",
     "test": "npm run lint && npm run build && npm run _test",
-    "_test": "ts-node node_modules/tape/bin/tape test/**/*.tsx | faucet",
+    "_test": "ts-node --project test/tsconfig.json node_modules/tape/bin/tape test/**/*.tsx | faucet",
     "publish-please": "publish-please"
   }
 }
