@@ -50,7 +50,6 @@
     "@typescript-eslint/parser": "3.7.1",
     "benchmark": "^2.1.4",
     "eslint": "7.5.0",
-    "eslint-config-airbnb": "18.2.0",
     "eslint-config-airbnb-typescript": "9.0.0",
     "eslint-plugin-import": "2.22.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
@@ -68,9 +67,9 @@
     "react-native": "0.x"
   },
   "scripts": {
-    "build": "rm -Rf lib && tsc",
+    "build": "rm -Rf lib && tsc --build src",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src && eslint --ext .js,.jsx,.ts,.tsx --fix test",
-    "test": "npm run lint && npm run build && npm run test",
+    "test": "npm run lint && npm run build && npm run _test",
     "_test": "ts-node node_modules/tape/bin/tape test/**/*.tsx | faucet",
     "publish-please": "publish-please"
   }

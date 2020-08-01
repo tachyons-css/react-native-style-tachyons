@@ -102,7 +102,7 @@ test("wrapping", (t) => {
     const TestContext = React.createContext({ test: "testValue" });
     const testContextValue = { test: "testValue" };
 
-    function createComponent(clsStr: string, style: any = {}) {
+    function createComponent(clsStr: string, style: any) {
         const comp: ComponentClass = class extends React.Component {
             render() {
                 return (
@@ -159,18 +159,18 @@ test("wrapping", (t) => {
         return comp;
     }
 
-    function renderComponent(clsStr: string, style: any = {}) {
+    function renderComponent(clsStr: string, style: any) {
         const renderer = createRenderer();
         const Comp = wrap(createComponent(clsStr, style));
         renderer.render(<Comp />);
         return renderer.getRenderOutput();
     }
 
-    const Orig = createComponent("w5");
+    const Orig = createComponent("w5", undefined);
     const Wrapped: any = wrap(Orig);
     t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved");
 
-    let result = renderComponent("w5");
+    let result = renderComponent("w5", undefined);
     t.deepEqual(result.key, "1", "key is preserved");
     t.deepEqual(result.props.other, "2", "other properties are preserved");
     t.deepEqual(result.props.children[0].props.cls, "w2", "child is preserved");
@@ -221,13 +221,13 @@ test("wrapping", (t) => {
         "existing style array is appended"
     );
 
-    result = renderComponent("");
+    result = renderComponent("", undefined);
     t.deepEqual(result.props.style, [], "if style is undefined, an array will be created");
 
-    result = renderComponent("flx-i");
+    result = renderComponent("flx-i", undefined);
     t.deepEqual(result.props.style, [{ flex: 1 }], "hyphens work");
 
-    t.throws(() => renderComponent("w8"), /style 'w8' not found/);
+    t.throws(() => renderComponent("w8", undefined), /style 'w8' not found/);
 
     t.end();
 });
@@ -280,7 +280,7 @@ test("wrapping render class", (t) => {
     const renderer = createRenderer();
     renderer.render(<Orig />);
     const result = renderer.getRenderOutput();
-    t.deepEqual(result.type, "div");
+    t.deepEqual(result.type, Div);
     t.deepEqual(result.props.style, [{ fontWeight: "bold" }]);
     t.end();
 });
@@ -311,7 +311,7 @@ test("calculate line-height", (t) => {
     const renderer = createRenderer();
     renderer.render(<Orig />);
     const result = renderer.getRenderOutput();
-    t.deepEqual(result.type, "div");
+    t.deepEqual(result.type, Div);
     t.deepEqual(result.props.style, [{ fontSize: 24 }, { lineHeight: 36 }]);
     t.end();
 });
@@ -326,7 +326,7 @@ test("wrapping render functions", (t) => {
     const renderer = createRenderer();
     renderer.render(<Orig xx="b" />);
     const result = renderer.getRenderOutput();
-    t.deepEqual(result.type, "div");
+    t.deepEqual(result.type, Div);
     t.deepEqual(result.props.style, [{ fontWeight: "bold" }]);
     t.end();
 });
