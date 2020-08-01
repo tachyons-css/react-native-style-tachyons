@@ -1,4 +1,4 @@
-export default function scaleStyles(rem) {
+export default function scaleStyles(rem: number) {
     return {
         "absolute-fill": {
             position: "absolute",

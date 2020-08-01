@@ -1,17 +1,17 @@
-import { test } from "tape";
+import test from "tape";
 import _ from "lodash";
-import React from "react";
-import ShallowRenderer from "react-test-renderer/shallow";
+import React, { Component, ComponentClass } from "react";
 import Benchmark from "benchmark";
 import {
     build, wrap, styles, sizes
 } from "../src";
+import { createRenderer } from "react-test-renderer/shallow";
 
-function buildRNT(options) {
+function buildRNT(options: any) {
     Object.keys(styles).forEach((style) => {
         delete styles[style];
     });
-    const fakeStyleSheet = { create: (sheet) => sheet };
+    const fakeStyleSheet = { create: (sheet: any) => sheet };
     build(options, fakeStyleSheet);
 }
 
@@ -94,57 +94,64 @@ test("colors", (t) => {
     t.end();
 });
 
-test("wrapping", (t) => {
-    const TestContext = React.createContext();
-    const tesContextValue = { test: "testValue" };
+class Div extends React.Component<any, any> {
 
-    function createComponent(clsStr, style) {
-        const comp = class extends React.Component {
+}
+
+test("wrapping", (t) => {
+    const TestContext = React.createContext({ test: "testValue" });
+    const testContextValue = { test: "testValue" };
+
+    function createComponent(clsStr: string, style: any = {}) {
+        const comp: ComponentClass = class extends React.Component {
             render() {
                 return (
-                    <div
+                    <Div
                         key="1"
                         other="2"
                         cls={clsStr}
                         style={style}
                     >
-                        <div
+                        <Div
                             key="child1"
                             cls="w2"
                         >
-                            <div cls="w4" />
-                        </div>
+                            <Div cls="w4" />
+                        </Div>
                         <div
                             key="child2"
+                            // @ts-ignore
                             cls="w1"
                         >
                             Test
                         </div>
                         <div
                             key="child3"
+                            // @ts-ignore
                             cls="w2"
                         >
                             <div />
                         </div>
                         <div
                             key="child4"
+                            // @ts-ignore
                             cls="bg-#abcdef b--rgba(200,144,233,1.0) burlywood"
                         >
                             <div />
                         </div>
-                        <TestContext.Provider value={tesContextValue}>
+                        <TestContext.Provider value={testContextValue}>
                             <TestContext.Consumer>
-                                {(context) => (
-                                    <div
+                                {(context: any) => (
+                                    <Div
                                         key="child5"
                                         cls="bg-white burlywood"
                                     >
                                         {context.test}
-                                    </div>
+                                    </Div>
                                 )}
                             </TestContext.Consumer>
                         </TestContext.Provider>
-                    </div>
+                    </Div>
 
                 );
             }
@@ -155,15 +162,15 @@ test("wrapping", (t) => {
         return comp;
     }
 
-    function renderComponent(clsStr, style) {
-        const renderer = new ShallowRenderer();
+    function renderComponent(clsStr: string, style: any = {}) {
+        const renderer = createRenderer();
         const Comp = wrap(createComponent(clsStr, style));
         renderer.render(<Comp />);
         return renderer.getRenderOutput();
     }
 
     const Orig = createComponent("w5");
-    const Wrapped = wrap(Orig);
+    const Wrapped: any = wrap(Orig);
     t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved");
 
     let result = renderComponent("w5");
@@ -187,7 +194,7 @@ test("wrapping", (t) => {
     );
 
     t.deepEqual(
-        result.props.children[4].props.children.props.children(tesContextValue).props.style,
+        result.props.children[4].props.children.props.children(testContextValue).props.style,
         [
             { backgroundColor: "white" },
             { color: "burlywood" }
@@ -230,33 +237,33 @@ test("wrapping", (t) => {
 
 test("wrapping benchmark", (t) => {
     const Orig = wrap(() => (
-        <div
+        <Div
             key="1"
             cls="w3"
         >
-            <div
+            <Div
                 key="child1"
                 cls="w2"
             >
-                <div cls="w4" />
-            </div>
-            <div
+                <Div cls="w4" />
+            </Div>
+            <Div
                 key="child4"
                 cls="bg-#abcdef b--rgba(200,144,233,1.0) burlywood"
             >
                 <div />
-            </div>
-        </div>
+            </Div>
+        </Div>
     ));
 
     /* Benchmarking */
-    const renderer = new ShallowRenderer();
+    const renderer = createRenderer()
     new Benchmark.Suite()
         .add("wrap", () => renderer.render(<Orig />))
-        .on("cycle", (event) => {
+        .on("cycle", (event: any) => {
             t.comment(`performance: ${event.target}`);
         })
-        .on("error", (event) => {
+        .on("error", (event: any) => {
             t.error(event.target.error);
         })
         .run();
@@ -268,12 +275,12 @@ test("wrapping render class", (t) => {
     const Orig = wrap(class Orig extends React.Component {
         render() {
             return (
-                <div cls="b">hello</div>
+                <Div cls="b">hello</Div>
             );
         }
     });
 
-    const renderer = new ShallowRenderer();
+    const renderer = createRenderer()
     renderer.render(<Orig />);
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");
@@ -285,12 +292,12 @@ test("calculate line-height fails without font-size", (t) => {
     const Orig = wrap(class Orig extends React.Component {
         render() {
             return (
-                <div cls="lh-copy">hello</div>
+                <Div cls="lh-copy">hello</Div>
             );
         }
     });
 
-    const renderer = new ShallowRenderer();
+    const renderer = createRenderer()
     t.throws(() => renderer.render(<Orig />), /setting 'lh_copy' needs explicit font-size/);
     t.end();
 });
@@ -299,12 +306,12 @@ test("calculate line-height", (t) => {
     const Orig = wrap(class Orig extends React.Component {
         render() {
             return (
-                <div cls="f3 lh-copy">hello</div>
+                <Div cls="f3 lh-copy">hello</Div>
             );
         }
     });
 
-    const renderer = new ShallowRenderer();
+    const renderer = createRenderer()
     renderer.render(<Orig />);
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");
@@ -313,13 +320,13 @@ test("calculate line-height", (t) => {
 });
 
 test("wrapping render functions", (t) => {
-    const Orig = wrap((props) => (
-        <div cls={props.xx}>
+    const Orig = wrap((props: any) => (
+        <Div cls={props.xx}>
             Some Text
-        </div>
+        </Div>
     ));
 
-    const renderer = new ShallowRenderer();
+    const renderer = createRenderer()
     renderer.render(<Orig xx="b" />);
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");

@@ -31,6 +31,9 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "@types/color": "3.0.1",
+    "@types/lodash": "4.14.158",
+    "@types/react": "16.9.43",
     "color": "3.1.2",
     "css-color-names": "1.0.1",
     "lodash": "4.17.19",
@@ -40,10 +43,11 @@
     "lib/"
   ],
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "10.1.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "@types/benchmark": "1.0.33",
+    "@types/react-test-renderer": "16.9.2",
+    "@types/tape": "4.13.0",
+    "@typescript-eslint/eslint-plugin": "3.7.1",
+    "@typescript-eslint/parser": "3.7.1",
     "benchmark": "^2.1.4",
     "eslint": "7.5.0",
     "eslint-config-airbnb": "18.2.0",
@@ -55,15 +59,18 @@
     "microtime": "3.0.0",
     "publish-please": "5.5.1",
     "react-test-renderer": "16.13.1",
-    "tape": "5.0.1"
+    "tape": "5.0.1",
+    "ts-node": "8.10.2",
+    "typescript": "3.9.7"
   },
   "peerDependencies": {
     "react-native": "0.x"
   },
   "scripts": {
-    "build": "rm -Rf lib && babel src -d lib",
-    "lint": "eslint --fix src && eslint --ext .js,.jsx --fix test",
-    "test": "npm run lint && npm run build && tape -r babel-register 'test/**/*_spec.jsx' | faucet",
+    "build": "rm -Rf lib && tsc",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src && eslint --ext .js,.jsx,.ts,.tsx --fix test",
+    "test": "npm run lint && npm run build && npm run test",
+    "_test": "ts-node node_modules/tape/bin/tape test/**/*.tsx | faucet",
     "publish-please": "publish-please"
   }
 }

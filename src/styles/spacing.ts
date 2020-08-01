@@ -26,7 +26,7 @@ const where = _.toPairs({
     l: "Left"
 });
 
-const style = {};
+const style: any = {};
 _.forEach(what, ([
     whatShort,
     whatLong

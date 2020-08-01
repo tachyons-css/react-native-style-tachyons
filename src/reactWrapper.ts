@@ -1,10 +1,10 @@
 /* eslint-disable no-use-before-define */
-import React from "react";
+import React, { Component } from "react";
 import _ from "lodash";
 import cssColors from "css-color-names";
 /* eslint-disable import/no-cycle */
 import { styles, options } from "./index";
-import lineHeights from "./styles/lineHeight";
+import { lhStyles } from "./styles/lineHeight";
 
 /*
  * Wrap takes a Component or a render function and recursively replaces
@@ -13,13 +13,13 @@ import lineHeights from "./styles/lineHeight";
  * element tree will be be recursively evaluated and 'cls' will be replaced with
  * 'style' definitions.
  */
-export default function wrap(componentOrFunction) {
+export default function wrap(componentOrFunction: any) {
     if (!(componentOrFunction.prototype && "render" in componentOrFunction.prototype)) {
         const func = componentOrFunction;
 
-        return function wrappedRender(...args) {
-            /* isable no-invalid-this */
-            return recursiveStyle(func.apply(this, args));
+        return function wrappedRender(...args: any[]) {
+            /* disable no-invalid-this */
+            return recursiveStyle(func.apply(func, args));
         };
     }
     const WrappedComponent = componentOrFunction;
@@ -38,8 +38,8 @@ export default function wrap(componentOrFunction) {
     return newClass;
 }
 
-function setStyles(props, clsPropName, typeScale) {
-    const newProps = {};
+function setStyles(props: any, clsPropName: any, typeScale: any) {
+    const newProps: any = {};
     if (_.isArray(props.style)) {
         newProps.style = props.style.slice();
     } else if (_.isObject(props.style)) {
@@ -50,6 +50,7 @@ function setStyles(props, clsPropName, typeScale) {
 
     const splitted = props[clsPropName].replace(/-/gu, "_").split(" ");
     const fontSize = _.find(_.keys(typeScale), (fSetting) => _.includes(splitted, fSetting));
+    const _cssColors: any = cssColors
 
     for (let i = 0; i < splitted.length; i++) {
         const cls = splitted[i];
@@ -64,7 +65,7 @@ function setStyles(props, clsPropName, typeScale) {
                 }
 
                 newProps.style.push({
-                    lineHeight: lineHeights[cls.replace(/_/gu, "-")] * styles[fontSize].fontSize
+                    lineHeight: lhStyles[cls.replace(/_/gu, "-")] * styles[fontSize].fontSize
                 });
             } else if (cls.startsWith("bg_")) {
                 newProps.style.push({
@@ -78,7 +79,7 @@ function setStyles(props, clsPropName, typeScale) {
                 newProps.style.push({
                     tintColor: cls.slice(3)
                 });
-            } else if (cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
+            } else if (_cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
                 newProps.style.push({
                     color: cls
                 });
@@ -91,7 +92,7 @@ function setStyles(props, clsPropName, typeScale) {
     return newProps;
 }
 
-function recursiveStyle(elementsTree) {
+function recursiveStyle(elementsTree: any) {
     /*
      * If the node type is wrapped by tachyons then return immediately. This
      * will prevent unnecessarily applying styles to elements that have already
@@ -136,7 +137,7 @@ function recursiveStyle(elementsTree) {
     } else if (_.isFunction(newChildren)) {
         /* Convert a fumction child to evaluate on invocation */
         const originalChildrenFunction = newChildren;
-        const converted = (...args) => recursiveStyle(originalChildrenFunction(...args));
+        const converted = (...args: any[]) => recursiveStyle(originalChildrenFunction(...args));
         if (converted !== newChildren) {
             translated = true;
             newChildren = converted;

@@ -15,8 +15,8 @@ import opacity from "./styles/opacity";
 import absolute from "./styles/absolute";
 import tracked from "./styles/tracked";
 
-const hyphensToUnderscores = (sourceObj) => {
-    const translated = {};
+const hyphensToUnderscores = (sourceObj: any) => {
+    const translated: any = {};
 
     /* Create hypened versions */
     _.forOwn(sourceObj, (val, key) => {
@@ -30,15 +30,15 @@ const NativeTachyons = {
     wrap: reactWrapper,
 
     /* Placeholder */
-    styles: {},
+    styles: {} as any,
 
     /* Placeholder */
-    sizes: {},
+    sizes: {} as any,
 
-    options: {},
+    options: {} as any,
 
     /* eslint default-param-last: off */
-    build: function build(options = {}, StyleSheet) {
+    build: function build(options: any = {}, rnStyleSheet: any) {
         _.defaultsDeep(options, {
             rem: 16,
             colors: {
@@ -51,7 +51,7 @@ const NativeTachyons = {
         });
 
         /* Assign all the styles */
-        const styleSheet = {};
+        const styleSheet: any = {};
         _.assign(styleSheet, borders.styles);
         _.assign(styleSheet, flexbox);
         _.assign(styleSheet, fontWeights);
@@ -62,7 +62,7 @@ const NativeTachyons = {
         const typeScale = generateTypeScale(options.typeScale);
 
         /* Calculate rem scales */
-        const sizes = {};
+        const sizes: any = {};
         const REM_SCALED = [
             heights,
             minHeights,
@@ -121,7 +121,7 @@ const NativeTachyons = {
         _.assign(styleSheet, options.customStyles);
 
         _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
-        _.assign(NativeTachyons.styles, StyleSheet.create(hyphensToUnderscores(styleSheet)));
+        _.assign(NativeTachyons.styles, rnStyleSheet.create(hyphensToUnderscores(styleSheet)));
         _.assign(NativeTachyons.options, options);
     }
 };

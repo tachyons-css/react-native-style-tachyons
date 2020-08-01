@@ -11,6 +11,6 @@ export const defaultTypeScale = {
     f6: 0.875
 };
 
-const generateTypeScale = (scale) => _.mapValues(scale, (val) => ({ fontSize: val }));
+const generateTypeScale = (scale: any) => _.mapValues(scale, (val) => ({ fontSize: val }));
 
 export default generateTypeScale;
