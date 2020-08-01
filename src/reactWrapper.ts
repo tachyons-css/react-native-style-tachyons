@@ -1,5 +1,4 @@
-/* eslint-disable no-use-before-define */
-import React, { Component } from "react";
+import React from "react";
 import _ from "lodash";
 import cssColors from "css-color-names";
 /* eslint-disable import/no-cycle */
@@ -50,7 +49,6 @@ function setStyles(props: any, clsPropName: any, typeScale: any) {
 
     const splitted = props[clsPropName].replace(/-/gu, "_").split(" ");
     const fontSize = _.find(_.keys(typeScale), (fSetting) => _.includes(splitted, fSetting));
-    const _cssColors: any = cssColors
 
     for (let i = 0; i < splitted.length; i++) {
         const cls = splitted[i];
@@ -79,7 +77,7 @@ function setStyles(props: any, clsPropName: any, typeScale: any) {
                 newProps.style.push({
                     tintColor: cls.slice(3)
                 });
-            } else if (_cssColors[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
+            } else if ((cssColors as any)[cls] || (/^(rgb|#|hsl)/u).test(cls)) {
                 newProps.style.push({
                     color: cls
                 });
@@ -115,7 +113,7 @@ function recursiveStyle(elementsTree: any) {
 
     let newChildren = props.children;
     if (_.isArray(newChildren)) {
-        /* Convert child array */
+    /* Convert child array */
         newChildren = React.Children.toArray(newChildren);
         for (let i = 0; i < newChildren.length; i++) {
             const c = newChildren[i];
@@ -128,14 +126,14 @@ function recursiveStyle(elementsTree: any) {
             }
         }
     } else if (React.isValidElement(newChildren)) {
-        /* Convert single child */
+    /* Convert single child */
         const converted = recursiveStyle(newChildren);
         if (converted !== newChildren) {
             translated = true;
             newChildren = converted;
         }
     } else if (_.isFunction(newChildren)) {
-        /* Convert a fumction child to evaluate on invocation */
+    /* Convert a fumction child to evaluate on invocation */
         const originalChildrenFunction = newChildren;
         const converted = (...args: any[]) => recursiveStyle(originalChildrenFunction(...args));
         if (converted !== newChildren) {

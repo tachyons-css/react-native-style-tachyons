@@ -1,11 +1,11 @@
 import test from "tape";
 import _ from "lodash";
-import React, { Component, ComponentClass } from "react";
+import React, { ComponentClass } from "react";
 import Benchmark from "benchmark";
+import { createRenderer } from "react-test-renderer/shallow";
 import {
     build, wrap, styles, sizes
 } from "../src";
-import { createRenderer } from "react-test-renderer/shallow";
 
 function buildRNT(options: any) {
     Object.keys(styles).forEach((style) => {
@@ -118,27 +118,24 @@ test("wrapping", (t) => {
                         >
                             <Div cls="w4" />
                         </Div>
-                        <div
+                        <Div
                             key="child2"
-                            // @ts-ignore
                             cls="w1"
                         >
                             Test
-                        </div>
-                        <div
+                        </Div>
+                        <Div
                             key="child3"
-                            // @ts-ignore
                             cls="w2"
                         >
                             <div />
-                        </div>
-                        <div
+                        </Div>
+                        <Div
                             key="child4"
-                            // @ts-ignore
                             cls="bg-#abcdef b--rgba(200,144,233,1.0) burlywood"
                         >
                             <div />
-                        </div>
+                        </Div>
                         <TestContext.Provider value={testContextValue}>
                             <TestContext.Consumer>
                                 {(context: any) => (
@@ -257,7 +254,7 @@ test("wrapping benchmark", (t) => {
     ));
 
     /* Benchmarking */
-    const renderer = createRenderer()
+    const renderer = createRenderer();
     new Benchmark.Suite()
         .add("wrap", () => renderer.render(<Orig />))
         .on("cycle", (event: any) => {
@@ -280,7 +277,7 @@ test("wrapping render class", (t) => {
         }
     });
 
-    const renderer = createRenderer()
+    const renderer = createRenderer();
     renderer.render(<Orig />);
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");
@@ -297,7 +294,7 @@ test("calculate line-height fails without font-size", (t) => {
         }
     });
 
-    const renderer = createRenderer()
+    const renderer = createRenderer();
     t.throws(() => renderer.render(<Orig />), /setting 'lh_copy' needs explicit font-size/);
     t.end();
 });
@@ -311,7 +308,7 @@ test("calculate line-height", (t) => {
         }
     });
 
-    const renderer = createRenderer()
+    const renderer = createRenderer();
     renderer.render(<Orig />);
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");
@@ -326,7 +323,7 @@ test("wrapping render functions", (t) => {
         </Div>
     ));
 
-    const renderer = createRenderer()
+    const renderer = createRenderer();
     renderer.render(<Orig xx="b" />);
     const result = renderer.getRenderOutput();
     t.deepEqual(result.type, "div");
