@@ -1,3 +1,6 @@
+## 4.2.0
+* Added Typescript support
+
 ## 4.1.1
 * Minor changes
 
