@@ -1,7 +1,5 @@
 import _ from "lodash";
 import Color from "color";
-/* eslint-disable import/no-cycle */
-import reactWrapper from "./reactWrapper";
 import { heights, minHeights, maxHeights } from "./styles/heights";
 import { widths, minWidths, maxWidths } from "./styles/widths";
 import * as borders from "./styles/borders";
@@ -14,11 +12,12 @@ import fontWeights from "./styles/fontWeights";
 import opacity from "./styles/opacity";
 import absolute from "./styles/absolute";
 import tracked from "./styles/tracked";
+import { ReactWrapper } from "./reactWrapper";
 
 const hyphensToUnderscores = (sourceObj: any) => {
     const translated: any = {};
 
-    /* Create hypened versions */
+    /* Create hyphened versions */
     _.forOwn(sourceObj, (val, key) => {
         translated[key.replace(/-/gu, "_")] = val;
     });
@@ -27,7 +26,7 @@ const hyphensToUnderscores = (sourceObj: any) => {
 };
 
 const NativeTachyons = {
-    wrap: reactWrapper,
+    wrap: ReactWrapper.wrap,
 
     /* Placeholder */
     styles: {} as any,
@@ -123,6 +122,8 @@ const NativeTachyons = {
         _.assign(NativeTachyons.sizes, hyphensToUnderscores(sizes));
         _.assign(NativeTachyons.styles, rnStyleSheet.create(hyphensToUnderscores(styleSheet)));
         _.assign(NativeTachyons.options, options);
+
+        ReactWrapper.configure(styles, options);
     }
 };
 
