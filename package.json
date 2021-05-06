@@ -36,7 +36,7 @@
     "@types/react": "16.9.43",
     "color": "3.1.2",
     "css-color-names": "1.0.1",
-    "lodash": "4.17.19",
+    "lodash": "4.17.21",
     "react": "16.13.1"
   },
   "files": [
