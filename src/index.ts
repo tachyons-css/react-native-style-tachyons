@@ -36,7 +36,7 @@ const NativeTachyons = {
 
     options: {} as any,
 
-    /* eslint default-param-last: off */
+    /* eslint @typescript-eslint/default-param-last: off */
     build: function build(options: any = {}, rnStyleSheet: any) {
         _.defaultsDeep(options, {
             rem: 16,

@@ -1,8 +1,13 @@
 {
-    "extends": ["airbnb-typescript"],
+    "extends": ["plugin:import/recommended","plugin:react/recommended", "airbnb-typescript"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": "./tsconfig-base.json"
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
     },
     "rules": {
         "@typescript-eslint/quotes": ["error", "double"],
@@ -10,7 +15,7 @@
         "@typescript-eslint/indent": ["error", 4],
         "indent": ["error", 4],
         "@typescript-eslint/no-use-before-define": "off",
-        "comma-dangle": ["error", "never"],
+        "@typescript-eslint/comma-dangle": ["error", "never"],
         "no-plusplus": "off",
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
