@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash"
 
 const REM_SCALE = [
     0,
@@ -10,12 +10,12 @@ const REM_SCALE = [
     8,
     16,
     32
-];
+]
 
 const what = _.toPairs({
     m: "margin",
     p: "padding"
-});
+})
 const where = _.toPairs({
     a: "",
     h: "Horizontal",
@@ -24,9 +24,9 @@ const where = _.toPairs({
     r: "Right",
     b: "Bottom",
     l: "Left"
-});
+})
 
-const style: any = {};
+const style: any = {}
 _.forEach(what, ([
     whatShort,
     whatLong
@@ -38,9 +38,9 @@ _.forEach(what, ([
         _.forEach(REM_SCALE, (scale, idx) => {
             style[`${whatShort}${whereShort}${idx}`] = {
                 [`${whatLong}${whereLong}`]: scale
-            };
-        });
-    });
-});
+            }
+        })
+    })
+})
 
-export default style;
+export default style

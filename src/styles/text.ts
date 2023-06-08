@@ -26,4 +26,4 @@ export default {
     "strike-underline": {
         textDecorationLine: "underline line-through"
     }
-};
+}

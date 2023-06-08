@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from "lodash"
 
 const weights = {
     normal: "normal",
@@ -12,6 +12,6 @@ const weights = {
     fw7: "700",
     fw8: "800",
     fw9: "900"
-};
+}
 
-export default _.mapValues(weights, (val) => ({ fontWeight: val }));
+export default _.mapValues(weights, (val) => ({ fontWeight: val }))

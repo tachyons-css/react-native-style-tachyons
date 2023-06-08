@@ -1,9 +1,19 @@
 {
-    "extends": ["plugin:import/recommended","plugin:react/recommended", "airbnb-typescript"],
-    "parser": "@typescript-eslint/parser",
+    "env": {
+        "es2021": true
+    },
+    "extends": [
+        "standard-with-typescript",
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module",
         "project": "./tsconfig-base.json"
     },
+    "plugins": [
+        "react"
+    ],
     "settings": {
         "react": {
             "version": "detect"
@@ -14,18 +24,15 @@
         "quotes": ["error", "double"],
         "@typescript-eslint/indent": ["error", 4],
         "indent": ["error", 4],
-        "@typescript-eslint/no-use-before-define": "off",
-        "@typescript-eslint/comma-dangle": ["error", "never"],
-        "no-plusplus": "off",
-        "react/jsx-indent": [2, 4],
-        "react/jsx-indent-props": [2, 4],
-        "react/prefer-stateless-function": "off",
-        "import/prefer-default-export": "off",
-        "max-classes-per-file": "off",
-        "no-inner-declarations": "off",
-        "@typescript-eslint/lines-between-class-members": "off",
-        "padded-blocks": "off",
-        "max-len": "off",
-        "no-trailing-spaces": "off"
+        "@typescript-eslint/space-before-function-paren": ["error", {
+            "anonymous": "never",
+            "named": "never",
+            "asyncArrow": "never"
+        }],
+        "space-before-function-paren": ["error", {
+            "anonymous": "never",
+            "named": "never",
+            "asyncArrow": "never"
+        }]
     }
 }

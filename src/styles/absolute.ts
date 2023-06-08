@@ -1,4 +1,4 @@
-export default function scaleStyles(rem: number) {
+export default function scaleStyles(rem: number): any {
     return {
         "absolute-fill": {
             position: "absolute",
@@ -22,5 +22,5 @@ export default function scaleStyles(rem: number) {
         "left-0": { left: 0 },
         "left-1": { left: Number(rem) },
         "left-2": { left: 2 * rem }
-    };
+    }
 }

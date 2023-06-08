@@ -1,18 +1,19 @@
-import test from "tape";
-import _ from "lodash";
-import React, { ComponentClass } from "react";
-import Benchmark from "benchmark";
-import { createRenderer } from "react-test-renderer/shallow";
+import test from "tape"
+import _ from "lodash"
+import React, { type ComponentClass, type ReactElement } from "react"
+import Benchmark from "benchmark"
+import { createRenderer } from "react-test-renderer/shallow"
 import {
     build, wrap, styles, sizes
-} from "../src";
+} from "../src"
 
-function buildRNT(options: any) {
+function buildRNT(options: any): void {
     Object.keys(styles).forEach((style) => {
-        delete styles[style];
-    });
-    const fakeStyleSheet = { create: (sheet: any) => sheet };
-    build(options, fakeStyleSheet);
+        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+        delete styles[style]
+    })
+    const fakeStyleSheet = { create: (sheet: any) => sheet }
+    build(options, fakeStyleSheet)
 }
 
 test("styles", (t) => {
@@ -26,49 +27,49 @@ test("styles", (t) => {
                 light_green: "#00FF00"
             }
         }
-    });
+    })
 
-    t.ok(_.isObject(styles), "styles is an object");
-    t.ok(_.has(styles, "w1"), "example: has w1");
-    t.ok(_.has(styles, "w5"), "example: has w5");
-    t.ok(_.has(styles, "pb7"), "example: has pb7");
-    t.ok(_.has(styles, "f1"), "example: has f1");
-    t.ok(_.has(styles, "absolute_fill"), "example: has absolute-fill");
-    t.deepEqual(styles.pa3, { padding: 16 }, "pa3 is 16");
-    t.deepEqual(styles.br3, { borderRadius: 8 }, "br3 is 8");
-    t.deepEqual(styles.bl, { borderLeftWidth: 1 }, "bl works");
-    t.deepEqual(styles.br__top, { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }, "br--top works");
-    t.deepEqual(styles.o_025, { opacity: 0.025 }, "o-025 is opacity 0.025");
-    t.deepEqual(styles.min_w3, { minWidth: 64 });
-    t.deepEqual(styles.max_w3, { maxWidth: 64 });
-    t.deepEqual(styles.min_h4, { minHeight: 128 });
-    t.deepEqual(styles.max_h4, { maxHeight: 128 });
-    t.deepEqual(styles.tracked_tight, { letterSpacing: -0.8 });
-    t.deepEqual(styles.left_1, { left: 16 });
-    t.deepEqual(styles.top_2, { top: 32 });
-    t.deepEqual(styles.absolute, { position: "absolute" });
-    t.deepEqual(styles.bottom_0, { bottom: 0 });
-    t.deepEqual(styles.ff_iowan, { fontFamily: "Iowan Old Style" });
+    t.ok(_.isObject(styles), "styles is an object")
+    t.ok(_.has(styles, "w1"), "example: has w1")
+    t.ok(_.has(styles, "w5"), "example: has w5")
+    t.ok(_.has(styles, "pb7"), "example: has pb7")
+    t.ok(_.has(styles, "f1"), "example: has f1")
+    t.ok(_.has(styles, "absolute_fill"), "example: has absolute-fill")
+    t.deepEqual(styles.pa3, { padding: 16 }, "pa3 is 16")
+    t.deepEqual(styles.br3, { borderRadius: 8 }, "br3 is 8")
+    t.deepEqual(styles.bl, { borderLeftWidth: 1 }, "bl works")
+    t.deepEqual(styles.br__top, { borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }, "br--top works")
+    t.deepEqual(styles.o_025, { opacity: 0.025 }, "o-025 is opacity 0.025")
+    t.deepEqual(styles.min_w3, { minWidth: 64 })
+    t.deepEqual(styles.max_w3, { maxWidth: 64 })
+    t.deepEqual(styles.min_h4, { minHeight: 128 })
+    t.deepEqual(styles.max_h4, { maxHeight: 128 })
+    t.deepEqual(styles.tracked_tight, { letterSpacing: -0.8 })
+    t.deepEqual(styles.left_1, { left: 16 })
+    t.deepEqual(styles.top_2, { top: 32 })
+    t.deepEqual(styles.absolute, { position: "absolute" })
+    t.deepEqual(styles.bottom_0, { bottom: 0 })
+    t.deepEqual(styles.ff_iowan, { fontFamily: "Iowan Old Style" })
 
     /* Underscore version are generated */
-    t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names");
+    t.ok(_.has(styles, "flx_i"), "underscore version is generated in addition to hyphenated names")
 
     /* Sizes */
-    t.equal(sizes.pa3, 16, "pa3 is 16");
-    t.equal(sizes.max_w2, 32, "max_w2 is 32");
+    t.equal(sizes.pa3, 16, "pa3 is 16")
+    t.equal(sizes.max_w2, 32, "max_w2 is 32")
 
-    t.end();
-});
+    t.end()
+})
 
 test("fonts", (t) => {
     buildRNT({
         fonts: {
             iowan: "Iowan Old Style"
         }
-    });
-    t.deepEqual(styles.ff_iowan, { fontFamily: "Iowan Old Style" });
-    t.end();
-});
+    })
+    t.deepEqual(styles.ff_iowan, { fontFamily: "Iowan Old Style" })
+    t.end()
+})
 
 test("colors", (t) => {
     buildRNT({
@@ -78,33 +79,33 @@ test("colors", (t) => {
                 light_green: "#CCFFCC"
             }
         }
-    });
+    })
 
     /* Colors */
-    t.deepEqual(styles.green, { color: "#00FF00" });
-    t.deepEqual(styles.b__green, { borderColor: "#00FF00" });
-    t.deepEqual(styles.bg_green, { backgroundColor: "#00FF00" });
-    t.deepEqual(styles.bg_light_green, { backgroundColor: "#CCFFCC" });
+    t.deepEqual(styles.green, { color: "#00FF00" })
+    t.deepEqual(styles.b__green, { borderColor: "#00FF00" })
+    t.deepEqual(styles.bg_green, { backgroundColor: "#00FF00" })
+    t.deepEqual(styles.bg_light_green, { backgroundColor: "#CCFFCC" })
 
-    t.deepEqual(styles.tint_green, { tintColor: "#00FF00" });
-    t.deepEqual(styles.tint_light_green, { tintColor: "#CCFFCC" });
+    t.deepEqual(styles.tint_green, { tintColor: "#00FF00" })
+    t.deepEqual(styles.tint_light_green, { tintColor: "#CCFFCC" })
 
-    t.ok(_.has(styles, "b__green"), "multiple underscores work");
+    t.ok(_.has(styles, "b__green"), "multiple underscores work")
 
-    t.end();
-});
+    t.end()
+})
 
 class Div extends React.Component<any, any> {
 
 }
 
 test("wrapping", (t) => {
-    const TestContext = React.createContext({ test: "testValue" });
-    const testContextValue = { test: "testValue" };
+    const TestContext = React.createContext({ test: "testValue" })
+    const testContextValue = { test: "testValue" }
 
-    function createComponent(clsStr: string, style: any) {
+    function createComponent(clsStr: string, style: any): React.ComponentClass {
         const comp: ComponentClass = class extends React.Component {
-            render() {
+            render(): ReactElement {
                 return (
                     <Div
                         key="1"
@@ -150,35 +151,35 @@ test("wrapping", (t) => {
                         </TestContext.Provider>
                     </Div>
 
-                );
+                )
             }
-        };
+        }
 
-        comp.displayName = "Orig";
+        comp.displayName = "Orig"
 
-        return comp;
+        return comp
     }
 
-    function renderComponent(clsStr: string, style: any) {
-        const renderer = createRenderer();
-        const Comp = wrap(createComponent(clsStr, style));
-        renderer.render(<Comp />);
-        return renderer.getRenderOutput();
+    function renderComponent(clsStr: string, style: any): ReactElement {
+        const renderer = createRenderer()
+        const Comp = wrap(createComponent(clsStr, style))
+        renderer.render(<Comp />)
+        return renderer.getRenderOutput()
     }
 
-    const Orig = createComponent("w5", undefined);
-    const Wrapped: any = wrap(Orig);
-    t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved");
+    const Orig = createComponent("w5", undefined)
+    const Wrapped: any = wrap(Orig)
+    t.equal(Wrapped.displayName, Orig.displayName, "displayName is preserved")
 
-    let result = renderComponent("w5", undefined);
-    t.deepEqual(result.key, "1", "key is preserved");
-    t.deepEqual(result.props.other, "2", "other properties are preserved");
-    t.deepEqual(result.props.children[0].props.cls, "w2", "child is preserved");
-    t.deepEqual(result.props.children[0].props.style, [{ width: 32 }], "child cls is converted");
-    t.deepEqual(result.props.children.length, 5, "children are converted");
-    t.deepEqual(result.props.children[0].props.children.props.style, [{ width: 128 }], "nested single children are converted");
-    t.deepEqual(result.props.children[1].props.children, "Test", "Non-ReactElement children are preserved");
-    t.ok(React.isValidElement(result.props.children[2].props.children), "unaltered single children are preserved");
+    let result = renderComponent("w5", undefined)
+    t.deepEqual(result.key, "1", "key is preserved")
+    t.deepEqual(result.props.other, "2", "other properties are preserved")
+    t.deepEqual(result.props.children[0].props.cls, "w2", "child is preserved")
+    t.deepEqual(result.props.children[0].props.style, [{ width: 32 }], "child cls is converted")
+    t.deepEqual(result.props.children.length, 5, "children are converted")
+    t.deepEqual(result.props.children[0].props.children.props.style, [{ width: 128 }], "nested single children are converted")
+    t.deepEqual(result.props.children[1].props.children, "Test", "Non-ReactElement children are preserved")
+    t.ok(React.isValidElement(result.props.children[2].props.children), "unaltered single children are preserved")
 
     t.deepEqual(
         result.props.children[3].props.style,
@@ -188,7 +189,7 @@ test("wrapping", (t) => {
             { color: "burlywood" }
         ],
         "ad-hoc colors are supported"
-    );
+    )
 
     t.deepEqual(
         result.props.children[4].props.children.props.children(testContextValue).props.style,
@@ -197,11 +198,11 @@ test("wrapping", (t) => {
             { color: "burlywood" }
         ],
         "render props are supported"
-    );
+    )
 
-    t.deepEqual(result.props.style, [{ width: 256 }], "style array is created");
+    t.deepEqual(result.props.style, [{ width: 256 }], "style array is created")
 
-    result = renderComponent("w5", { width: 5 });
+    result = renderComponent("w5", { width: 5 })
     t.deepEqual(
         result.props.style,
         [
@@ -209,9 +210,9 @@ test("wrapping", (t) => {
             { width: 256 }
         ],
         "existing style object is converted to array and appended"
-    );
+    )
 
-    result = renderComponent("w5", [{ width: 5 }]);
+    result = renderComponent("w5", [{ width: 5 }])
     t.deepEqual(
         result.props.style,
         [
@@ -219,18 +220,18 @@ test("wrapping", (t) => {
             { width: 256 }
         ],
         "existing style array is appended"
-    );
+    )
 
-    result = renderComponent("", undefined);
-    t.deepEqual(result.props.style, [], "if style is undefined, an array will be created");
+    result = renderComponent("", undefined)
+    t.deepEqual(result.props.style, [], "if style is undefined, an array will be created")
 
-    result = renderComponent("flx-i", undefined);
-    t.deepEqual(result.props.style, [{ flex: 1 }], "hyphens work");
+    result = renderComponent("flx-i", undefined)
+    t.deepEqual(result.props.style, [{ flex: 1 }], "hyphens work")
 
-    t.throws(() => renderComponent("w8", undefined), /style 'w8' not found/);
+    t.throws(() => renderComponent("w8", undefined), /style 'w8' not found/)
 
-    t.end();
-});
+    t.end()
+})
 
 test("wrapping benchmark", (t) => {
     const Orig = wrap(() => (
@@ -251,85 +252,86 @@ test("wrapping benchmark", (t) => {
                 <div />
             </Div>
         </Div>
-    ));
+    ))
 
     /* Benchmarking */
-    const renderer = createRenderer();
+    const renderer = createRenderer()
     new Benchmark.Suite()
-        .add("wrap", () => renderer.render(<Orig />))
+        .add("wrap", () => { renderer.render(<Orig />) })
         .on("cycle", (event: any) => {
-            t.comment(`performance: ${event.target}`);
+            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+            t.comment(`performance: ${event.target}`)
         })
         .on("error", (event: any) => {
-            t.error(event.target.error);
+            t.error(event.target.error)
         })
-        .run();
+        .run()
 
-    t.end();
-});
+    t.end()
+})
 
 test("wrapping render class", (t) => {
     const Orig = wrap(class Orig extends React.Component {
-        render() {
+        render(): ReactElement {
             return (
                 <Div cls="b">hello</Div>
-            );
+            )
         }
-    });
+    })
 
-    const renderer = createRenderer();
-    renderer.render(<Orig />);
-    const result = renderer.getRenderOutput();
-    t.deepEqual(result.type, Div);
-    t.deepEqual(result.props.style, [{ fontWeight: "bold" }]);
-    t.end();
-});
+    const renderer = createRenderer()
+    renderer.render(<Orig />)
+    const result = renderer.getRenderOutput()
+    t.deepEqual(result.type, Div)
+    t.deepEqual(result.props.style, [{ fontWeight: "bold" }])
+    t.end()
+})
 
 test("calculate line-height fails without font-size", (t) => {
     const Orig = wrap(class Orig extends React.Component {
-        render() {
+        render(): ReactElement {
             return (
                 <Div cls="lh-copy">hello</Div>
-            );
+            )
         }
-    });
+    })
 
-    const renderer = createRenderer();
-    t.throws(() => renderer.render(<Orig />), /setting 'lh_copy' needs explicit font-size/);
-    t.end();
-});
+    const renderer = createRenderer()
+    t.throws(() => { renderer.render(<Orig />) }, /setting 'lh_copy' needs explicit font-size/)
+    t.end()
+})
 
 test("calculate line-height", (t) => {
     const Orig = wrap(class Orig extends React.Component {
-        render() {
+        render(): ReactElement {
             return (
                 <Div cls="f3 lh-copy">hello</Div>
-            );
+            )
         }
-    });
+    })
 
-    const renderer = createRenderer();
-    renderer.render(<Orig />);
-    const result = renderer.getRenderOutput();
-    t.deepEqual(result.type, Div);
-    t.deepEqual(result.props.style, [{ fontSize: 24 }, { lineHeight: 36 }]);
-    t.end();
-});
+    const renderer = createRenderer()
+    renderer.render(<Orig />)
+    const result = renderer.getRenderOutput()
+    t.deepEqual(result.type, Div)
+    t.deepEqual(result.props.style, [{ fontSize: 24 }, { lineHeight: 36 }])
+    t.end()
+})
 
 test("wrapping render functions", (t) => {
     const Orig = wrap((props: any) => (
         <Div cls={props.xx}>
             Some Text
         </Div>
-    ));
+    ))
 
-    const renderer = createRenderer();
-    renderer.render(<Orig xx="b" />);
-    const result = renderer.getRenderOutput();
-    t.deepEqual(result.type, Div);
-    t.deepEqual(result.props.style, [{ fontWeight: "bold" }]);
-    t.end();
-});
+    const renderer = createRenderer()
+    renderer.render(<Orig xx="b" />)
+    const result = renderer.getRenderOutput()
+    t.deepEqual(result.type, Div)
+    t.deepEqual(result.props.style, [{ fontWeight: "bold" }])
+    t.end()
+})
 
 test("custom type scale", (t) => {
     buildRNT({
@@ -342,14 +344,14 @@ test("custom type scale", (t) => {
             f6: "0.75",
             f7: "0.625"
         }
-    });
-    t.deepEqual(styles.f1, { fontSize: 26 });
-    t.deepEqual(styles.f2, { fontSize: 22 });
-    t.deepEqual(styles.f3, { fontSize: 18 });
-    t.deepEqual(styles.f4, { fontSize: 15 });
-    t.deepEqual(styles.f5, { fontSize: 13 });
-    t.deepEqual(styles.f6, { fontSize: 12 });
-    t.deepEqual(styles.f7, { fontSize: 10 });
+    })
+    t.deepEqual(styles.f1, { fontSize: 26 })
+    t.deepEqual(styles.f2, { fontSize: 22 })
+    t.deepEqual(styles.f3, { fontSize: 18 })
+    t.deepEqual(styles.f4, { fontSize: 15 })
+    t.deepEqual(styles.f5, { fontSize: 13 })
+    t.deepEqual(styles.f6, { fontSize: 12 })
+    t.deepEqual(styles.f7, { fontSize: 10 })
 
-    t.end();
-});
+    t.end()
+})
