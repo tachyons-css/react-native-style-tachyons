@@ -3,7 +3,7 @@
         "es2021": true
     },
     "extends": [
-        "standard-with-typescript",
+        "plugin:@typescript-eslint/recommended",
         "plugin:react/recommended"
     ],
     "parserOptions": {
@@ -21,6 +21,7 @@
     },
     "rules": {
         "@typescript-eslint/quotes": ["error", "double"],
+        "@typescript-eslint/no-explicit-any": ["off"],
         "quotes": ["error", "double"],
         "@typescript-eslint/indent": ["error", 4],
         "indent": ["error", 4],
