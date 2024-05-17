@@ -71,7 +71,7 @@ export class ReactWrapper {
                     }
 
                     newProps.style.push({
-                        lineHeight: lhStyles[cls.replace(/_/gu, "-")] * this.styles[fontSize].fontSize
+                        lineHeight: lhStyles[cls.replace(/_/gu, "-")] * this.styles[fontSize]["fontSize"]
                     })
                 } else if (cls.startsWith("bg_")) {
                     newProps.style.push({
