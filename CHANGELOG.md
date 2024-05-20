@@ -1,3 +1,6 @@
+## 4.2.6
+* Updated dependencies
+
 ## 4.2.5
 * Updated dependencies
 
