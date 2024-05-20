@@ -55,7 +55,7 @@
     "eslint-plugin-react": "7.34.1",
     "faucet": "0.0.4",
     "microtime": "3.1.1",
-    "react-test-renderer": "18.3.0",
+    "react-test-renderer": "18.3.1",
     "tape": "5.7.5",
     "ts-node": "10.9.2",
     "typescript": "5.4.5"
