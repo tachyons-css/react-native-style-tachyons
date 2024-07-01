@@ -32,7 +32,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@types/color": "3.0.6",
-    "@types/lodash": "4.17.4",
+    "@types/lodash": "4.17.6",
     "@types/react": "18.3.3",
     "color": "4.2.3",
     "css-color-names": "1.0.1",
