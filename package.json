@@ -58,7 +58,7 @@
     "react-test-renderer": "18.3.1",
     "tape": "5.8.1",
     "ts-node": "10.9.2",
-    "typescript": "5.4.5"
+    "typescript": "5.5.4"
   },
   "scripts": {
     "build": "rm -Rf lib && tsc --build src",
