@@ -9,7 +9,7 @@ import {
 
 function buildRNT(options: any): void {
     Object.keys(styles).forEach((style) => {
-        // eslint-disable-next-line @typescript-eslint/no-dynamic-delete
+
         delete styles[style]
     })
     const fakeStyleSheet = { create: (sheet: any) => sheet }
@@ -257,9 +257,11 @@ test("wrapping benchmark", (t) => {
     /* Benchmarking */
     const renderer = createRenderer()
     new Benchmark.Suite()
-        .add("wrap", () => { renderer.render(<Orig />) })
+        .add("wrap", () => {
+            renderer.render(<Orig />)
+        })
         .on("cycle", (event: any) => {
-            // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+
             t.comment(`performance: ${event.target}`)
         })
         .on("error", (event: any) => {
@@ -297,7 +299,9 @@ test("calculate line-height fails without font-size", (t) => {
     })
 
     const renderer = createRenderer()
-    t.throws(() => { renderer.render(<Orig />) }, /setting 'lh_copy' needs explicit font-size/)
+    t.throws(() => {
+        renderer.render(<Orig />)
+    }, /setting 'lh_copy' needs explicit font-size/)
     t.end()
 })
 
