@@ -3,7 +3,7 @@ import _ from "lodash"
 import cssColors from "css-color-names"
 import { lhStyles } from "./styles/lineHeight"
 
-// eslint-disable-next-line @typescript-eslint/no-extraneous-class
+ 
 export class ReactWrapper {
     private static styles: any = {}
     private static options: any = {}
@@ -104,7 +104,7 @@ export class ReactWrapper {
          * will prevent unnecessarily applying styles to elements that have already
          * been wrapped.
          */
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+         
         if (elementsTree.type.isTachyonsWrapped) {
             return elementsTree
         }

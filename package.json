@@ -32,7 +32,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@types/color": "3.0.6",
-    "@types/lodash": "4.17.6",
+    "@types/lodash": "4.17.7",
     "@types/react": "18.3.3",
     "color": "4.2.3",
     "css-color-names": "1.0.1",
@@ -43,26 +43,26 @@
     "lib/"
   ],
   "devDependencies": {
+    "@eslint/eslintrc": "3.1.0",
+    "@eslint/js": "9.8.0",
     "@types/benchmark": "2.1.5",
     "@types/node": "22.0.2",
     "@types/react-test-renderer": "18.3.0",
     "@types/tape": "5.6.4",
-    "@typescript-eslint/eslint-plugin": "7.15.0",
     "benchmark": "2.1.4",
-    "eslint": "8.57.0",
-    "eslint-plugin-import": "2.29.1",
-    "eslint-plugin-promise": "7.0.0",
+    "eslint": "9.8.0",
     "eslint-plugin-react": "7.35.0",
     "faucet": "0.0.4",
     "microtime": "3.1.1",
     "react-test-renderer": "18.3.1",
     "tape": "5.8.1",
     "ts-node": "10.9.2",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.0.0"
   },
   "scripts": {
     "build": "rm -Rf lib && tsc --build src",
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix src && eslint --ext .js,.jsx,.ts,.tsx --fix test",
+    "lint": "eslint --fix src && eslint --fix test",
     "test": "npm run lint && npm run build && npm run _test",
     "_test": "ts-node --project test/tsconfig.json node_modules/tape/bin/tape test/**/*.tsx | faucet"
   }
