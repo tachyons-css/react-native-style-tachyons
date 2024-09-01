@@ -58,7 +58,7 @@
     "tape": "5.8.1",
     "ts-node": "10.9.2",
     "typescript": "5.5.4",
-    "typescript-eslint": "8.0.0"
+    "typescript-eslint": "8.3.0"
   },
   "scripts": {
     "build": "rm -Rf lib && tsc --build src",
