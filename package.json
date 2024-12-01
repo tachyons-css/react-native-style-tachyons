@@ -33,7 +33,7 @@
   "dependencies": {
     "@types/color": "4.2.0",
     "@types/lodash": "4.17.13",
-    "@types/react": "18.3.10",
+    "@types/react": "18.3.12",
     "color": "4.2.3",
     "css-color-names": "1.0.1",
     "lodash": "4.17.21",
