@@ -32,7 +32,7 @@
   "main": "lib/index.js",
   "dependencies": {
     "@types/color": "4.2.0",
-    "@types/lodash": "4.17.13",
+    "@types/lodash": "4.17.15",
     "@types/react": "18.3.12",
     "color": "4.2.3",
     "css-color-names": "1.0.1",
@@ -44,21 +44,21 @@
   ],
   "devDependencies": {
     "@eslint/eslintrc": "3.2.0",
-    "@eslint/js": "9.13.0",
+    "@eslint/js": "9.19.0",
     "@types/benchmark": "2.1.5",
-    "@types/node": "22.10.3",
+    "@types/node": "22.13.0",
     "@types/react-test-renderer": "18.3.0",
-    "@types/tape": "5.6.5",
+    "@types/tape": "5.8.1",
     "benchmark": "2.1.4",
-    "eslint": "9.17.0",
-    "eslint-plugin-react": "7.37.3",
+    "eslint": "9.19.0",
+    "eslint-plugin-react": "7.37.4",
     "faucet": "0.0.4",
     "microtime": "3.1.1",
     "react-test-renderer": "18.3.1",
     "tape": "5.9.0",
     "ts-node": "10.9.2",
-    "typescript": "5.7.2",
-    "typescript-eslint": "8.19.0"
+    "typescript": "5.7.3",
+    "typescript-eslint": "8.22.0"
   },
   "scripts": {
     "build": "rm -Rf lib && tsc --build src",
