@@ -5,6 +5,7 @@
 [![semver](https://img.shields.io/:semver-%E2%9C%93-brightgreen.svg?maxAge=2592000)](http://semver.org/)
 [![build status](https://github.com/tachyons-css/react-native-style-tachyons/workflows/Build/badge.svg)](https://github.com/tachyons-css/react-native-style-tachyons/actions)
 [![total townloads](https://img.shields.io/npm/dt/react-native-style-tachyons.svg?maxAge=900)](https://www.npmjs.com/package/react-native-style-tachyons)
+[![OpenSSF ScoreCard](https://img.shields.io/ossf-scorecard/github.com/tachyons-css/react-native-style-tachyons)](https://scorecard.dev/)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/8954/badge)](https://www.bestpractices.dev/projects/8954)
 
 ## Overview
