@@ -34,7 +34,7 @@
     "@types/color": "4.2.0",
     "@types/lodash": "4.17.15",
     "@types/react": "18.3.12",
-    "color": "4.2.3",
+    "color": "5.0.0",
     "css-color-names": "1.0.1",
     "lodash": "4.17.21",
     "react": "18.3.1"
